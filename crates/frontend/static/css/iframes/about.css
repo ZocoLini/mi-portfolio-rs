@@ -1,0 +1,26 @@
+#contenedor-habilidades
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.habilidad
+{
+  min-width: 275px;
+  max-width: 500px;
+  width: 45%;
+  display: flex;
+  border-radius: 10px;
+  padding: 0 10px;
+  background-color: var(--color-ibox-background);
+}
+
+.habilidad img
+{
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: 10px;
+}

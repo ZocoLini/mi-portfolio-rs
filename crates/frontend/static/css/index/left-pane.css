@@ -1,0 +1,52 @@
+#presentacion
+{
+  margin-bottom: 20px;
+}
+
+.contactItem {
+  display: flex;
+  margin: 10px;
+}
+
+.contactItem p {
+  margin: 0 0 0 10px;
+}
+
+#profileImg-container
+{
+  height: 200px;
+  width: 200px;
+  align-content: center;
+  overflow: hidden;
+  border-radius: 10%;
+  top: -100px;
+}
+
+#profileImg
+{
+  height: 277px;
+  width: 200px;
+}
+
+#dowloadCV
+{
+  text-decoration: none;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: var(--color-button-hover);
+  cursor: pointer;
+  width: 220px;
+  padding: 5px;
+}
+
+#dowloadCV img
+{
+  filter: brightness(0) invert(1);
+}
+
+#dowloadCV p
+{
+  margin: 0;
+  color: white;
+  font-weight: bold;
+}

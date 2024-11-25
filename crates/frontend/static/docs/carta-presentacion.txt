@@ -1,0 +1,13 @@
+Muy buenos días,
+
+Mi nombre es Borja Castellano Extremadouro y soy estudiante de 2º año del FP de Desarrollo de Software Multiplataforma. Soy un apasionado del desarrollo de software y llevo desde 2014 formándome y realizando mis propios proyectos. Además, tengo una sólida formación en matemáticas de la mano de la UVA y la USC. 
+
+Durante estos años, he trabajado en varios proyectos personales, utilizando tecnologías como C#, C, Java, Unity... Estos proyectos me han permitido desarrollar y conssolidar mis habilidades en el desarrollo de software, REST API, Spring Framework, SQL, Nginx, Git...
+
+Actualmente, estoy buscando mi primera oportunidad profesional en el mundo del desarrollo de software y estoy muy interesado en unirme a Cleverpy y aprender de profesionales del sector. Se que mi pasión, junto con mis conocimientos, ganas de seguir creciendo y habilidad para aprender, trabajar en equipo y resolver problemas me permitirán contribuir positivamente a la empresa.
+
+Agradezco mucho al equipo de Cleverpy y al equipo de RRHH por tomarse el tiempo de leer y considerar mi solicitud.
+
+Saludos cordiales,
+
+Borja Castellano

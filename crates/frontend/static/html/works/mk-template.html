@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../css/generics.css">
+  <link rel="stylesheet" type="text/css" href="../../css/index/right-pane.css">
+  <link rel="stylesheet" type="text/css" href="../../css/work.css">
+
+  <title>MK Template</title>
+</head>
+<body>
+<main class="centered flex controlled-size">
+  <div>
+    <div id="main-pane" class="flex">
+      <div id="fichaTecnica" class="pane vertical-flex centered-flex">
+        <div id="iconoProyecto-container">
+          <img id="iconoProyecto" src="../../img/works/mk-template/mk-template-icono.png" alt="mk-template">
+        </div>
+        <h1>MK Template</h1>
+
+        <section class="iBox left-icon-list">
+          <h2>Ficha Técnica</h2>
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/codigo.png" alt="Codigo">
+            <div class="vertical-flex">
+              <p class="third-text">Tecnologías utilizadas</p>
+              <p class="second-text">Rust</p>
+            </div>
+          </div>
+
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/empresa.png" alt="Equipo">
+            <div class="vertical-flex">
+              <p class="third-text">Equipo o Colaboradores</p>
+              <p class="second-text">Borja Castellano</p>
+            </div>
+          </div>
+
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/calendario.png" alt="Calendario">
+            <div class="vertical-flex">
+              <p class="third-text">Fecha de creación</p>
+              <p class="second-text">2024</p>
+            </div>
+          </div>
+
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/dado.png" alt="Rol">
+            <div class="vertical-flex">
+              <p class="third-text">Rol en el proyecto</p>
+              <p class="second-text">Arquitectira y desarrollo</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="iBox left-icon-list">
+          <h2>Características</h2>
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/save.png"
+                 title="Guardado"
+                 alt="Guardado"/>
+            <p>Guardado de diferentes formato de plantilla</p>
+          </div>
+          <div class="icon-label">
+            <img class="icon" src="../../img/icon/directory.png"
+                 title="Creación" alt="Creación"/>
+            <p>Creación de archivos y direcorios</p>
+          </div>
+        </section>
+      </div>
+
+      <div id="central-pane">
+        <section id="description-pane" class="pane">
+          <h2>Descripción del proyecto</h2>
+
+          <div class="">
+            <p>
+              Más de una vez me he encontrado con la necesidad una estructura de archivos y directorios que ya había
+              utilizado en otros proyectos y, para no tener que pasar por este infierno cada vez he decidido crear una
+              aplicación de consola que me permita guardar diferentes formatos de plantillas para ser instanciadas en un
+              futuro de una manera rápida y sencilla.
+            </p>
+            <p>
+              Actualmente la aplicación soporta:
+            <ul>
+              <li>Guardar un directorio con todo su contenido como plantilla a copiar en el futuro</li>
+              <li>Guardar una ruta a un .git al que se le hará git clone cada vez que se instancie la plantilla</li>
+            </ul>
+            </p>
+
+            <p>
+              Se tiene pensado añadir soporte para un XML propio que permita definir nuevas plantillas así como otro
+              tipo de templates que sean comunes en el desarrollo de software.
+            </p>
+
+          </div>
+        </section>
+
+        <section id="estado-pane" class="pane">
+          <h2>Estado</h2>
+
+          <div>
+            <ul>
+              <li>
+                <strong>Disponibilidad:</strong> El codigo fuente esta disponible en <a
+                href="https://github.com/ZocoLini/mk-template" target="_blank">GitHub</a>. Ejecutando el archivo <i>install.sh</i>
+                se compilará el proyecto y se copiará el ejecutable en la carpeta <i>~/.local/bin</i>. El proyecto es
+                Open Source y se puede modificar y distribuir libremente.
+              </li>
+              <li>
+                <strong>Actualización:</strong> El proyecto se encuentra en constante desarrollo y se irán añadiendo
+                nuevos tipos de plantilla soportado, así como un XML propio para definir nuevas plantillas.
+              </li>
+              <li>
+                <strong>Documentación:</strong> La documentación del proyecto se encuentra en el archivo
+                <i>README.md</i>
+                y, si este aún no existe, se creará en un futuro próximo.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!--
+    <article id="contenedor-multimedia" class="centered">
+      <section class="pane">
+        <h2>Multimedia</h2>
+
+        <div class="controlled-size centered ">
+          <div class="corrillo-de-imagenes-movil">
+            <img src="../../img/works/leba/captura1.jpg" alt="Captura 1">
+            <img src="../../img/works/leba/captura2.jpg" alt="Captura 2">
+            <img src="../../img/works/leba/captura3.jpg" alt="Captura 3">
+            <img src="../../img/works/leba/captura4.jpg" alt="Captura 4">
+            <img src="../../img/works/leba/captura5.jpg" alt="Captura 5">
+            <img src="../../img/works/leba/captura6.jpg" alt="Captura 6">
+            <img src="../../img/works/leba/captura7.jpg" alt="Captura 7">
+          </div>
+        </div>
+      </section>
+    </article>
+  -->
+  </div>
+
+  <div id="nav-bar" class="vertical-flex fit-content">
+    <a class="pane-button" href="../../index.html" title="Home">
+      <img src="../../img/icon/home.png" alt="Home">
+    </a>
+    <a class="pane-button flex" href="https://github.com/ZocoLini/mk-template" target="_blank">
+      <img src="../../img/icon/github.png" alt="GitHub">
+    </a>
+  </div>
+</main>
+</body>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const navigationPane = document.getElementById('nav-bar');
+
+    if (window.scrollY <= 120) {
+      navigationPane.style.top = (0) + 'px';
+    } else {
+      navigationPane.style.top = window.scrollY - 120 + 'px';
+    }
+  });
+</script>
+
+</html>
