@@ -6,3 +6,6 @@ edition = "2021"
 [dependencies]
 yew = { version = "0.21.0", features = ["csr"] }
 stylist = { version = "0.13.0", features = ["yew_integration"] }
+web-sys = { version = "0.3.72" }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = { version = "1.0.133" }

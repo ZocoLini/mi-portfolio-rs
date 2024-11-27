@@ -1,3 +1,4 @@
+use std::clone::Clone;
 use stylist::{css, StyleSource};
 use stylist::yew::styled_component;
 use yew::prelude::*;
@@ -72,12 +73,11 @@ pub fn icon_link(props: &IconLinkProps) -> Html {
 pub struct IconButtonProps {
     pub icon_src: String,
     pub label: String,
+    pub onclick: Callback<MouseEvent>,
 }
 
 #[function_component(IconButton)]
 pub fn icon_button(props: &IconButtonProps) -> Html {
-    // TODO: Añadir un callback
-
     let css = css!(
         r#"
         display: flex;
@@ -117,7 +117,7 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
     );
 
     html! {
-        <icon-button class={css} >
+        <icon-button onclick={props.onclick.clone()} class={css} >
             <img style="height: 30px; width: 30px;" src={props.icon_src.clone()} alt={props.label.clone()} />
             <p>{ &props.label }</p>
         </icon-button>

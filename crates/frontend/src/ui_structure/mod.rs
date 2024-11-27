@@ -1,3 +1,3 @@
 pub mod home;
-mod about_me;
+mod about;
 mod works;
