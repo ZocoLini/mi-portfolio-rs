@@ -15,7 +15,7 @@ pub trait DynGenerable {
     fn resouce_id(&self) -> String;
 
     fn generate_dyn_html(&self, state: UseStateHandle<Option<Self::Data>>) -> Html {
-        
+
         {
             let data = async move { self.data().await };
             let state = state.clone();
@@ -35,7 +35,7 @@ pub trait DynGenerable {
     }
 
     fn html_with_data(&self, data: &Self::Data) -> Html;
-    
+
     async fn data(&self) -> Self::Data
     where
         for<'a> Self::Data: Deserialize<'a>,

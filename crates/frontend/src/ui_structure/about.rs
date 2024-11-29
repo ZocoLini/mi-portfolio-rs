@@ -108,8 +108,7 @@ struct SkillData {
 
 #[function_component(Skill)]
 fn skill(props: &SkillProps) -> Html {
-    let state = use_state(|| None);
-    props.generate_dyn_html(state)
+    props.generate_dyn_html(use_state(|| None))
 }
 
 impl DynGenerable for SkillProps {
