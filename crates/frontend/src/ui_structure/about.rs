@@ -1,8 +1,8 @@
-use std::clone::Clone;
 use crate::dyn_data_gen::DynGenerable;
 use crate::icon;
 use gloo_net::http::Request;
 use serde::Deserialize;
+use std::clone::Clone;
 use std::string::ToString;
 use yew::platform::spawn_local;
 use yew::prelude::*;
@@ -30,7 +30,7 @@ pub fn view() -> Html {
 
             <div id="contenedor-habilidades">
               <div class="habilidad">
-                <img src="../img/icon/puzzle.png" alt="puzzle"/>
+                <img src="resources/img/icon/puzzle.png" alt="puzzle"/>
                 <div class="habilidad-texto">
                   <h3>{"Resolución de problemas y Pensamiento Crítico"}</h3>
                   <p>{"
@@ -41,7 +41,7 @@ pub fn view() -> Html {
               </div>
 
               <div class="habilidad">
-                <img src="../img/icon/aprendizaje.png" alt="aprendizaje"/>
+                <img src="resources/img/icon/aprendizaje.png" alt="aprendizaje"/>
                 <div class="habilidad-texto">
                   <h3>{"Aprendizaje Autodidacta"}</h3>
                   <p>{"
@@ -52,7 +52,7 @@ pub fn view() -> Html {
               </div>
 
               <div class="habilidad">
-                <img src="../img/icon/java-logo.png" alt="java"/>
+                <img src="resources/img/icon/java-logo.png" alt="java"/>
                 <div class="habilidad-texto">
                   <h3>{"Java y JavaFX"}</h3>
                   <p>{"
@@ -63,7 +63,7 @@ pub fn view() -> Html {
               </div>
 
               <div class="habilidad">
-                <img src="../img/icon/rust.png" alt="rust"/>
+                <img src="resources/img/icon/rust.png" alt="rust"/>
                 <div class="habilidad-texto">
                   <h3>{"Rust"}</h3>
                   <p>{"
@@ -75,7 +75,7 @@ pub fn view() -> Html {
               </div>
 
               <div class="habilidad">
-                <img src="../img/icon/csharp-logo.png" alt="csharp"/>
+                <img src="resources/img/icon/csharp-logo.png" alt="csharp"/>
                 <div class="habilidad-texto">
                   <h3>{"C# y Unity"}</h3>
                   <p>
@@ -85,29 +85,8 @@ pub fn view() -> Html {
                 </div>
               </div>
 
-              <div class="habilidad">
-                <img src="../img/icon/microservices.png" alt="microservicios"/>
-                <div class="habilidad-texto">
-                  <h3>{"Microservicios"}</h3>
-                  <p>{"
-                    Como parte de los proyectos en los que he trabajado, he podido aprender a usar frameworks como Spring Boot
-                    y Rocket para crear microservicios, lo que me hace capaz de desarrollar aplicaciones escalables y
-                    mantenibles."}
-                  </p>
-                </div>
-              </div>
-
-              <div class="habilidad">
-                <img src="../img/icon/liderazgo.png" alt="liderazgo"/>
-                <div class="habilidad-texto">
-                  <h3>{"Liderazgo y trabajo en equipo"}</h3>
-                  <p>
-                    {"Mi capacidad para liderar, colaborar en equipo y para comunicar ideas de manera efectiva se ve reforzada por
-                    mi experiencia como profesor."}
-                  </p>
-                </div>
-              </div>
-
+              <Skill skill_id="microservices"/>
+        
               <Skill skill_id="problem-solving"/>
             </div>
           </div>
@@ -132,7 +111,7 @@ fn skill(props: &SkillProps) -> Html {
     let _skill_id = props.skill_id.clone();
 
     let state = use_state(|| None);
-    
+
     {
         let data = props.clone();
         let data = async move { data.data().await };
@@ -151,7 +130,7 @@ fn skill(props: &SkillProps) -> Html {
                 if let Some(data) = &*state {
                     html! {
                         <>
-                            <img src={format!("../img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
+                            <img src={format!("resources/img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
                             <div class="habilidad-texto">
                                 <h3>{ &data.title }</h3>
                                 <p>{ &data.description }</p>
@@ -161,7 +140,7 @@ fn skill(props: &SkillProps) -> Html {
                 } else {
                     html! {
                         <>
-                            <img src="../img/icon/loading.png" alt="loading" />
+                            <img src="resources/img/icon/loading.png" alt="loading" />
                             <div class="habilidad-texto">
                                 <h3>{ "Cargando..." }</h3>
                                 <p>{ "Cargando datos de habilidades..." }</p>

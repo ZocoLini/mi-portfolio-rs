@@ -8,6 +8,4 @@ yew = { version = "0.21.0", features = ["csr"] }
 stylist = { version = "0.13.0", features = ["yew_integration"] }
 serde = { version = "1.0.215", features = ["derive"] }
 serde_json = { version = "1.0.133" }
-web-sys = { version = "0.3.73" }
-wasm-bindgen = { version = "0.2.96" }
 gloo-net = { version = "0.6.0" }
