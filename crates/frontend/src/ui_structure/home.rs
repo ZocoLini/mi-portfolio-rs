@@ -7,6 +7,7 @@ use std::string::ToString;
 use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
+use crate::ui_structure::{about, works};
 
 #[function_component(View)]
 pub fn view() -> Html {
@@ -33,11 +34,6 @@ pub fn view() -> Html {
 
     let center_css = r#"
     width: 50%;
-    
-    iframe
-    {
-      border: none;
-    }
     
     @media (max-width: 1080px) {
         :nth-child(2) {
@@ -66,28 +62,28 @@ pub fn view() -> Html {
     .add(&pane::PaneStyle::new(Primary).css())
     .into_css();
 
-    let iframe_url = use_state(|| "static/html/about.html".to_string()); // Estado inicial de la URL del iframe
+    let current_view = use_state(|| html! { <about::View /> }); // Estado inicial con `about::View`
 
     let about_click = {
-        let iframe_url = iframe_url.clone();
-        Callback::from(move |_| iframe_url.set("static/html/about.html".to_string()))
+        let current_view = current_view.clone();
+        Callback::from(move |_| current_view.set(html! { <about::View /> }))
     };
 
     let works_click = {
-        let iframe_url = iframe_url.clone();
-        Callback::from(move |_| iframe_url.set("static/html/works.html".to_string()))
+        let current_view = current_view.clone();
+        Callback::from(move |_| current_view.set(html! { <works::View /> }))
     };
 
     html! {
         <main class={main_css}>
             <LeftPane />
-            <div class={center_css}>
-                <iframe src={(*iframe_url).clone()} width="100%" height="100%"></iframe>
-            </div>
-            <div class={right_css}>
+            <center-pane class={center_css}>
+                { (*current_view).clone() }
+            </center-pane>
+            <right-pane class={right_css}>
                 <IconButton icon_src="resources/img/icon/about.png" label="About" onclick={about_click}/>
                 <IconButton icon_src="resources/img/icon/works.png" label="Works" onclick={works_click}/>
-            </div>
+            </right-pane>
         </main>
     }
 }

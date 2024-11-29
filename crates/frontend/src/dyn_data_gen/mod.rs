@@ -3,31 +3,49 @@
 // TODO: Make the skills panes autogenerables
 // TODO: Make the works autogenerables
 
+use std::collections::HashMap;
+use std::path::PathBuf;
 use serde::Deserialize;
-use std::fs::File;
-use std::path::Path;
-use yew::Html;
 
 pub trait DynGenerable {
     type Data;
 
     fn r#type(&self) -> String;
 
-    fn data(&self) -> Self::Data
+    async fn data(&self, resource_id: &str) -> Self::Data
     where
         for<'a> Self::Data: Deserialize<'a>,
     {
-        serde_json::from_reader(
-            File::open(
-                Path::new(env!("CARGO_MANIFEST_DIR"))
-                    .join("dyn_data")
-                    .join(self.r#type())
-                    .join("test.json"),
-            )
-            .unwrap(),
-        )
-        .expect("Cannot deserialize data struct")
+        let url = format!(
+            "{}/dyn_data/{}/{}.json",
+            env!("CARGO_MANIFEST_DIR"),
+            self.r#type(),
+            resource_id
+        );
+        
+        serde_json::from_str(&url).unwrap()
     }
+}
 
-    fn generate(&self) -> Html;
+pub fn load_data() -> HashMap<String, Vec<String>> {
+    let mut data = HashMap::new();
+    
+    let dyn_data = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("dyn_data");
+    
+    for entry in std::fs::read_dir(dyn_data).unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+
+        data.insert(path.file_name().unwrap().to_str().unwrap().to_string(), vec![]);
+        
+        for entry in std::fs::read_dir(path).unwrap() {
+            let entry = entry.unwrap();
+            let path = entry.path();
+            let file_name = path.file_name().unwrap().to_str().unwrap().to_string();
+            
+            data.get_mut(path.file_name().unwrap().to_str().unwrap()).unwrap().push(file_name);
+        }
+    }
+    
+    data
 }

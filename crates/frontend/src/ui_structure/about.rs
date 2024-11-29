@@ -1,5 +1,9 @@
 use crate::dyn_data_gen::DynGenerable;
+use crate::icon;
+use gloo_net::http::Request;
 use serde::Deserialize;
+use std::string::ToString;
+use yew::platform::spawn_local;
 use yew::prelude::*;
 
 #[function_component(View)]
@@ -72,9 +76,9 @@ pub fn view() -> Html {
               <div class="habilidad">
                 <img src="../img/icon/csharp-logo.png" alt="csharp"/>
                 <div class="habilidad-texto">
-                  <h3>{"C # y Unity"}</h3>
+                  <h3>{"C# y Unity"}</h3>
                   <p>
-                    {"Con dos años de experiencia utilizando Unity y C #, he desarrollado habilidades sólidas en el desarrollo de
+                    {"Con dos años de experiencia utilizando Unity y C#, he desarrollado habilidades sólidas en el desarrollo de
                     aplicaciones, demostrando así mi capacidad para trabajar en entornos de desarrollo complejos."}
                   </p>
                 </div>
@@ -102,43 +106,85 @@ pub fn view() -> Html {
                   </p>
                 </div>
               </div>
+
+              <Skill skill_id="problem-solving"/>
             </div>
           </div>
         </div>
     }
 }
 
-#[derive(Properties, PartialEq)]
-struct SkillProps {}
+#[derive(Properties, PartialEq, Clone)]
+struct SkillProps {
+    skill_id: String,
+}
 
 #[derive(Deserialize)]
-struct SkillData {}
+struct SkillData {
+    title: String,
+    description: String,
+    icon_id: String,
+}
 
-struct Skill {}
+#[function_component(Skill)]
+fn skill(props: &SkillProps) -> Html {
+    let _skill_id = props.skill_id.clone();
 
-impl Component for Skill {
-    type Message = ();
-    type Properties = SkillProps;
+    let state = use_state(|| None);
 
-    fn create(ctx: &Context<Self>) -> Self {
-        todo!()
+    {
+        let state = state.clone();
+        use_effect_with((), move |_| {
+            spawn_local(async move {
+                let fetched_data = Request::get("resources/dyn_data/skill-panes/test.json") // Ruta relativa al directorio dist
+                    .send()
+                    .await
+                    .expect("Failed to fetch JSON")
+                    .json::<serde_json::Value>()
+                    .await
+                    .expect("Failed to parse JSON");
+                state.set(Some(
+                    serde_json::from_value::<SkillData>(fetched_data).unwrap(),
+                ));
+            });
+            || ()
+        });
     }
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        self.generate()
+    html! {
+        <div class="habilidad">
+            {
+                
+                if let Some(data) = &*state {
+                    html! {
+                        <>
+                            <img src={format!("../img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
+                            <div class="habilidad-texto">
+                                <h3>{ &data.title }</h3>
+                                <p>{ &data.description }</p>
+                            </div>
+                        </>
+                    }
+                } else {
+                    html! {
+                        <>
+                            <img src="../img/icon/loading.png" alt="loading" />
+                            <div class="habilidad-texto">
+                                <h3>{ "Cargando..." }</h3>
+                                <p>{ "Cargando datos de habilidades..." }</p>
+                            </div>
+                        </>
+                    }
+                }
+            }
+        </div>
     }
 }
 
-impl DynGenerable for Skill {
-    type Data = ();
+impl DynGenerable for SkillProps {
+    type Data = SkillData;
 
     fn r#type(&self) -> String {
-        todo!()
-    }
-
-    fn generate(&self) -> Html {
-        let data = self.data();
-
-        html!()
+        "skill-panes".to_string()
     }
 }
