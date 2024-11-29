@@ -86,7 +86,7 @@ pub fn view() -> Html {
               </div>
 
               <Skill skill_id="microservices"/>
-        
+
               <Skill skill_id="problem-solving"/>
             </div>
           </div>
@@ -108,49 +108,8 @@ struct SkillData {
 
 #[function_component(Skill)]
 fn skill(props: &SkillProps) -> Html {
-    let _skill_id = props.skill_id.clone();
-
     let state = use_state(|| None);
-
-    {
-        let data = props.clone();
-        let data = async move { data.data().await };
-        let state = state.clone();
-        use_effect_with((), move |_| {
-            spawn_local(async move {
-                state.set(Some(data.await));
-            });
-            || ()
-        });
-    }
-
-    html! {
-        <div class="habilidad">
-            {
-                if let Some(data) = &*state {
-                    html! {
-                        <>
-                            <img src={format!("resources/img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
-                            <div class="habilidad-texto">
-                                <h3>{ &data.title }</h3>
-                                <p>{ &data.description }</p>
-                            </div>
-                        </>
-                    }
-                } else {
-                    html! {
-                        <>
-                            <img src="resources/img/icon/loading.png" alt="loading" />
-                            <div class="habilidad-texto">
-                                <h3>{ "Cargando..." }</h3>
-                                <p>{ "Cargando datos de habilidades..." }</p>
-                            </div>
-                        </>
-                    }
-                }
-            }
-        </div>
-    }
+    props.generate_dyn_html(state)
 }
 
 impl DynGenerable for SkillProps {
@@ -162,5 +121,17 @@ impl DynGenerable for SkillProps {
 
     fn resouce_id(&self) -> String {
         self.skill_id.clone()
+    }
+
+    fn html_with_data(&self, data: &Self::Data) -> Html {
+        html! {
+            <skill class="habilidad">
+                <img src={format!("resources/img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
+                    <div class="habilidad-texto">
+                    <h3>{ &data.title }</h3>
+                    <p>{ &data.description }</p>
+                </div>
+            </skill>
+        }
     }
 }
