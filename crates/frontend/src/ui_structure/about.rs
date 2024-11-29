@@ -1,3 +1,4 @@
+use std::clone::Clone;
 use crate::dyn_data_gen::DynGenerable;
 use crate::icon;
 use gloo_net::http::Request;
@@ -131,21 +132,14 @@ fn skill(props: &SkillProps) -> Html {
     let _skill_id = props.skill_id.clone();
 
     let state = use_state(|| None);
-
+    
     {
+        let data = props.clone();
+        let data = async move { data.data().await };
         let state = state.clone();
         use_effect_with((), move |_| {
             spawn_local(async move {
-                let fetched_data = Request::get("resources/dyn_data/skill-panes/test.json") // Ruta relativa al directorio dist
-                    .send()
-                    .await
-                    .expect("Failed to fetch JSON")
-                    .json::<serde_json::Value>()
-                    .await
-                    .expect("Failed to parse JSON");
-                state.set(Some(
-                    serde_json::from_value::<SkillData>(fetched_data).unwrap(),
-                ));
+                state.set(Some(data.await));
             });
             || ()
         });
@@ -154,7 +148,6 @@ fn skill(props: &SkillProps) -> Html {
     html! {
         <div class="habilidad">
             {
-                
                 if let Some(data) = &*state {
                     html! {
                         <>
@@ -186,5 +179,9 @@ impl DynGenerable for SkillProps {
 
     fn r#type(&self) -> String {
         "skill-panes".to_string()
+    }
+
+    fn resouce_id(&self) -> String {
+        self.skill_id.clone()
     }
 }
