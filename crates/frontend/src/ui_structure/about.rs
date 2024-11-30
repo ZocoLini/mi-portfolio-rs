@@ -1,11 +1,12 @@
+use crate::components::icon::Icon;
 use crate::dyn_data_gen::DynGenerable;
+use crate::lang::MultiLang;
+use crate::styles::text;
 use serde::Deserialize;
 use std::clone::Clone;
 use std::string::ToString;
 use yew::prelude::*;
-use crate::lang::MultiLang;
-use macros::MultiLang;
-use crate::components::icon::Icon;
+use frontend::MultiLang;
 
 #[function_component(View)]
 pub fn view() -> Html {
@@ -13,13 +14,13 @@ pub fn view() -> Html {
         <div class="iframe-pane">
           <div class="iframe-inner-pane">
             <h2>{"Sobre mi"}</h2>
-            <p class="primary-text">{"
+            <p class={ text::primary_text_style() }>{"
               Soy un programador apasionado por la resolución de problemas y la creación de soluciones
               innovadoras, amante del borrow checker y de aprender . Con una formación en
               Matemáticas y una trayectoria autodidacta en programación, tengo experiencia en el desarrollo de aplicaciones y la
               resolución de problemas utilizando lenguajes como C, C #, Java y, recientemente, Rust."}
             </p>
-            <p class="primary-text">{"
+            <p class={ text::primary_text_style() }>{"
               Actualmente me considero plenamente preparado para entrar a entornos de desarrollo profesionales y seguir creciendo
               como programador, aprendiendo nuevas tecnologías y mejorando mis habilidades. Este año también acabaré el ciclo
               superior de Desarrollo de Aplicaciones Multiplataforma y estoy buscando una oportunidad laboral que tenga interés en
@@ -75,7 +76,7 @@ impl DynGenerable for SkillProps {
         html! {
             <skill class="habilidad">
                 { data.icon.html() }
-                    <div class="habilidad-texto">
+                <div class="habilidad-texto">
                     <h3>{ &data.title }</h3>
                     <p>{ &data.description }</p>
                 </div>

@@ -1,3 +1,5 @@
+use web_sys::window;
+
 pub trait MultiLang {
     fn translate(self) -> Self;
 }
@@ -10,5 +12,11 @@ impl MultiLang for String {
 
 fn get_string(_id: String) -> String
 {
-    "hola".to_string()
+    get_locale().unwrap()
+}
+
+fn get_locale() -> Option<String> {
+    let window = window()?;
+    let navigator = window.navigator();
+    navigator.language()
 }
