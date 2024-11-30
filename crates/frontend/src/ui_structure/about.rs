@@ -1,4 +1,3 @@
-use crate::components::icon::Icon;
 use crate::dyn_data_gen::DynGenerable;
 use crate::lang::MultiLang;
 use crate::styles::text;
@@ -7,6 +6,7 @@ use std::clone::Clone;
 use std::string::ToString;
 use yew::prelude::*;
 use frontend::MultiLang;
+use crate::components::Icon;
 
 #[function_component(View)]
 pub fn view() -> Html {

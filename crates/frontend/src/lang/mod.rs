@@ -9,13 +9,13 @@ pub trait MultiLang {
 
 impl MultiLang for String {
     fn translate(self) -> Self {
-        get_string(self)
+        get_translation(self)
     }
 }
 
 static mut TRANSLATIONS: OnceCell<HashMap<String, String>> = OnceCell::new();
 
-fn get_string(id: String) -> String {
+fn get_translation(id: String) -> String {
     if !id.starts_with("%") {
         return id;
     }

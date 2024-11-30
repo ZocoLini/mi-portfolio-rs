@@ -24,7 +24,7 @@ fn app() -> Html {
         if *state {
             <home::View />
         } else {
-            <components::loading::LoadingSpinner/>
+            <components::LoadingSpinner/>
         }
     }
 }
