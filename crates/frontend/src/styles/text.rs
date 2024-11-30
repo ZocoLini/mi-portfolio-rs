@@ -17,6 +17,7 @@ pub fn secondary_text_style() -> StyleSource {
     .into_css()
 }
 
+#[allow(dead_code)]
 pub fn tertiary_text_style() -> StyleSource {
     r#"
     color: var(--color-tertiary-text);

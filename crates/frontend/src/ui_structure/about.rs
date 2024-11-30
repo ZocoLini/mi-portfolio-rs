@@ -1,10 +1,7 @@
 use crate::dyn_data_gen::DynGenerable;
-use crate::icon;
-use gloo_net::http::Request;
 use serde::Deserialize;
 use std::clone::Clone;
 use std::string::ToString;
-use yew::platform::spawn_local;
 use yew::prelude::*;
 
 #[function_component(View)]
@@ -87,7 +84,7 @@ pub fn view() -> Html {
 
               <Skill skill_id="microservices"/>
 
-              <Skill skill_id="problem-solving"/>
+              <Skill skill_id="teamwork-leadership"/>
             </div>
           </div>
         </div>
@@ -108,7 +105,8 @@ struct SkillData {
 
 #[function_component(Skill)]
 fn skill(props: &SkillProps) -> Html {
-    props.generate_dyn_html(use_state(|| None))
+    let state = use_state(|| None);
+    props.generate_dyn_html(state)
 }
 
 impl DynGenerable for SkillProps {

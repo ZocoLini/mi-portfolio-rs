@@ -1,9 +1,7 @@
-
-
 pub enum PaneType {
     Primary,
     Secondary,
-    Tertiary,
+    // Tertiary,
 }
 
 impl PaneType {
@@ -11,7 +9,7 @@ impl PaneType {
         match self {
             PaneType::Primary => String::from("var(--color-primary-bkg-pane)"),
             PaneType::Secondary => String::from("var(--color-secondary-bkg-pane)"),
-            PaneType::Tertiary => String::from("var(--color-tertiary-bkg-pane)"),
+            // PaneType::Tertiary => String::from("var(--color-tertiary-bkg-pane)"),
         }
     }
 }
