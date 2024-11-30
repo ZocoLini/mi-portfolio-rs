@@ -29,64 +29,12 @@ pub fn view() -> Html {
             <h2>{"Habilidades"}</h2>
 
             <div id="contenedor-habilidades">
-              <div class="habilidad">
-                <img src="resources/img/icon/puzzle.png" alt="puzzle"/>
-                <div class="habilidad-texto">
-                  <h3>{"Resolución de problemas y Pensamiento Crítico"}</h3>
-                  <p>{"
-                    El grado en Matemáticas me ha dotado de habilidades sólidas en resolución de problemas y pensamiento
-                    crítico aplicables al desarrollo de software."}
-                  </p>
-                </div>
-              </div>
-
-              <div class="habilidad">
-                <img src="resources/img/icon/aprendizaje.png" alt="aprendizaje"/>
-                <div class="habilidad-texto">
-                  <h3>{"Aprendizaje Autodidacta"}</h3>
-                  <p>{"
-                    Mi formación autodidacta demuestra mi capacidad para aprender de forma independiente y adaptarme a nuevas
-                    tecnologías y conceptos."}
-                  </p>
-                </div>
-              </div>
-
-              <div class="habilidad">
-                <img src="resources/img/icon/java-logo.png" alt="java"/>
-                <div class="habilidad-texto">
-                  <h3>{"Java y JavaFX"}</h3>
-                  <p>{"
-                    Tanto Java como Java FX me han permitido expandir mi conjunto de habilidades en programación y mis
-                    posibilidades al poder crear tanto aplicaciones gráficas multiplataforma como microservicios."}
-                  </p>
-                </div>
-              </div>
-
-              <div class="habilidad">
-                <img src="resources/img/icon/rust.png" alt="rust"/>
-                <div class="habilidad-texto">
-                  <h3>{"Rust"}</h3>
-                  <p>{"
-                    Siendo Rust un lenguaje que me encanta, mi experiencia con el me ha permitido explorar nuevas formas de
-                    programar y desarrollar aplicaciones de
-                    alto rendimiento creando REST APIs y aplicaciones de consola que se ejecutan de forma eficiente."}
-                  </p>
-                </div>
-              </div>
-
-              <div class="habilidad">
-                <img src="resources/img/icon/csharp-logo.png" alt="csharp"/>
-                <div class="habilidad-texto">
-                  <h3>{"C# y Unity"}</h3>
-                  <p>
-                    {"Con dos años de experiencia utilizando Unity y C#, he desarrollado habilidades sólidas en el desarrollo de
-                    aplicaciones, demostrando así mi capacidad para trabajar en entornos de desarrollo complejos."}
-                  </p>
-                </div>
-              </div>
-
+              <Skill skill_id="problem-solving"/>
+              <Skill skill_id="selftaught"/>
+              <Skill skill_id="java-javafx"/>
+              <Skill skill_id="rust"/>
+              <Skill skill_id="cs-unity"/>
               <Skill skill_id="microservices"/>
-
               <Skill skill_id="teamwork-leadership"/>
             </div>
           </div>
