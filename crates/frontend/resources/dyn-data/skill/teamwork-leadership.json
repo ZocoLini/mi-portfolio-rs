@@ -1,0 +1,8 @@
+{
+  "title": "%skill.teamwork-leadership.title",
+  "description": "%skill.teamwork-leadership.description",
+  "icon":
+  {
+    "id": "liderazgo.png"
+  }
+}

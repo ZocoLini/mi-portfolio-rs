@@ -9,15 +9,15 @@ pub trait MultiLang {
 
 impl MultiLang for String {
     fn translate(self) -> Self {
-        get_translation(self)
+        translate(&self)
     }
 }
 
 static mut TRANSLATIONS: OnceCell<HashMap<String, String>> = OnceCell::new();
 
-fn get_translation(id: String) -> String {
+pub(crate) fn translate(id: &str) -> String {
     if !id.starts_with("%") {
-        return id;
+        return id.to_string();
     }
 
     unsafe {

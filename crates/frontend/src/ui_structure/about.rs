@@ -7,27 +7,18 @@ use std::string::ToString;
 use yew::prelude::*;
 use frontend::MultiLang;
 use crate::components::Icon;
+use crate::lang;
 
 #[function_component(View)]
 pub fn view() -> Html {
     html! {
         <div class="iframe-pane">
           <div class="iframe-inner-pane">
-            <h2>{"Sobre mi"}</h2>
-            <p class={ text::primary_text_style() }>{"
-              Soy un programador apasionado por la resolución de problemas y la creación de soluciones
-              innovadoras, amante del borrow checker y de aprender . Con una formación en
-              Matemáticas y una trayectoria autodidacta en programación, tengo experiencia en el desarrollo de aplicaciones y la
-              resolución de problemas utilizando lenguajes como C, C #, Java y, recientemente, Rust."}
-            </p>
-            <p class={ text::primary_text_style() }>{"
-              Actualmente me considero plenamente preparado para entrar a entornos de desarrollo profesionales y seguir creciendo
-              como programador, aprendiendo nuevas tecnologías y mejorando mis habilidades. Este año también acabaré el ciclo
-              superior de Desarrollo de Aplicaciones Multiplataforma y estoy buscando una oportunidad laboral que tenga interés en
-              mi perfil y en permitirme hacer la FCT con ellos al final del actual curso 2024-2025."}
-            </p>
+            <h2>{ lang::translate("%general.about-me") }</h2>
+            <p class={ text::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
+            <p class={ text::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
 
-            <h2>{"Habilidades"}</h2>
+            <h2>{ lang::translate("%general.skills") }</h2>
 
             <div id="contenedor-habilidades">
               <Skill skill_id="problem-solving"/>
@@ -65,7 +56,7 @@ impl DynGenerable for SkillProps {
     type Data = SkillData;
 
     fn r#type(&self) -> String {
-        "skill-panes".to_string()
+        "skill".to_string()
     }
 
     fn resouce_id(&self) -> String {

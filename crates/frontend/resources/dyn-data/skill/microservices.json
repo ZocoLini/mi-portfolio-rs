@@ -1,0 +1,8 @@
+{
+  "title": "%skill.microservices.title",
+  "description": "%skill.microservices.description",
+  "icon":
+  {
+    "id": "microservices.png"
+  }
+}

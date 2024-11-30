@@ -1,0 +1,7 @@
+{
+  "title": "%skill.selftaught.title",
+  "description": "%skill.selftaught.description",
+  "icon": {
+    "id": "aprendizaje.png"
+  }
+}

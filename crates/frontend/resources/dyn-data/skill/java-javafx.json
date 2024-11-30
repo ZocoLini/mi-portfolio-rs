@@ -1,0 +1,7 @@
+{
+  "title": "%skill.java-javafx.title",
+  "description": "%skill.java-javafx.description",
+  "icon": {
+    "id": "java-logo.png"
+  }
+}

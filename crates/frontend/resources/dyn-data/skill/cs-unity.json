@@ -1,0 +1,8 @@
+{
+  "title": "%skill.cs-unity.title",
+  "description": "%skill.cs-unity.description",
+  "icon":
+  {
+    "id": "csharp-logo.png"
+  }
+}

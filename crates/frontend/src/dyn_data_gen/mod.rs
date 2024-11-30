@@ -48,7 +48,7 @@ where
         for<'a> Self::Data: Deserialize<'a>,
     {
         let fetched_data = Request::get(&format!(
-            "resources/dyn_data/{}/{}.json",
+            "resources/dyn-data/{}/{}.json",
             self.r#type(),
             self.resouce_id()
         ))
