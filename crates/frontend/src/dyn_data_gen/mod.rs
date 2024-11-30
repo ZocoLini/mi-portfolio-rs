@@ -26,7 +26,6 @@ where
             let state = state.clone();
             spawn_local(async move {
                 state.set(Some(data.data().await));
-                drop(data)
             });
         };
 

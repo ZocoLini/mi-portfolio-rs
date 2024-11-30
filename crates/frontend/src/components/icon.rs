@@ -30,7 +30,7 @@ fn default_icon_size() -> u8 {
 impl Icon {
     pub fn html(&self) -> Html {
         let css = format!("height: {}px; width: {}px;", self.icon_size, self.icon_size);
-        
+
         html! {
             <img style={css} src={ get_icon_src(&self.id) } alt={self.alt.clone()} />
         }

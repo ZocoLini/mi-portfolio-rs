@@ -1,4 +1,5 @@
 pub mod icon;
+pub mod loading;
 
 use std::clone::Clone;
 use stylist::{css, StyleSource};
