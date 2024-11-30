@@ -7,6 +7,7 @@ use gloo_net::http::Request;
 use serde::Deserialize;
 use yew::platform::spawn_local;
 use yew::{html, use_effect_with, Html, Properties, UseStateHandle};
+use crate::components;
 
 pub trait DynGenerable: Clone + Properties + PartialEq
 where
@@ -21,26 +22,28 @@ where
     where
         for<'a> <Self as DynGenerable>::Data: Deserialize<'a>,
     {
-        let a = {
-            let data: Self = self.clone();
-            let state = state.clone();
-            spawn_local(async move {
-                state.set(Some(data.data().await));
-            });
-        };
-
-        use_effect_with((), move |_| a);
-
         if let Some(data) = &*state {
             self.html_with_data(data)
         } else {
+            let a = {
+                let data: Self = self.clone();
+                let state = state.clone();
+                spawn_local(async move {
+                    state.set(Some(data.data().await));
+                });
+            };
+
+            use_effect_with((), move |_| a);
+            
             self.html_without_data()
         }
     }
 
     fn html_with_data(&self, data: &Self::Data) -> Html;
     fn html_without_data(&self) -> Html {
-        html! {}
+        html! {
+            <components::LoadingSpinner />
+        }
     }
 
     async fn data(&self) -> Self::Data
