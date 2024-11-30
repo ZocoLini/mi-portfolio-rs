@@ -1,12 +1,15 @@
+pub mod icon;
+
 use std::clone::Clone;
 use stylist::{css, StyleSource};
 use stylist::yew::styled_component;
 use yew::prelude::*;
+use crate::components::icon::Icon;
 use crate::styles::text;
 
 #[derive(Properties, PartialEq)]
 pub struct IconizedItemProps {
-    pub icon_src: String,
+    pub icon_id: String,
     pub alt_text: String,
     pub title: String,
     pub detail: String,
@@ -33,7 +36,7 @@ pub fn iconized_item(props: &IconizedItemProps) -> Html {
 
     html! {
         <iconized-item class={css}>
-            <img src={props.icon_src.clone()} alt={props.alt_text.clone()} />
+            <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
             <div style="display: flex; flex-direction: column;">
                 <p class={text::secondary_text_style()}>{ &props.title }</p>
                 <p class={text::primary_text_style()}>{ &props.detail }</p>
@@ -45,7 +48,7 @@ pub fn iconized_item(props: &IconizedItemProps) -> Html {
 #[derive(Properties, PartialEq)]
 pub struct IconLinkProps {
     pub href: String,
-    pub icon_src: String,
+    pub icon_id: String,
     pub alt_text: String,
 }
 
@@ -63,7 +66,7 @@ pub fn icon_link(props: &IconLinkProps) -> Html {
     html! {
         <icon-link class={css}>
             <a href={props.href.clone()} target="_blank">
-                <img style="height: 30px; width: 30px;" src={props.icon_src.clone()} alt={props.alt_text.clone()} />
+                <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
             </a>
         </icon-link>
     }
@@ -71,7 +74,7 @@ pub fn icon_link(props: &IconLinkProps) -> Html {
 
 #[derive(Properties, PartialEq)]
 pub struct IconButtonProps {
-    pub icon_src: String,
+    pub icon_id: String,
     pub label: String,
     pub onclick: Callback<MouseEvent>,
 }
@@ -118,7 +121,7 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
 
     html! {
         <icon-button onclick={props.onclick.clone()} class={css} >
-            <img style="height: 30px; width: 30px;" src={props.icon_src.clone()} alt={props.label.clone()} />
+            <Icon id={props.icon_id.clone()} alt={props.label.clone()} icon_size={30} />
             <p>{ &props.label }</p>
         </icon-button>
     }

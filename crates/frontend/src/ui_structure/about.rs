@@ -3,6 +3,9 @@ use serde::Deserialize;
 use std::clone::Clone;
 use std::string::ToString;
 use yew::prelude::*;
+use crate::lang::MultiLang;
+use macros::MultiLang;
+use crate::components::icon::Icon;
 
 #[function_component(View)]
 pub fn view() -> Html {
@@ -96,11 +99,11 @@ struct SkillProps {
     skill_id: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, MultiLang)]
 struct SkillData {
     title: String,
     description: String,
-    icon_id: String,
+    icon: Icon,
 }
 
 #[function_component(Skill)]
@@ -123,7 +126,7 @@ impl DynGenerable for SkillProps {
     fn html_with_data(&self, data: &Self::Data) -> Html {
         html! {
             <skill class="habilidad">
-                <img src={format!("resources/img/icon/{}", data.icon_id)} alt={data.icon_id.clone()} />
+                { data.icon.html() }
                     <div class="habilidad-texto">
                     <h3>{ &data.title }</h3>
                     <p>{ &data.description }</p>

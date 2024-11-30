@@ -2,30 +2,30 @@
 // TODO: Make the contact Info autogenerables
 // TODO: Make the works autogenerables
 
+use crate::lang::MultiLang;
 use gloo_net::http::Request;
 use serde::Deserialize;
 use yew::platform::spawn_local;
 use yew::{html, use_effect_with, Html, Properties, UseStateHandle};
 
-pub trait DynGenerable: Clone + Properties + PartialEq where Self: 'static {
-    type Data;
+pub trait DynGenerable: Clone + Properties + PartialEq
+where
+    Self: 'static,
+{
+    type Data: MultiLang;
 
     fn r#type(&self) -> String;
     fn resouce_id(&self) -> String;
 
-    fn generate_dyn_html(
-        &self,
-        state: UseStateHandle<Option<Self::Data>>
-    ) -> Html
+    fn generate_dyn_html(&self, state: UseStateHandle<Option<Self::Data>>) -> Html
     where
-        for<'a> <Self as DynGenerable>::Data: Deserialize<'a>
+        for<'a> <Self as DynGenerable>::Data: Deserialize<'a>,
     {
-        let state_moved = state.clone();
-        
         let a = {
             let data: Self = self.clone();
+            let state = state.clone();
             spawn_local(async move {
-                state_moved.set(Some(data.data().await));
+                state.set(Some(data.data().await));
                 drop(data)
             });
         };
@@ -40,10 +40,10 @@ pub trait DynGenerable: Clone + Properties + PartialEq where Self: 'static {
     }
 
     fn html_with_data(&self, data: &Self::Data) -> Html;
-    fn html_without_data(&self) -> Html
-    {
+    fn html_without_data(&self) -> Html {
         html! {}
     }
+
     async fn data(&self) -> Self::Data
     where
         for<'a> Self::Data: Deserialize<'a>,
@@ -52,7 +52,7 @@ pub trait DynGenerable: Clone + Properties + PartialEq where Self: 'static {
             "resources/dyn_data/{}/{}.json",
             self.r#type(),
             self.resouce_id()
-        )) // Ruta relativa al directorio dist
+        ))
         .send()
         .await
         .expect("Failed to fetch JSON");
@@ -61,5 +61,6 @@ pub trait DynGenerable: Clone + Properties + PartialEq where Self: 'static {
             fetched_data.json().await.expect("Failed to parse JSON"),
         )
         .expect("Failed to deserialize DynGenerable object")
+        .translate()
     }
 }

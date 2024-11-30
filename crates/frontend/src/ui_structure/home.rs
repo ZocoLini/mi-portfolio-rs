@@ -81,8 +81,8 @@ pub fn view() -> Html {
                 { (*current_view).clone() }
             </center-pane>
             <right-pane class={right_css}>
-                <IconButton icon_src="resources/img/icon/about.png" label="About" onclick={about_click}/>
-                <IconButton icon_src="resources/img/icon/works.png" label="Works" onclick={works_click}/>
+                <IconButton icon_id="about.png" label="About" onclick={about_click}/>
+                <IconButton icon_id="works.png" label="Works" onclick={works_click}/>
             </right-pane>
         </main>
     }
@@ -134,8 +134,8 @@ fn left_pane() -> Html {
                 <h3>{ "Desarrollador multiplataforma" }</h3>
 
                 <div style="display: flex;">
-                    <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_src="resources/img/icon/linkedin.png" alt_text="LinkedIn" />
-                    <IconLink href="https://www.instagram.com/_zocoo/" icon_src="resources/img/icon/instagram.png" alt_text="Instagram" />
+                    <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
+                    <IconLink href="https://www.instagram.com/_zocoo/" icon_id="instagram.png" alt_text="Instagram" />
                 </div>
             </div>
 
@@ -157,11 +157,11 @@ fn contact_info() -> Html {
 
     html! {
         <contact-info class={css_string.into_css()}>
-            <IconizedItem icon_src="resources/img/icon/email.png" alt_text="Email" title="Email" detail="borjacastellano1@gmail.com" />
-            <IconizedItem icon_src="resources/img/icon/phone.png" alt_text="Phone" title="Phone" detail="+34 681 240 207" />
-            <IconizedItem icon_src="resources/img/icon/mapa.png" alt_text="Map" title="Ubicación" detail="Arcade 36690, Pontevedra" />
-            <IconizedItem icon_src="resources/img/icon/reloj.png" alt_text="Clock" title="Disponibilidad horaria" detail="De tarde" />
-            <IconizedItem icon_src="resources/img/icon/pasaporte.png" alt_text="Passport" title="Nacionalidad" detail="Española y Estadounidense" />
+            <IconizedItem icon_id="email.png" alt_text="Email" title="Email" detail="borjacastellano1@gmail.com" />
+            <IconizedItem icon_id="phone.png" alt_text="Phone" title="Phone" detail="+34 681 240 207" />
+            <IconizedItem icon_id="mapa.png" alt_text="Map" title="Ubicación" detail="Arcade 36690, Pontevedra" />
+            <IconizedItem icon_id="reloj.png" alt_text="Clock" title="Disponibilidad horaria" detail="De tarde" />
+            <IconizedItem icon_id="pasaporte.png" alt_text="Passport" title="Nacionalidad" detail="Española y Estadounidense" />
         </contact-info>
     }
 }
