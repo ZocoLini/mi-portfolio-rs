@@ -8,6 +8,7 @@ use std::string::ToString;
 use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
+use crate::lang;
 
 #[function_component(View)]
 pub fn view() -> Html {
@@ -84,8 +85,8 @@ pub fn view() -> Html {
                 <div id="current-view"> { (*current_view).clone() } </div>
             </center-pane>
             <right-pane class={right_css}>
-                <IconButton icon_id="about.png" label="About" onclick={about_click}/>
-                <IconButton icon_id="works.png" label="Works" onclick={works_click}/>
+                <IconButton icon_id="about.png" label="%general.about-me" onclick={about_click}/>
+                <IconButton icon_id="works.png" label="general.works" onclick={works_click}/>
             </right-pane>
         </main>
     }
@@ -130,7 +131,7 @@ fn left_pane() -> Html {
             </div>
 
             <h2>{ "Borja Castellano" }</h2>
-                <h3>{ "Desarrollador multiplataforma" }</h3>
+                <h3>{ lang::translate("%home.left-pane.profession") }</h3>
 
                 <div style="display: flex;">
                     <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
@@ -155,11 +156,36 @@ fn contact_info() -> Html {
 
     html! {
         <contact-info class={css_string.into_css()}>
-            <IconizedItem icon_id="email.png" alt_text="Email" title="Email" detail="borjacastellano1@gmail.com" />
-            <IconizedItem icon_id="phone.png" alt_text="Phone" title="Phone" detail="+34 681 240 207" />
-            <IconizedItem icon_id="mapa.png" alt_text="Map" title="Ubicación" detail="Arcade 36690, Pontevedra" />
-            <IconizedItem icon_id="reloj.png" alt_text="Clock" title="Disponibilidad horaria" detail="De tarde" />
-            <IconizedItem icon_id="pasaporte.png" alt_text="Passport" title="Nacionalidad" detail="Española y Estadounidense" />
+            <IconizedItem
+                icon_id="email.png"
+                alt_text="%home.left-pane.contact-info.email-title"
+                title="%home.left-pane.contact-info.email-title"
+                detail="%home.left-pane.contact-info.email-detail"
+            />
+        <IconizedItem
+                icon_id="phone.png"
+                alt_text="%home.left-pane.contact-info.phone-title"
+                title="%home.left-pane.contact-info.phone-title"
+                detail="%home.left-pane.contact-info.phone-detail"
+            />
+        <IconizedItem
+                icon_id="mapa.png"
+                alt_text="%home.left-pane.contact-info.ubi-title"
+                title="%home.left-pane.contact-info.ubi-title"
+                detail="%home.left-pane.contact-info.ubi-detail"
+            />
+        <IconizedItem
+                icon_id="reloj.png"
+                alt_text="%home.left-pane.contact-info.availability-title"
+                title="%home.left-pane.contact-info.availability-title"
+                detail="%home.left-pane.contact-info.availability-detail"
+            />
+        <IconizedItem
+                icon_id="pasaporte.png"
+                alt_text="%home.left-pane.contact-info.nacionality-title"
+                title="%home.left-pane.contact-info.nacionality-title"
+                detail="%home.left-pane.contact-info.nacionality-detail"
+            />
         </contact-info>
     }
 }
@@ -206,7 +232,7 @@ fn download_cv() -> Html {
         <a class={css} href="static/docs/CV-Borja-Castellano-actual.pdf" target="_blank">
             <div>
                 <img src="resources/img/icon/download.png" alt="Download" />
-                <p>{ "Download CV" }</p>
+                <p>{ lang::translate("%home.left-pane.download-cv") }</p>
             </div>
         </a>
     }

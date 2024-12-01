@@ -3,6 +3,7 @@ use stylist::{css, StyleSource};
 use stylist::yew::styled_component;
 use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Component, Context, Html, Properties};
+use crate::lang;
 use crate::lang::MultiLang;
 use crate::styles::text;
 
@@ -95,8 +96,8 @@ pub fn iconized_item(props: &IconizedItemProps) -> Html {
         <iconized-item class={css}>
             <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
             <div style="display: flex; flex-direction: column;">
-                <p class={text::secondary_text_style()}>{ &props.title }</p>
-                <p class={text::primary_text_style()}>{ &props.detail }</p>
+                <p class={text::secondary_text_style()}>{ lang::translate(&props.title) }</p>
+                <p class={text::primary_text_style()}>{ lang::translate(&props.detail) }</p>
             </div>
         </iconized-item>
     }
@@ -153,6 +154,7 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         width: 50px;
         height: 50px;
         text-decoration: none;
+        overflow: hidden;
         color: var(--color-primary-text);
 
         img {
@@ -179,7 +181,7 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
     html! {
         <icon-button onclick={props.onclick.clone()} class={css} >
             <Icon id={props.icon_id.clone()} alt={props.label.clone()} icon_size={30} />
-            <p>{ &props.label }</p>
+            <p>{ lang::translate(&props.label) }</p>
         </icon-button>
     }
 }
