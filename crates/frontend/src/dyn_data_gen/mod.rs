@@ -15,7 +15,6 @@ where
 {
     type Data: MultiLang;
 
-    fn r#type(&self) -> String;
     fn resouce_id(&self) -> String;
 
     fn generate_dyn_html(&self, state: UseStateHandle<Option<Self::Data>>) -> Html
@@ -51,8 +50,7 @@ where
         for<'a> Self::Data: Deserialize<'a>,
     {
         let fetched_data = Request::get(&format!(
-            "resources/dyn-data/{}/{}.json",
-            self.r#type(),
+            "resources/dyn-data/{}.json",
             self.resouce_id()
         ))
         .send()

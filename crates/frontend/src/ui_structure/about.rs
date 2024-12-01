@@ -2,7 +2,7 @@ use crate::components::Icon;
 use crate::dyn_data_gen::DynGenerable;
 use crate::lang;
 use crate::lang::MultiLang;
-use crate::styles::pane::PaneType::{Secondary};
+use crate::styles::pane::PaneType::Secondary;
 use crate::styles::{pane, text, Css};
 use frontend::MultiLang;
 use serde::Deserialize;
@@ -13,36 +13,18 @@ use yew::prelude::*;
 
 #[function_component(View)]
 pub fn view() -> Html {
-    let css = r#"
-        #skill-containter {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-    "#
-    .to_string()
-    .into_css();
-
     html! {
-        <div class={ css }>
+        <div>
             <h1>{ lang::translate("%general.about-me") }</h1>
             <p class={ text::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
             <p class={ text::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
 
-            <h2>{ lang::translate("%general.skills") }</h2>
-
-            <div id="skill-containter">
-              <Skill skill_id="problem-solving"/>
-              <Skill skill_id="selftaught"/>
-              <Skill skill_id="java-javafx"/>
-              <Skill skill_id="rust"/>
-              <Skill skill_id="cs-unity"/>
-              <Skill skill_id="microservices"/>
-              <Skill skill_id="teamwork-leadership"/>
-            </div>
+            <SkillsContainer />
         </div>
     }
 }
+
+// region: Skill component
 
 #[derive(Properties, PartialEq, Clone)]
 struct SkillProps {
@@ -65,10 +47,6 @@ fn skill(props: &SkillProps) -> Html {
 
 impl DynGenerable for SkillProps {
     type Data = SkillData;
-
-    fn r#type(&self) -> String {
-        "skill".to_string()
-    }
 
     fn resouce_id(&self) -> String {
         self.skill_id.clone()
@@ -105,3 +83,62 @@ impl DynGenerable for SkillProps {
         }
     }
 }
+
+// endregion
+
+// region: Skill container
+
+#[derive(Properties, PartialEq, Clone)]
+struct SkillsContainerProps;
+
+#[derive(Deserialize, MultiLang)]
+struct SkillsContainerData {
+    skills: Vec<SkillData>,
+}
+
+impl MultiLang for Vec<SkillData> {
+    fn translate(self) -> Self {
+        self.into_iter()
+            .map(|x| x.translate())
+            .collect()
+    }
+}
+
+#[function_component(SkillsContainer)]
+fn skills_container(props: &SkillsContainerProps) -> Html {
+    let state = use_state(|| None);
+    props.generate_dyn_html(state)
+}
+
+impl DynGenerable for SkillsContainerProps {
+    type Data = SkillsContainerData;
+
+    fn resouce_id(&self) -> String {
+        "skills".to_string()
+    }
+
+    fn html_with_data(&self, data: &Self::Data) -> Html {
+        let css = r#"
+            #skills {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        "#
+        .to_string()
+        .into_css();
+
+        // TODO: Mostrar las Skills cargadas en data
+        
+        html!(
+            <div class={ css }>
+                <h2>{ lang::translate("%general.skills") }</h2>
+
+                <div id="skills">
+                </div>
+            </div>
+        )
+    }
+}
+
+// enregion: Skill container

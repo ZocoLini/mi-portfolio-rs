@@ -64,7 +64,7 @@ struct WorkProps {
 }
 
 #[derive(Deserialize, MultiLang)]
-struct WorkData {
+pub struct WorkData {
     title: String,
     description: String,
     icon: Icon,
@@ -85,17 +85,13 @@ impl MultiLang for Vec<(String, String)> {
 }
 
 #[function_component(Work)]
-pub fn work(props: &WorkProps) -> Html {
+fn work(props: &WorkProps) -> Html {
     let state = use_state(|| None);
     props.generate_dyn_html(state)
 }
 
 impl DynGenerable for WorkProps {
     type Data = WorkData;
-
-    fn r#type(&self) -> String {
-        "works".to_string()
-    }
 
     fn resouce_id(&self) -> String {
         self.work_id.to_string()
