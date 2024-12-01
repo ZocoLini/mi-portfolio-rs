@@ -10,6 +10,7 @@ use std::clone::Clone;
 use std::ops::Add;
 use std::string::ToString;
 use yew::prelude::*;
+use yew::virtual_dom::VNode;
 
 #[function_component(View)]
 pub fn view() -> Html {
@@ -26,12 +27,14 @@ pub fn view() -> Html {
 
 // region: Skill component
 
-#[derive(Properties, PartialEq, Clone)]
+#[derive(Properties, PartialEq)]
 struct SkillProps {
-    skill_id: String,
+    title: String,
+    description: String,
+    icon: Icon,
 }
 
-#[derive(Deserialize, MultiLang)]
+#[derive(Deserialize, MultiLang, Clone)]
 struct SkillData {
     title: String,
     description: String,
@@ -40,20 +43,7 @@ struct SkillData {
 
 #[function_component(Skill)]
 fn skill(props: &SkillProps) -> Html {
-    let state = use_state(|| None);
-
-    props.generate_dyn_html(state)
-}
-
-impl DynGenerable for SkillProps {
-    type Data = SkillData;
-
-    fn resouce_id(&self) -> String {
-        self.skill_id.clone()
-    }
-
-    fn html_with_data(&self, data: &Self::Data) -> Html {
-        let css = r#"
+    let css = r#"
             min-width: 300px;
             max-width: 500px;
             width: 45%;
@@ -68,19 +58,18 @@ impl DynGenerable for SkillProps {
               margin-right: 10px;
             }
         "#
-        .to_string()
-        .add(&pane::PaneStyle::new(Secondary).css())
-        .into_css();
+    .to_string()
+    .add(&pane::PaneStyle::new(Secondary).css())
+    .into_css();
 
-        html! {
-            <skill class={css}>
-                { data.icon.html() }
-                <div>
-                    <h3>{ &data.title }</h3>
-                    <p>{ &data.description }</p>
-                </div>
-            </skill>
-        }
+    html! {
+        <skill class={css}>
+            { props.icon.html() }
+            <div>
+                <h3>{ &props.title }</h3>
+                <p>{ &props.description }</p>
+            </div>
+        </skill>
     }
 }
 
@@ -91,16 +80,14 @@ impl DynGenerable for SkillProps {
 #[derive(Properties, PartialEq, Clone)]
 struct SkillsContainerProps;
 
-#[derive(Deserialize, MultiLang)]
+#[derive(Deserialize, MultiLang, Clone)]
 struct SkillsContainerData {
     skills: Vec<SkillData>,
 }
 
 impl MultiLang for Vec<SkillData> {
     fn translate(self) -> Self {
-        self.into_iter()
-            .map(|x| x.translate())
-            .collect()
+        self.into_iter().map(|x| x.translate()).collect()
     }
 }
 
@@ -117,7 +104,7 @@ impl DynGenerable for SkillsContainerProps {
         "skills".to_string()
     }
 
-    fn html_with_data(&self, data: &Self::Data) -> Html {
+    fn html_with_data(&self, data: Self::Data) -> Html {
         let css = r#"
             #skills {
                 display: flex;
@@ -127,18 +114,23 @@ impl DynGenerable for SkillsContainerProps {
         "#
         .to_string()
         .into_css();
+        
 
-        // TODO: Mostrar las Skills cargadas en data
+        let skills = Vec::from(data.skills);
+        let skills = skills.iter().cloned();
         
         html!(
             <div class={ css }>
                 <h2>{ lang::translate("%general.skills") }</h2>
-
                 <div id="skills">
+                    {
+                        for skills.map(move |skill| {
+                            html!( <Skill title={skill.title} description={skill.description.clone()} icon={skill.icon} /> )
+                        })
+                    }
                 </div>
             </div>
         )
     }
 }
-
 // enregion: Skill container

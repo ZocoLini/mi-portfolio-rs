@@ -45,7 +45,7 @@ fn work_section(props: &WorkSectionProps) -> Html {
     )
 }
 
-#[derive(PartialEq, Clone, Deserialize)]
+#[derive(PartialEq, Clone, Deserialize, Copy)]
 enum WorkState {
     Building,
     Deployed,
@@ -63,7 +63,7 @@ struct WorkProps {
     work_id: String,
 }
 
-#[derive(Deserialize, MultiLang)]
+#[derive(Deserialize, MultiLang, Clone)]
 pub struct WorkData {
     title: String,
     description: String,
@@ -97,7 +97,7 @@ impl DynGenerable for WorkProps {
         self.work_id.to_string()
     }
 
-    fn html_with_data(&self, data: &Self::Data) -> Html {
+    fn html_with_data(&self, data: Self::Data) -> Html {
         html!(
           <a class="work primary-text" href="works/trt-api.html" target="_parent">
             <img src="../../resources/img/works/the-round-table/icono-trt.png" alt="the-round-table"/>

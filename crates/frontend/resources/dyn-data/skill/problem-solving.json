@@ -1,9 +1,0 @@
-{
-  "title": "%skill.problem-solving.title",
-  "description": "%skill.problem-solving.description",
-  "icon":
-  {
-    "icon_size": 50,
-    "id": "puzzle.png"
-  }
-}

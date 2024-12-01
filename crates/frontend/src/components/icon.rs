@@ -19,7 +19,7 @@ pub struct IconProps {
     pub icon_size: u8,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, PartialEq, Clone)]
 pub struct Icon {
     id: String,
     #[serde(default)]

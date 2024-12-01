@@ -13,7 +13,7 @@ pub trait DynGenerable: Clone + Properties + PartialEq
 where
     Self: 'static,
 {
-    type Data: MultiLang;
+    type Data: MultiLang + Clone;
 
     fn resouce_id(&self) -> String;
 
@@ -21,8 +21,8 @@ where
     where
         for<'a> <Self as DynGenerable>::Data: Deserialize<'a>,
     {
-        if let Some(data) = &*state {
-            self.html_with_data(data)
+        if let Some(data) = state.clone().as_ref() {
+            self.html_with_data((*data).clone())
         } else {
             let a = {
                 let data: Self = self.clone();
@@ -38,7 +38,7 @@ where
         }
     }
 
-    fn html_with_data(&self, data: &Self::Data) -> Html;
+    fn html_with_data(&self, data: Self::Data) -> Html;
     fn html_without_data(&self) -> Html {
         html! {
             <components::LoadingSpinner />

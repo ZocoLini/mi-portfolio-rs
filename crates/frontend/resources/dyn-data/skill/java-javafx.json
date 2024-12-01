@@ -1,9 +1,0 @@
-{
-  "title": "%skill.java-javafx.title",
-  "description": "%skill.java-javafx.description",
-  "icon":
-  {
-    "icon_size": 50,
-    "id": "java-logo.png"
-  }
-}
