@@ -1,7 +1,9 @@
 {
   "title": "%skill.rust.title",
   "description": "%skill.rust.description",
-  "icon": {
+  "icon":
+  {
+    "icon_size": 50,
     "id": "rust.png"
   }
 }

@@ -28,7 +28,7 @@ pub(crate) fn translate(id: &str) -> String {
         {
             trans.clone()
         } else {
-            format!("{} traslation not found", id)
+            format!("{}", id)
         }
     }
 }

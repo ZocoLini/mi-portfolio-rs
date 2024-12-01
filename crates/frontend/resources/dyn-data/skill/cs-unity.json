@@ -3,6 +3,7 @@
   "description": "%skill.cs-unity.description",
   "icon":
   {
+    "icon_size": 50,
     "id": "csharp-logo.png"
   }
 }

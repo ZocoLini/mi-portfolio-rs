@@ -3,6 +3,7 @@
   "description": "%skill.microservices.description",
   "icon":
   {
+    "icon_size": 50,
     "id": "microservices.png"
   }
 }

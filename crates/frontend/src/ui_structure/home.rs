@@ -1,31 +1,26 @@
 use crate::components::{IconButton, IconLink, IconizedItem};
 use crate::styles::pane::PaneType::{Primary, Secondary};
 use crate::styles::{pane, Css};
+use crate::ui_structure::{about, works};
 use std::convert::From;
 use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
-use crate::ui_structure::{about, works};
 
 #[function_component(View)]
 pub fn view() -> Html {
     let main_css = css!(
         r#"
-        background-size: cover;
-        background-repeat: no-repeat;
+        width: 90%;
+        max-height: 95%;
         margin: 0 auto;
-        padding-top: 100px;
         display: flex;
         justify-content: center;
-        background-color: var(--color-tertiary-bkg-pane);
         
         @media (max-width: 1080px) {
-          background-size: cover;
-          background-repeat: no-repeat;
           margin: 0 auto;
-          padding-top: 100px;
           display: flex;
           flex-wrap: wrap;
         }
@@ -33,15 +28,23 @@ pub fn view() -> Html {
     );
 
     let center_css = r#"
-    width: 50%;
-    
-    @media (max-width: 1080px) {
-        :nth-child(2) {
-          order: 3;
-        }
-        
+        max-height: 100%;
         width: 100%;
-        height: 910px;
+        overflow: hidden;
+
+        #current-view
+        {
+            align-items: center;
+            gap: 20px;
+            max-height: 95%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 1080px) {
+        :nth-child(2) {
+            order: 3;
+        }
     }
     "#
     .to_string()
@@ -78,7 +81,7 @@ pub fn view() -> Html {
         <main class={main_css}>
             <LeftPane />
             <center-pane class={center_css}>
-                { (*current_view).clone() }
+                <div id="current-view"> { (*current_view).clone() } </div>
             </center-pane>
             <right-pane class={right_css}>
                 <IconButton icon_id="about.png" label="About" onclick={about_click}/>
@@ -91,22 +94,19 @@ pub fn view() -> Html {
 #[function_component(LeftPane)]
 fn left_pane() -> Html {
     let css = r#"
-    
     width: fit-content;
     height: fit-content;
     display: flex;
-    gap: 10px;
     flex-direction: column;
     align-items: center;
     
     #profile-img-container
     {
       height: 200px;
-      width: 200px;
+      min-width: 200px;
       align-content: center;
       overflow: hidden;
       border-radius: 10%;
-      top: -100px;
     }
 
     h3
@@ -126,18 +126,16 @@ fn left_pane() -> Html {
     html! {
         <left-pane class={css}>
             <div id="profile-img-container">
-                <img style="height: 277px; width: 200px;" id="profile-img" src="resources/img/profile.jpg" alt="Profile picture"/>
+                <img style="height: 277px; " src="resources/img/profile.jpg" alt="Profile picture"/>
             </div>
 
-            <div style="display: flex; flex-direction: column; align-items: center;">
-                <h2>{ "Borja Castellano" }</h2>
+            <h2>{ "Borja Castellano" }</h2>
                 <h3>{ "Desarrollador multiplataforma" }</h3>
 
                 <div style="display: flex;">
                     <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
                     <IconLink href="https://www.instagram.com/_zocoo/" icon_id="instagram.png" alt_text="Instagram" />
                 </div>
-            </div>
 
             <ContactInfo />
 

@@ -3,6 +3,7 @@
   "description": "%skill.teamwork-leadership.description",
   "icon":
   {
+    "icon_size": 50,
     "id": "liderazgo.png"
   }
 }

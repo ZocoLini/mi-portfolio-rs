@@ -1,7 +1,8 @@
 :root {
     --color-panel: #ffffff;
     --color-ibox-background: #eff5f9;
-    --color-background: #e2e3ee;
+
+    --color-background: #012a36;
 
     --color-button-background: #f2f7f6;
     --color-button-hover: #1b75e2;
@@ -18,6 +19,13 @@
 
 * {
     font-family: "JetBrains Mono", monospace;
+}
+
+body {
+    background-color: var(--color-background);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .primary-text {
