@@ -5,12 +5,10 @@ use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Component, Context, Html, Properties};
 use crate::lang;
 use crate::lang::MultiLang;
+use crate::resources::get_icon_src;
 use crate::styles::text;
 
-fn get_icon_src(id: &str) -> String
-{
-    format!("resources/img/icon/{}", id)
-}
+
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct IconProps {

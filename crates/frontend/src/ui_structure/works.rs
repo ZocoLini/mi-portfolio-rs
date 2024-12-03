@@ -1,10 +1,11 @@
-use std::collections::HashMap;
-use crate::components::Icon;
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
 use crate::styles::Css;
+use crate::resources;
 use frontend::MultiLang;
 use serde::Deserialize;
+use std::collections::HashMap;
+use std::fmt::Display;
 use std::string::ToString;
 use yew::prelude::*;
 
@@ -100,6 +101,35 @@ enum WorkState {
     Concept,
 }
 
+impl WorkState  {
+    fn icon(&self) -> Html
+    {
+        let id = match self {
+            WorkState::Building => "building",
+            WorkState::Deployed => "deployed",
+            WorkState::Concept => "concept",
+        };
+
+        html! {
+            <img class="work-state"
+                src={format!("{}.png", resources::get_icon_src(id))}
+                alt={self.to_string()}/>
+        }
+    }
+
+}
+
+impl Display for WorkState {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let str = match self {
+            WorkState::Building => "building".to_string(),
+            WorkState::Deployed => "deployed".to_string(),
+            WorkState::Concept => "concept".to_string(),
+        };
+        write!(f, "{}", str)
+    }
+}
+
 impl MultiLang for WorkState {
     fn translate(self) -> Self {
         self
@@ -109,11 +139,10 @@ impl MultiLang for WorkState {
 #[derive(Deserialize, MultiLang, Clone)]
 pub struct WorkData {
     title: String,
-    ref_id: String,
+    icon_id: String,
     #[serde(default)]
     is_api: bool,
     description: String,
-    icon: Icon,
     info: HashMap<String, String>,
     state: WorkState,
 }
@@ -128,8 +157,10 @@ impl IntoHtml for WorkData {
 
         html!(
           <a class="work primary-text" href="works/trt-api.html" target="_parent">
-            <img src="../../resources/img/works/the-round-table/icono-trt.png" alt="the-round-table"/>
-            <img src="../../resources/img/icon/api.png" alt="api" style="position: absolute; left: -5px; top: -15px; width: 36px; height: 36px;"/>
+            <img src={resources::get_work_icon_src(&self.icon_id)} alt={self.icon_id}/>
+            if self.is_api {
+                <img src={resources::get_icon_src("api.png")} alt="api" style="position: absolute; left: -5px; top: -15px; width: 36px; height: 36px;"/>
+            }
             <div class="work-info">
               <h2>{ &self.title }</h2>
               <ul>
@@ -141,7 +172,9 @@ impl IntoHtml for WorkData {
               </ul>
               <p> { &self.description } </p>
             </div>
-            <img class="work-state" src="../../resources/img/icon/deployed.png" alt="Deployed"/>
+            {
+                self.state.icon()
+            }
           </a>
         )
     }

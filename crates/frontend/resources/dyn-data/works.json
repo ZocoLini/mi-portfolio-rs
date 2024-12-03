@@ -6,11 +6,7 @@
         {
           "title": "%work.mk-template.title",
           "description": "%work.mk-template.description",
-          "ref_id": "mk-template",
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
+          "icon_id": "mk-template",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.type": "%work.mk-template.type",
@@ -22,12 +18,8 @@
         {
           "title": "%work.trt-api.title",
           "description": "%work.trt-api.description",
-          "ref_id": "trt-api",
+          "icon_id": "the-round-table",
           "is_api": true,
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.rocket",
@@ -45,11 +37,7 @@
         {
           "title": "%work.seal-code.title",
           "description": "%work.seal-code.description",
-          "ref_id": "seal-code",
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
+          "icon_id": "seal-code",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.java-fx",
@@ -62,12 +50,8 @@
         {
           "title": "%work.leba-api.title",
           "description": "%work.leba-api.description",
-          "ref_id": "leba-api",
+          "icon_id": "leba",
           "is_api": true,
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.spring-boot",
@@ -80,11 +64,7 @@
         {
           "title": "%work.the-round-table.title",
           "description": "%work.the-round-table.description",
-          "ref_id": "the-round-table",
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
+          "icon_id": "the-round-table",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.java-fx",
@@ -102,11 +82,7 @@
         {
           "title": "%work.leba.title",
           "description": "%work.leba.description",
-          "ref_id": "leba",
-          "icon": {
-            "id": "combate.png",
-            "icon_size": 50
-          },
+          "icon_id": "leba",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.unity",

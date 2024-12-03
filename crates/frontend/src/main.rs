@@ -7,6 +7,7 @@ mod dyn_data_gen;
 mod lang;
 mod styles;
 mod ui_structure;
+mod resources;
 
 #[function_component(App)]
 fn app() -> Html {
