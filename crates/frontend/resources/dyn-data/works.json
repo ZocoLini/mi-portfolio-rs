@@ -1,16 +1,118 @@
 {
   "sections": [
     {
-      "title": "Prueba",
+      "title": "%work-section.rust.title",
       "works": [
         {
-          "title": "Test",
-          "description": "Test",
+          "title": "%work.mk-template.title",
+          "description": "%work.mk-template.description",
+          "ref_id": "mk-template",
           "icon": {
             "id": "combate.png",
             "icon_size": 50
           },
           "info": {
+            "%general.developer": "%general.my-name",
+            "%general.type": "%work.mk-template.type",
+            "%general.date": "2024",
+            "%general.role": "%work.architect-developer"
+          },
+          "state": "Building"
+        },
+        {
+          "title": "%work.trt-api.title",
+          "description": "%work.trt-api.description",
+          "ref_id": "trt-api",
+          "is_api": true,
+          "icon": {
+            "id": "combate.png",
+            "icon_size": 50
+          },
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.rocket",
+            "%general.type": "%work.trt-api.type",
+            "%general.date": "2024",
+            "%general.role": "%work.architect-developer"
+          },
+          "state": "Deployed"
+        }
+      ]
+    },
+    {
+      "title": "%work-section.java.title",
+      "works": [
+        {
+          "title": "%work.seal-code.title",
+          "description": "%work.seal-code.description",
+          "ref_id": "seal-code",
+          "icon": {
+            "id": "combate.png",
+            "icon_size": 50
+          },
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.java-fx",
+            "%general.type": "%work.seal-code.type",
+            "%general.date": "2024",
+            "%general.role": "%work.architect-developer"
+          },
+          "state": "Concept"
+        },
+        {
+          "title": "%work.leba-api.title",
+          "description": "%work.leba-api.description",
+          "ref_id": "leba-api",
+          "is_api": true,
+          "icon": {
+            "id": "combate.png",
+            "icon_size": 50
+          },
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.spring-boot",
+            "%general.type": "%work.leba-api.type",
+            "%general.date": "2024",
+            "%general.role": "%work.architect-developer"
+          },
+          "state": "Deployed"
+        },
+        {
+          "title": "%work.the-round-table.title",
+          "description": "%work.the-round-table.description",
+          "ref_id": "the-round-table",
+          "icon": {
+            "id": "combate.png",
+            "icon_size": 50
+          },
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.java-fx",
+            "%general.type": "%work.the-round-table.type",
+            "%general.date": "2024",
+            "%general.role": "%work.architect-developer"
+          },
+          "state": "Building"
+        }
+      ]
+    },
+    {
+      "title": "%work-section.csharp.title",
+      "works": [
+        {
+          "title": "%work.leba.title",
+          "description": "%work.leba.description",
+          "ref_id": "leba",
+          "icon": {
+            "id": "combate.png",
+            "icon_size": 50
+          },
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.unity",
+            "%general.type": "%work.leba.type",
+            "%general.date": "2021",
+            "%general.role": "%work.leba.role"
           },
           "state": "Deployed"
         }
