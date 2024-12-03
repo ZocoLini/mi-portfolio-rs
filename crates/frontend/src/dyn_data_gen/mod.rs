@@ -64,3 +64,7 @@ where
         .translate()
     }
 }
+
+pub trait IntoHtml {
+    fn into_html(self) -> Html;
+}

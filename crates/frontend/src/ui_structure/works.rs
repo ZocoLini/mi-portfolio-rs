@@ -1,5 +1,6 @@
+use std::collections::HashMap;
 use crate::components::Icon;
-use crate::dyn_data_gen::DynGenerable;
+use crate::dyn_data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
 use crate::styles::Css;
 use frontend::MultiLang;
@@ -17,32 +18,79 @@ pub fn view() -> Html {
 
     html! {
         <div class={css}>
-
+            <Works />
         </div>
     }
 }
 
-#[derive(Properties, PartialEq, Clone)]
-struct WorkSectionProps {
-    title: String,
-    works: Vec<WorkProps>,
+#[derive(Deserialize, MultiLang, Clone)]
+struct WorksData {
+    sections: Vec<WorkSectionData>,
 }
 
-#[function_component(WorkSection)]
-fn work_section(props: &WorkSectionProps) -> Html {
-    html!(
-        <div>
-          <h1>{ &props.title }</h1>
+#[derive(Properties, PartialEq, Clone)]
+struct WorksProps;
+
+#[function_component(Works)]
+fn works(props: &WorksProps) -> Html {
+    let state = use_state(|| None);
+    props.generate_dyn_html(state)
+}
+
+impl DynGenerable for WorksProps {
+    type Data = WorksData;
+
+    fn resouce_id(&self) -> String {
+        "works".to_string()
+    }
+
+    fn html_with_data(&self, data: Self::Data) -> Html {
+        let css = r#"
+
+        "#
+        .to_string()
+        .into_css();
+
+        html!(
+            <div class={ css }>
+                {
+                    for data.sections.iter().map(|work_section|
+                        work_section.clone().into_html()
+                    )
+                }
+            </div>
+        )
+    }
+}
+
+#[derive(Deserialize, MultiLang, Clone)]
+struct WorkSectionData {
+    title: String,
+    works: Vec<WorkData>,
+}
+
+impl IntoHtml for WorkSectionData {
+    fn into_html(self) -> Html {
+        let css = r#"
+
+        "#
+        .to_string()
+        .into_css();
+
+        html!(
+        <div class={ css }>
+          <h1>{ &self.title }</h1>
 
           <div class="contenedor-works">
               {
-                for props.works.iter().map(move |work_props|
-                  html! { <Work work_id={ work_props.work_id.clone() }/> }
+                for self.works.iter().map(move |work|
+                  work.clone().into_html()
                 )
               }
           </div>
         </div>
-    )
+        )
+    }
 }
 
 #[derive(PartialEq, Clone, Deserialize, Copy)]
@@ -58,60 +106,40 @@ impl MultiLang for WorkState {
     }
 }
 
-#[derive(Properties, PartialEq, Clone)]
-struct WorkProps {
-    work_id: String,
-}
-
 #[derive(Deserialize, MultiLang, Clone)]
 pub struct WorkData {
     title: String,
+    ref_id: String,
+    #[serde(default)]
+    is_api: bool,
     description: String,
     icon: Icon,
-    info: Vec<(String, String)>,
+    info: HashMap<String, String>,
     state: WorkState,
 }
 
-impl MultiLang for Vec<(String, String)> {
-    fn translate(self) -> Self {
-        let mut translated = Vec::new();
+impl IntoHtml for WorkData {
+    fn into_html(self) -> Html {
+        let css = r#"
 
-        for (key, value) in self.into_iter() {
-            translated.push((key.translate(), value.translate()));
-        }
+        "#
+        .to_string()
+        .into_css();
 
-        translated
-    }
-}
-
-#[function_component(Work)]
-fn work(props: &WorkProps) -> Html {
-    let state = use_state(|| None);
-    props.generate_dyn_html(state)
-}
-
-impl DynGenerable for WorkProps {
-    type Data = WorkData;
-
-    fn resouce_id(&self) -> String {
-        self.work_id.to_string()
-    }
-
-    fn html_with_data(&self, data: Self::Data) -> Html {
         html!(
           <a class="work primary-text" href="works/trt-api.html" target="_parent">
             <img src="../../resources/img/works/the-round-table/icono-trt.png" alt="the-round-table"/>
             <img src="../../resources/img/icon/api.png" alt="api" style="position: absolute; left: -5px; top: -15px; width: 36px; height: 36px;"/>
             <div class="work-info">
-              <h2>{ &data.title }</h2>
+              <h2>{ &self.title }</h2>
               <ul>
                 {
-                  for data.info.iter().map(|(key, value)|
+                  for self.info.iter().map(|(key, value)|
                     html! { <li><strong>{ key }</strong>{ value }</li>
                   })
                 }
               </ul>
-              <p> { &data.description } </p>
+              <p> { &self.description } </p>
             </div>
             <img class="work-state" src="../../resources/img/icon/deployed.png" alt="Deployed"/>
           </a>
