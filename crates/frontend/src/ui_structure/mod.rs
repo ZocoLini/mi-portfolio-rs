@@ -1,3 +1,2 @@
-pub mod home;
-mod about;
-mod works;
+pub(crate) mod home;
+pub(crate) mod work;

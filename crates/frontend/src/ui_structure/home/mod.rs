@@ -1,7 +1,6 @@
 use crate::components::{IconButton, IconLink, IconizedItem};
 use crate::styles::pane::PaneType::{Primary, Secondary};
 use crate::styles::{pane, Css};
-use crate::ui_structure::{about, works};
 use std::convert::From;
 use std::ops::Add;
 use std::string::ToString;
@@ -9,6 +8,9 @@ use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
 use crate::lang;
+
+mod about;
+mod works;
 
 #[function_component(View)]
 pub fn view() -> Html {

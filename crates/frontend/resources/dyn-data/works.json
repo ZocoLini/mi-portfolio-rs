@@ -6,7 +6,7 @@
         {
           "title": "%work.mk-template.title",
           "description": "%work.mk-template.description",
-          "icon_id": "mk-template",
+          "work_id": "mk-template",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.type": "%work.mk-template.type",
@@ -18,7 +18,7 @@
         {
           "title": "%work.trt-api.title",
           "description": "%work.trt-api.description",
-          "icon_id": "the-round-table",
+          "work_id": "the-round-table",
           "is_api": true,
           "info": {
             "%general.developer": "%general.my-name",
@@ -37,7 +37,7 @@
         {
           "title": "%work.seal-code.title",
           "description": "%work.seal-code.description",
-          "icon_id": "seal-code",
+          "work_id": "seal-code",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.java-fx",
@@ -50,7 +50,7 @@
         {
           "title": "%work.leba-api.title",
           "description": "%work.leba-api.description",
-          "icon_id": "leba",
+          "work_id": "leba",
           "is_api": true,
           "info": {
             "%general.developer": "%general.my-name",
@@ -64,7 +64,7 @@
         {
           "title": "%work.the-round-table.title",
           "description": "%work.the-round-table.description",
-          "icon_id": "the-round-table",
+          "work_id": "the-round-table",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.java-fx",
@@ -82,7 +82,7 @@
         {
           "title": "%work.leba.title",
           "description": "%work.leba.description",
-          "icon_id": "leba",
+          "work_id": "leba",
           "info": {
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.unity",

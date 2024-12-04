@@ -1,6 +1,8 @@
-use crate::ui_structure::home;
+use crate::ui_structure::{home, work};
+use crate::Route::{Home, Work};
 use yew::platform::spawn_local;
 use yew::{function_component, html, use_state, Html};
+use yew_router::prelude::*;
 
 mod components;
 mod dyn_data_gen;
@@ -9,12 +11,34 @@ mod styles;
 mod ui_structure;
 mod resources;
 
+#[derive(PartialEq, Clone, Routable)]
+enum Route
+{
+    #[at("/")]
+    Home,
+    #[at("/work/:id")]
+    Work { id: String }
+}
+
+fn switch(route: Route) -> Html
+{
+    match route
+    {
+        Home => {
+            html! { <home::View /> }
+        }
+        Work { id } => {
+            html! { <work::View work_id={ id } /> }
+        }
+    }
+}
+
 #[function_component(App)]
 fn app() -> Html {
-    let state = use_state(|| false);
+    let translations_loaded = use_state(|| false);
 
     {
-        let state = state.clone();
+        let state = translations_loaded.clone();
         spawn_local(async move {
             lang::load_translations().await;
             state.set(true);
@@ -22,8 +46,10 @@ fn app() -> Html {
     }
     
     html! {
-        if *state {
-            <home::View />
+        if *translations_loaded {
+            <BrowserRouter>
+                <Switch<Route> render={switch} />
+            </BrowserRouter>
         } else {
             <components::LoadingSpinner/>
         }
