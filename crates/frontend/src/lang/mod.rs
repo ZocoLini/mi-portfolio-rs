@@ -1,22 +1,30 @@
 use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
-use web_sys::wasm_bindgen::__rt::once_cell::sync::OnceCell;
-use web_sys::{console, window};
+use std::sync::RwLock;
+use web_sys::{window};
 
 pub trait MultiLang {
     fn translate(self) -> Self;
 }
 
-static TRANSLATIONS: OnceCell<HashMap<String, String>> = OnceCell::new();
+static TRANSLATIONS: RwLock<Option<HashMap<String, String>>> = RwLock::new(None);
 
 pub(crate) fn translate(id: &str) -> String {
     if !id.starts_with("%") {
         return id.to_string();
     }
 
-    if let Some(trans) = TRANSLATIONS
-        .get()
+    let translations = TRANSLATIONS.read();
+
+    let translations = if translations.is_err() {
+        return format!("{}", id);
+    } else {
+        translations.unwrap()
+    };
+
+    if let Some(trans) = translations
+        .as_ref()
         .expect("Translations map should be preloaded")
         .get(&id[1..])
     {
@@ -40,12 +48,18 @@ pub async fn load_translations() {
         .text()
         .await
         .expect("Failed to parse translations");
-    let translations = parse_translations(response);
     
-    match TRANSLATIONS.set(translations) {
-        Ok(_) => { console::log_1(&"Translations loaded".into()); },
-        Err(_) => { console::log_1(&"Translations already loaded".into()); }
+    let new_translations = parse_translations(response);
+
+    let old_translations = TRANSLATIONS.write();
+    
+    let mut old_translations = if old_translations.is_err() {
+        return;
+    } else {
+        old_translations.unwrap()
     };
+    
+    old_translations.replace(new_translations);
 }
 
 fn parse_translations(data: String) -> HashMap<String, String> {
@@ -80,19 +94,19 @@ impl MultiLang for String {
     }
 }
 
-impl<T> MultiLang for Vec<T> 
-where 
-    T: MultiLang    
+impl<T> MultiLang for Vec<T>
+where
+    T: MultiLang,
 {
     fn translate(self) -> Self {
         self.into_iter().map(|x| x.translate()).collect()
     }
 }
 
-impl<T1, T2> MultiLang for (T1, T2) 
-where 
+impl<T1, T2> MultiLang for (T1, T2)
+where
     T1: MultiLang,
-    T2: MultiLang
+    T2: MultiLang,
 {
     fn translate(self) -> Self {
         (self.0.translate(), self.1.translate())
@@ -100,12 +114,14 @@ where
 }
 
 impl<T1, T2> MultiLang for HashMap<T1, T2>
-where 
+where
     T1: MultiLang + Hash + Eq,
-    T2: MultiLang
+    T2: MultiLang,
 {
     fn translate(self) -> Self {
-        self.into_iter().map(|(k, v)| (k.translate(), v.translate())).collect()
+        self.into_iter()
+            .map(|(k, v)| (k.translate(), v.translate()))
+            .collect()
     }
 }
 

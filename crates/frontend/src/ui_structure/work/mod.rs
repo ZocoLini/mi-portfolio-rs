@@ -8,8 +8,8 @@ pub struct ViewProps
 }
 
 #[function_component(View)]
-pub fn view(params: &ViewProps) -> Html {
-    let css = r#"
+pub fn view(_params: &ViewProps) -> Html {
+    let _css = r#"
 
     "#
         .to_string()
