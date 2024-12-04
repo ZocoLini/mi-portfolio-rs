@@ -1,12 +1,13 @@
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
-use crate::styles::Css;
 use crate::resources;
+use crate::styles::Css;
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fmt::Display;
 use std::string::ToString;
+use stylist::css;
 use yew::prelude::*;
 
 #[function_component(View)]
@@ -73,7 +74,12 @@ struct WorkSectionData {
 impl IntoHtml for WorkSectionData {
     fn into_html(self) -> Html {
         let css = r#"
-
+            #contenedor-works {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
         "#
         .to_string()
         .into_css();
@@ -82,7 +88,7 @@ impl IntoHtml for WorkSectionData {
         <div class={ css }>
           <h1>{ &self.title }</h1>
 
-          <div class="contenedor-works">
+          <div id="contenedor-works">
               {
                 for self.works.iter().map(move |work|
                   work.clone().into_html()
@@ -101,22 +107,32 @@ enum WorkState {
     Concept,
 }
 
-impl WorkState  {
-    fn icon(&self) -> Html
-    {
+impl WorkState {
+    fn icon(&self) -> Html {
         let id = match self {
             WorkState::Building => "building",
             WorkState::Deployed => "deployed",
             WorkState::Concept => "concept",
         };
 
+        let css = r#"
+            position: absolute;
+            top: -25px;
+            right: 0;
+            margin: 10px;
+            min-width: 100px;
+            max-height: 33px;
+            z-index: 10;
+        "#
+        .to_string()
+        .into_css();
+
         html! {
-            <img class="work-state"
+            <img class={ css }
                 src={format!("{}.png", resources::get_icon_src(id))}
                 alt={self.to_string()}/>
         }
     }
-
 }
 
 impl Display for WorkState {
@@ -150,16 +166,58 @@ pub struct WorkData {
 impl IntoHtml for WorkData {
     fn into_html(self) -> Html {
         let css = r#"
-
+            min-width: 275px;
+            max-width: 500px;
+            width: 45%;
+            display: flex;
+            position: relative;
+            border-radius: 10px;
+            padding: 0 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--color-ibox-background);
+            text-decoration: none;
+            color: var(--color-primary-text);
+              
+            :hover
+            {
+              background-color: var(--color-button-hover);
+              color: white;
+            }
+            img
+            {
+              width: 50px;
+              height: 50px;
+              margin-top: 10px;
+              margin-right: 10px;
+            }
+            ul
+            {
+              padding: 0;
+              list-style-type: none;
+            }
+            
+            li {
+              margin-bottom: 5px;
+            }
         "#
         .to_string()
         .into_css();
 
+        let api_icon_css = css!(
+            r#"
+            position: absolute;
+            left: -5px;
+            top: -15px;
+            width: 36px;
+            height: 36px;
+            "#
+        );
+
         html!(
-          <a class="work primary-text" href="works/trt-api.html" target="_parent">
+          <a class={ css} href="works/trt-api.html" target="_parent">
             <img src={resources::get_work_icon_src(&self.icon_id)} alt={self.icon_id}/>
             if self.is_api {
-                <img src={resources::get_icon_src("api.png")} alt="api" style="position: absolute; left: -5px; top: -15px; width: 36px; height: 36px;"/>
+                <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
             }
             <div class="work-info">
               <h2>{ &self.title }</h2>
