@@ -2,7 +2,7 @@ use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
 use web_sys::wasm_bindgen::__rt::once_cell::sync::OnceCell;
-use web_sys::window;
+use web_sys::{console, window};
 
 pub trait MultiLang {
     fn translate(self) -> Self;
@@ -40,9 +40,12 @@ pub async fn load_translations() {
         .text()
         .await
         .expect("Failed to parse translations");
-    let _map = parse_translations(response);
-
-    TRANSLATIONS.set(_map).expect("Should set the translations map");
+    let translations = parse_translations(response);
+    
+    match TRANSLATIONS.set(translations) {
+        Ok(_) => { console::log_1(&"Translations loaded".into()); },
+        Err(_) => { console::log_1(&"Translations already loaded".into()); }
+    };
 }
 
 fn parse_translations(data: String) -> HashMap<String, String> {

@@ -7,23 +7,20 @@ use yew_router::prelude::*;
 mod components;
 mod dyn_data_gen;
 mod lang;
+mod resources;
 mod styles;
 mod ui_structure;
-mod resources;
 
 #[derive(PartialEq, Clone, Routable)]
-enum Route
-{
+enum Route {
     #[at("/")]
     Home,
     #[at("/work/:id")]
-    Work { id: String }
+    Work { id: String },
 }
 
-fn switch(route: Route) -> Html
-{
-    match route
-    {
+fn switch(route: Route) -> Html {
+    match route {
         Home => {
             html! { <home::View /> }
         }
@@ -37,7 +34,7 @@ fn switch(route: Route) -> Html
 fn app() -> Html {
     let translations_loaded = use_state(|| false);
 
-    {
+    if !*translations_loaded {
         let state = translations_loaded.clone();
         spawn_local(async move {
             lang::load_translations().await;
