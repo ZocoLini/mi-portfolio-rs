@@ -1,30 +1,28 @@
 use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
-use web_sys::wasm_bindgen::__rt::once_cell::unsync::OnceCell;
+use web_sys::wasm_bindgen::__rt::once_cell::sync::OnceCell;
 use web_sys::window;
 
 pub trait MultiLang {
     fn translate(self) -> Self;
 }
 
-static mut TRANSLATIONS: OnceCell<HashMap<String, String>> = OnceCell::new();
+static TRANSLATIONS: OnceCell<HashMap<String, String>> = OnceCell::new();
 
 pub(crate) fn translate(id: &str) -> String {
     if !id.starts_with("%") {
         return id.to_string();
     }
 
-    unsafe {
-        if let Some(trans) = TRANSLATIONS
-            .get()
-            .expect("Translations map should be preloaded")
-            .get(&id[1..])
-        {
-            trans.clone()
-        } else {
-            format!("{}", id)
-        }
+    if let Some(trans) = TRANSLATIONS
+        .get()
+        .expect("Translations map should be preloaded")
+        .get(&id[1..])
+    {
+        trans.clone()
+    } else {
+        format!("{}", id)
     }
 }
 
@@ -44,9 +42,7 @@ pub async fn load_translations() {
         .expect("Failed to parse translations");
     let _map = parse_translations(response);
 
-    unsafe {
-        TRANSLATIONS.set(_map).expect("Should set the translations map");
-    }
+    TRANSLATIONS.set(_map).expect("Should set the translations map");
 }
 
 fn parse_translations(data: String) -> HashMap<String, String> {
