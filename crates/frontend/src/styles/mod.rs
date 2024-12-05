@@ -2,8 +2,11 @@ use std::str::FromStr;
 use stylist::{StyleSource};
 use stylist::ast::Sheet;
 
-pub mod pane;
-pub mod text;
+mod pane;
+mod text;
+
+pub use pane::*;
+pub use text::*;
 
 pub trait Css
 {

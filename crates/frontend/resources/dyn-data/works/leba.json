@@ -1,0 +1,51 @@
+{
+  "name": "Leba",
+  "technicaldata": [
+    {
+      "item": {
+        "icon_id": "codigo.png",
+        "title": "Tecnologías utilizadas",
+        "detail": "C# y Unity"
+      }
+    }
+  ],
+  "features": [
+    {
+      "item": {
+        "icon_id": "plataformas.png",
+        "title": "",
+        "detail": "Juego de plataformas vertical en 2D"
+      }
+    }
+  ],
+  "description": [
+    "p1",
+    "p2",
+    "p3"
+  ],
+  "state": {
+    "Disponibilidad": "Disponible"
+  },
+  "multimedia": {
+    "type": "Phone",
+    "images_ids": [
+      "captura1.jpg",
+      "captura2.jpg",
+      "captura3.jpg",
+      "captura4.jpg",
+      "captura5.jpg",
+      "captura6.jpg",
+      "captura7.jpg",
+      "captura8.jpg"
+    ]
+  },
+  "links": [
+    {
+      "item": {
+        "icon_id": "github.png",
+        "title": "Repositorio",
+        "url": ""
+      }
+    }
+  ]
+}

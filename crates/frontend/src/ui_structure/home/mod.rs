@@ -1,13 +1,13 @@
 use crate::components::{IconButton, IconLink, IconizedItem};
-use crate::styles::pane::PaneType::{Primary, Secondary};
-use crate::styles::{pane, Css};
+use crate::styles::{Css};
 use std::convert::From;
 use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
-use crate::lang;
+use crate::{lang, styles};
+use crate::styles::PaneType::{Primary, Secondary};
 
 mod about;
 mod works;
@@ -51,7 +51,7 @@ pub fn view() -> Html {
     }
     "#
     .to_string()
-    .add(&pane::PaneStyle::new(Primary).css())
+    .add(&styles::PaneStyle::new(Primary).css())
     .into_css();
 
     let right_css = r#"
@@ -65,7 +65,7 @@ pub fn view() -> Html {
         }
         "#
     .to_string()
-    .add(&pane::PaneStyle::new(Primary).css())
+    .add(&styles::PaneStyle::new(Primary).css())
     .into_css();
 
     let current_view = use_state(|| html! { <about::View /> }); // Estado inicial con `about::View`
@@ -123,7 +123,7 @@ fn left_pane() -> Html {
     }
     "#
     .to_string()
-    .add(&pane::PaneStyle::new(Primary).css())
+    .add(&styles::PaneStyle::new(Primary).css())
     .into_css();
 
     html! {
@@ -154,7 +154,7 @@ fn contact_info() -> Html {
         flex-direction: column;
         "#
     .to_string()
-    .add(&pane::PaneStyle::new(Secondary).css());
+    .add(&styles::PaneStyle::new(Secondary).css());
 
     html! {
         <contact-info class={css_string.into_css()}>

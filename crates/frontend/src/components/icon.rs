@@ -1,14 +1,13 @@
+use std::ops::Add;
 use serde::Deserialize;
 use stylist::{css, StyleSource};
 use stylist::yew::styled_component;
 use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Component, Context, Html, Properties};
-use crate::lang;
+use crate::{lang, styles};
 use crate::lang::MultiLang;
 use crate::resources::get_icon_src;
-use crate::styles::text;
-
-
+use crate::styles::Css;
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct IconProps {
@@ -32,10 +31,13 @@ fn default_icon_size() -> u8 {
 
 impl Icon {
     pub fn html(&self) -> Html {
-        let css = format!("height: {}px; width: {}px;", self.icon_size, self.icon_size);
+        let css = 
+            format!("height: {}px; width: {}px;", self.icon_size, self.icon_size)
+                .add("align-self: center;")
+                .into_css();
 
         html! {
-            <img style={css} src={ get_icon_src(&self.id) } alt={self.alt.clone()} />
+            <img class={ css } src={ get_icon_src(&self.id) } alt={self.alt.clone()} />
         }
     }
 }
@@ -94,8 +96,8 @@ pub fn iconized_item(props: &IconizedItemProps) -> Html {
         <iconized-item class={css}>
             <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
             <div style="display: flex; flex-direction: column;">
-                <p class={text::secondary_text_style()}>{ lang::translate(&props.title) }</p>
-                <p class={text::primary_text_style()}>{ lang::translate(&props.detail) }</p>
+                <p class={styles::tertiary_text_style()}>{ lang::translate(&props.title) }</p>
+                <p class={styles::primary_text_style()}>{ lang::translate(&props.detail) }</p>
             </div>
         </iconized-item>
     }
@@ -142,10 +144,10 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         border-radius: 10px;
         background-color: var(--color-secondary-bkg-pane);
-        padding: 15px;
-        margin: 10px;
+        padding: 5px;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
         text-align: center;
@@ -156,12 +158,12 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         color: var(--color-primary-text);
 
         img {
-          margin-bottom: 10px;
           filter: brightness(0.2);
         }
         p {
           margin: 0;
           text-align: center;
+          font-size: 12px;
         }
         /*Al pasar el raaton por encima*/
         :hover {
@@ -176,10 +178,14 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         "#
     );
 
+    let label = lang::translate(&props.label);
+
     html! {
         <icon-button onclick={props.onclick.clone()} class={css} >
             <Icon id={props.icon_id.clone()} alt={props.label.clone()} icon_size={30} />
-            <p>{ lang::translate(&props.label) }</p>
+            if !label.is_empty() {
+                <p>{ label }</p>
+            }
         </icon-button>
     }
 }

@@ -13,7 +13,6 @@
 
     --color-primary-text: #000217;
     --color-secondary-text: #404048;
-    --color-third-text: #879497;
     --color-tertiary-text: #879497;
 }
 
@@ -38,5 +37,5 @@ body {
 }
 
 .third-text {
-    color: var(--color-third-text);
+    color: var(--color-tertiary-text);
 }

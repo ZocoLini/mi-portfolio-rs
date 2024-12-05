@@ -1,22 +1,22 @@
 use crate::components::Icon;
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
-use crate::lang;
+use crate::{lang, styles};
 use crate::lang::MultiLang;
-use crate::styles::pane::PaneType::Secondary;
-use crate::styles::{pane, text, Css};
+use crate::styles::{Css};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::clone::Clone;
 use std::ops::Add;
 use std::string::ToString;
 use yew::prelude::*;
+
 #[function_component(View)]
 pub fn view() -> Html {
     html! {
         <div>
             <h1>{ lang::translate("%general.about-me") }</h1>
-            <p class={ text::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
-            <p class={ text::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
+            <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
+            <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
 
             <SkillsContainer />
         </div>
@@ -102,7 +102,7 @@ impl IntoHtml for SkillData {
             }
         "#
         .to_string()
-        .add(&pane::PaneStyle::new(Secondary).css())
+        .add(&styles::PaneStyle::new(styles::PaneType::Secondary).css())
         .into_css();
 
         html! {
