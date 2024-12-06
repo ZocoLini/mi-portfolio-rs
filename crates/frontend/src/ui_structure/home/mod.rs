@@ -57,6 +57,9 @@ pub fn view() -> Html {
     let right_css = r#"
         width: fit-content;
         height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         
         @media (max-width: 700px) {
           display: flex;
@@ -87,8 +90,8 @@ pub fn view() -> Html {
                 <div id="current-view"> { (*current_view).clone() } </div>
             </center-pane>
             <right-pane class={right_css}>
-                <IconButton icon_id="about.png" label="%general.about-me" onclick={about_click}/>
-                <IconButton icon_id="works.png" label="general.works" onclick={works_click}/>
+                <IconButton icon_id="about.png" label="" onclick={about_click}/>
+                <IconButton icon_id="works.png" label="" onclick={works_click}/>
             </right-pane>
         </main>
     }
@@ -100,6 +103,7 @@ fn left_pane() -> Html {
     width: fit-content;
     height: fit-content;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     align-items: center;
     
@@ -133,12 +137,11 @@ fn left_pane() -> Html {
             </div>
 
             <h2>{ "Borja Castellano" }</h2>
-                <h3>{ lang::translate("%home.left-pane.profession") }</h3>
-
-                <div style="display: flex;">
-                    <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
-                    <IconLink href="https://www.instagram.com/_zocoo/" icon_id="instagram.png" alt_text="Instagram" />
-                </div>
+            <h3>{ lang::translate("%home.left-pane.profession") }</h3>
+            <div style="display: flex; gap: 10px;">
+                <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
+                <IconLink href="https://www.instagram.com/_zocoo/" icon_id="instagram.png" alt_text="Instagram" />
+            </div>
 
             <ContactInfo />
 

@@ -57,14 +57,12 @@ impl DynGenerable for SkillsContainerProps {
         .to_string()
         .into_css();
 
-        let skills = Vec::from(data.skills);
-
         html!(
             <div class={ css }>
                 <h2>{ lang::translate("%general.skills") }</h2>
                 <div id="skills">
                     {
-                        for skills.into_iter().map(move |skill| {
+                        for data.skills.into_iter().map(move |skill| {
                             skill.clone().into_html()
                         })
                     }
@@ -87,9 +85,7 @@ struct SkillData {
 impl IntoHtml for SkillData {
     fn into_html(self) -> Html {
         let css = r#"
-            min-width: 300px;
-            max-width: 500px;
-            width: 45%;
+            width: min(45%, 300px);
             display: flex;
             overflow: hidden;
 

@@ -167,9 +167,7 @@ pub struct WorkData {
 impl IntoHtml for WorkData {
     fn into_html(self) -> Html {
         let css = r#"
-            min-width: 275px;
-            max-width: 500px;
-            width: 45%;
+            width: min(45%, 300px);
             display: flex;
             position: relative;
             border-radius: 10px;
@@ -215,7 +213,7 @@ impl IntoHtml for WorkData {
         );
 
         html!(
-          <a class={ css} href={format!("work/{}", self.work_id)} target="_parent">
+          <a class={ css } href={format!("work/{}", self.work_id)} target="_parent">
             <img src={resources::get_work_icon_src(&self.image_id)} alt={self.work_id}/>
             if self.is_api {
                 <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>

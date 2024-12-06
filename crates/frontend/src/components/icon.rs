@@ -1,4 +1,3 @@
-use std::ops::Add;
 use serde::Deserialize;
 use stylist::{css, StyleSource};
 use stylist::yew::styled_component;
@@ -33,7 +32,6 @@ impl Icon {
     pub fn html(&self) -> Html {
         let css = 
             format!("height: {}px; width: {}px;", self.icon_size, self.icon_size)
-                .add("align-self: center;")
                 .into_css();
 
         html! {
@@ -56,7 +54,7 @@ impl Component for Icon {
         Self {
             id: ctx.props().id.clone(),
             alt: ctx.props().alt.clone(),
-            icon_size: ctx.props().icon_size.clone(),
+            icon_size: ctx.props().icon_size,
         }
     }
 
@@ -114,19 +112,19 @@ pub struct IconLinkProps {
 pub fn icon_link(props: &IconLinkProps) -> Html {
     let css = css!(
         r#"
-        padding: 10px;
-        margin: 5px;
         border-radius: 10px;
         background-color: var(--color-secondary-bkg-pane);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
         "#
     );
 
     html! {
-        <icon-link class={css}>
-            <a href={props.href.clone()} target="_blank">
-                <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
-            </a>
-        </icon-link>
+        <a class={ css } href={props.href.clone()} target="_blank">
+            <Icon id={props.icon_id.clone()} alt={props.alt_text.clone()} icon_size={30} />
+        </a>
     }
 }
 
