@@ -6,43 +6,43 @@
   "technicaldata": [
     {
       "icon_id": "codigo.png",
-      "title": "Tecnologías utilizadas",
-      "detail": "Java y Spring Boot"
+      "title": "%general.technologies",
+      "detail": "%work-view.leba-api.technicaldata.technologies"
     },
     {
       "icon_id": "empresa.png",
-      "title": "Equipo y colaboradores",
-      "detail": "Borja Castellano"
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
     },
     {
       "icon_id": "calendario.png",
-      "title": "Fecha de creación",
+      "title": "%general.creation-date",
       "detail": "2024"
     },
     {
       "icon_id": "dado.png",
-      "title": "Rol en el proyecto",
-      "detail": "Arquitectura y desarrollo"
+      "title": "%general.role",
+      "detail": "%work-view.leba-api.technicaldata.role"
     }
   ],
   "features": [
     {
       "icon_id": "logo-spring-data.png",
       "title": "",
-      "detail": "Uso de Spring Boot"
+      "detail": "%work-view.leba-api.features.1"
     },
     {
       "icon_id": "logo-lombok.png",
       "title": "",
-      "detail": "Uso de Lombok"
+      "detail": "%work-view.leba-api.features.2"
     }
   ],
   "description": [
-    "Esta API es la encargada de gestionar los usuarios, recolectar datos sobre el gameplay y la leaderboard. Toda la información es almacenada en una base de datos MySQL en el servidor.",
-    "Actualmente se encuentra en producción y es usada por la aplicación móvil de Leba, que cuenta con mas de 2000 descargas en la Play Store."
+    "%work-view.leba-api.description.1",
+    "%work-view.leba-api.description.2"
   ],
   "state": {
-    "Disponibilidad del código": "Por razones de seguridad, el código fuente no está disponible."
+    "%work-view.leba-api.state.1.title": "%work-view.leba-api.state.1.detail"
   },
   "links": []
 }

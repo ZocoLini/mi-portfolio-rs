@@ -5,56 +5,56 @@
   "technicaldata": [
     {
       "icon_id": "codigo.png",
-      "title": "Tecnologías utilizadas",
-      "detail": "Java y Java FX"
+      "title": "%general.technologies",
+      "detail": "%work-view.seal-code.technicaldata.technologies"
     },
     {
       "icon_id": "empresa.png",
-      "title": "Equipo y colaboradores",
-      "detail": "Borja Castellano"
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
     },
     {
       "icon_id": "calendario.png",
-      "title": "Fecha de creación",
+      "title": "%general.creation-date",
       "detail": "2024"
     },
     {
       "icon_id": "dado.png",
-      "title": "Rol en el proyecto",
-      "detail": "Arquitectura y desarrollo"
+      "title": "%general.role",
+      "detail": "%work-view.seal-code.technicaldata.role"
     }
   ],
   "features": [
     {
       "icon_id": "editor-texto.png",
       "title": "",
-      "detail": "Editor de texto avanzado"
+      "detail": "%work-view.seal-code.features.1"
     },
     {
       "icon_id": "core.png",
       "title": "",
-      "detail": "Creación de IDEs personalizados"
+      "detail": "%work-view.seal-code.features.2"
     },
     {
       "icon_id": "texto.png",
       "title": "",
-      "detail": "Resaltado de sintaxis y autocompletado"
+      "detail": "%work-view.seal-code.features.3"
     },
     {
       "icon_id": "download.png",
       "title": "",
-      "detail": "Sincronización en la nube"
+      "detail": "%work-view.seal-code.features.4"
     }
   ],
   "description": [
-    "Seal Code es un editor de texto avanzado que permite la creación de entornos personalizados . La idea principal del proyecto es la creción de un core potente que permita la facil implementación de 'plugins' que amplien sus funcionalidades. Además, sin necesidad de tener conocimientos de Java FX, cualquier usuario puede crear sus plantillas de autocompletado y resalto de sintaxis según la extensión de los ficheros abiertos.",
-    "El core de Seal Code se comunica mediante eventos con la lógica que el programador quiera implementar, permitiendo así personalizar cada aspecto del entorno de desarrollo que se busque crear. Este enfoque lo que busca es minimizar la necesidad de entender como funciona internamente el software facilitando así su implementación.",
-    "En el momento actual el IDE cuenta con un plugin simple orientado al desarrollo en Java de ejemplo que muestra las capacidades del core para implementar lo que el desarrollador desee. También cuenta, por defecto, con un plugin que permite la creacion de una cuenta de usuario que se usará para la sincronización de las configuraciones del editor en diferentes instancias del software."
+    "%work-view.seal-code.description.1",
+    "%work-view.seal-code.description.2",
+    "%work-view.seal-code.description.3"
   ],
   "state": {
-    "Desarrollo": "Actualmente el core está pendiente de una refactorización pequeña. Se tiene planificaco desarrollar un par de plugins extra que amplien las funcionalidades básicas y también está pendiente modificar la comunicación del plugin de sincronización en la nube para pasar a usar un servidor propio usando HTTP Requests.",
-    "Disponibilidad": "El codigo está disponible en GitHub de forma pública pero no una versión final del software.",
-    "Documentación": "El proyecto se encuentra pendiente de documentación."
+    "%work-view.seal-code.state.1.title": "%work-view.seal-code.state.1.detail",
+    "%work-view.seal-code.state.2.tilte": "%work-view.seal-code.state.2.detail",
+    "%work-view.seal-code.state.3.title": "%work-view.seal-code.state.3.detail"
   },
   "multimedia": {
     "type": "Pc",

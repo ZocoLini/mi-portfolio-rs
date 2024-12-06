@@ -5,48 +5,48 @@
   "technicaldata": [
     {
       "icon_id": "codigo.png",
-      "title": "Tecnologías utilizadas",
-      "detail": "Rust"
+      "title": "%general.technologies",
+      "detail": "%work-view.mk-template.technicaldata.technologies"
     },
     {
       "icon_id": "empresa.png",
-      "title": "Equipo y colaboradores",
-      "detail": "Borja Castellano"
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
     },
     {
       "icon_id": "calendario.png",
-      "title": "Fecha de creación",
+      "title": "%general.creation-date",
       "detail": "2024"
     },
     {
       "icon_id": "dado.png",
-      "title": "Rol en el proyecto",
-      "detail": "Arquitectura y desarrollo"
+      "title": "%general.role",
+      "detail": "%work-view.mk-template.technicaldata.role"
     }
   ],
   "features": [
     {
       "icon_id": "save.png",
       "title": "",
-      "detail": "Guardado de diferentes formato de plantilla"
+      "detail": "%work-view.mk-template.features.1"
     },
     {
       "icon_id": "directory.png",
       "title": "",
-      "detail": "Creación de archivos y direcorios"
+      "detail": "%work-view.mk-template.features.2"
     }
   ],
   "description": [
-    "Más de una vez me he encontrado con la necesidad una estructura de archivos y directorios que ya había utilizado en otros proyectos y, para no tener que pasar por este infierno cada vez he decidido crear una aplicación de consola que me permita guardar diferentes formatos de plantillas para ser instanciadas en un futuro de una manera rápida y sencilla.",
-    "Actualmente la aplicación soporta:",
-    "    • Guardar un directorio con todo su contenido como plantilla a copiar en el futuro.",
-    "    • Guardar una URI a un .git al que se le hará git clone cada vez que se instancie la plantilla.",
-    "    • Uso de una structura XML definida para guardar y crear las plantillas."
+    "%work-view.mk-template.description.1",
+    "%work-view.mk-template.description.2",
+    "%work-view.mk-template.description.3",
+    "%work-view.mk-template.description.4",
+    "%work-view.mk-template.description.5"
   ],
   "state": {
-    "Disponibilidad": "El codigo fuente esta disponible en GitHub. Ejecutando el archivo install.sh se compilará el proyecto y se copiará el ejecutable en la carpeta ~/.local/bin. El proyecto es Open Source y se puede modificar y distribuir libremente.",
-    "Actualización": "El proyecto se encuentra en constante desarrollo y se irán añadiendo nuevos tipos de plantilla soportado, así como un XML propio para definir nuevas plantillas.",
-    "Documentación": "La documentación del proyecto se encuentra en el archivo README.md y, si este aún no existe, se creará en un futuro próximo."
+    "%work-view.mk-template.state.1.title": "%work-view.mk-template.state.1.detail",
+    "%work-view.mk-template.state.2.title": "work-view.mk-template.state.2.detail",
+    "%work-view.mk-template.state.3.title": "work-view.mk-template.state.3.detail"
   },
   "links": [
     {

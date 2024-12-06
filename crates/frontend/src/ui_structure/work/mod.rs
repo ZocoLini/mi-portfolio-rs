@@ -131,7 +131,7 @@ h2, h1 {
                 <div id="main-pane">
                   <LeftPane view_data={ data.clone() }/>
 
-                  <center-pane id="central-pane">
+                  <center-pane>
                     <Description view_data={ data.clone() }/>
                     <State view_data={ data.clone() }/>
                   </center-pane>
@@ -157,7 +157,6 @@ fn left_pane(props: &LeftPaneProps) -> Html {
 height: fit-content;
 min-width: 350px;
 max-width: 550px;
-width: 90%;
 display: flex;
 flex-direction: column;
 align-items: center;

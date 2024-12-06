@@ -1,48 +1,49 @@
 {
   "name": "The Round Table REST API",
   "image_id": "the-round-table",
+  "is_api": true,
   "id": "trt-api",
   "technicaldata": [
     {
       "icon_id": "codigo.png",
-      "title": "Tecnologías utilizadas",
-      "detail": "Rust y Rocket"
+      "title": "%general.technologies",
+      "detail": "%work-view.trt-api.technicaldata.technologies"
     },
     {
       "icon_id": "empresa.png",
-      "title": "Equipo y colaboradores",
-      "detail": "Borja Castellano"
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
     },
     {
       "icon_id": "calendario.png",
-      "title": "Fecha de creación",
+      "title": "%general.creation-date",
       "detail": "2024"
     },
     {
       "icon_id": "dado.png",
-      "title": "Rol en el proyecto",
-      "detail": "Arquitectura y desarrollo"
+      "title": "%general.role",
+      "detail": "%work-view.trt-api.technicaldata.role"
     }
   ],
   "features": [
     {
       "icon_id": "reload.png",
       "title": "",
-      "detail": "Distribución de actualizaciones"
+      "detail": "%work-view.trt-api.features.1"
     },
     {
       "icon_id": "licencia.png",
       "title": "",
-      "detail": "Verificación de licencias"
+      "detail": "%work-view.trt-api.features.2"
     }
   ],
   "description": [
-    "REST API sencilla que permite comunicación entre el servidor lebastudios.org y la aplicación The Round Table para proporcionar actualizaciones y plugins al cliente final. Además se encarga de la verificación de licencias.",
-    "La API está desarrollada en Rust y utiliza el framework Rocket. La decisión de utilizar Rust fue por su velocidad, seguridad y poco comsumo de recursos (6.1 MB de memoria ahora mismo), además de que Rocket es un framework web que permite la creación de REST APIs de forma sencilla y rápida similar a Spring Boot."
+    "%work-view.trt-api.description.1",
+    "%work-view.trt-api.description.2"
   ],
   "state": {
-    "Desarrollo": "La API está en constante desarrollo y se actualiza con cada nueva versión.",
-    "Disponibilidad": "Por razones de seguridad de los actuales y futuros usuarios del software el código fuente no está disponible al público."
+    "work-view.trt-api.state.1.title": "%work-view.trt-api.state.1.detail",
+    "work-view.trt-api.state.2.title": "%work-view.trt-api.state.2.detail"
   },
   "links": []
 }

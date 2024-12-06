@@ -5,54 +5,54 @@
   "technicaldata": [
     {
       "icon_id": "codigo.png",
-      "title": "Tecnologías utilizadas",
-      "detail": "C# y Unity"
+      "title": "%general.technologies",
+      "detail": "%work-view.leba.technicaldata.technologies"
     },
     {
       "icon_id": "empresa.png",
-      "title": "Equipo y colaboradores",
-      "detail": "Borja Castellano"
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
     },
     {
       "icon_id": "calendario.png",
-      "title": "Fecha de creación",
+      "title": "%general.date",
       "detail": "2021"
     },
     {
       "icon_id": "dado.png",
-      "title": "Rol en el proyecto",
-      "detail": "Arquitectura, diseño y desarrollo"
+      "title": "%general.role",
+      "detail": "%work-view.leba.technicaldata.role"
     }
   ],
   "features": [
     {
       "icon_id": "plataformas.png",
       "title": "",
-      "detail": "Juego de plataformas vertical en 2D"
+      "detail": "%work-view.leba.features.1"
     },
     {
       "icon_id": "logros.png",
       "title": "",
-      "detail": "Skins y Logros"
+      "detail": "%work-view.leba.features.2"
     },
     {
       "icon_id": "procedural.png",
       "title": "",
-      "detail": "Generación procedural"
+      "detail": "%work-view.leba.features.3"
     },
     {
       "icon_id": "combate.png",
       "title": "",
-      "detail": "Leaderboard"
+      "detail": "%work-view.leba.features.4"
     }
   ],
   "description": [
-    "Juego de platformeo vertical con generación procedural de niveles. La mecánica principal del juego es ir saltando de pared en pared para ascender tan alto como puedas. Por el camino tendrás que esquivar obstaculos que no te lo pondrán fácil y enemigos con mecánicas distintivas y únicas.",
-    "El juego cuenta con un sistema de skins y logros que irás desbloqueando a medida que vayas jugando. Además cuenta con servidor propio y un sistema de clasificación global de jugadores basado en su puntuación máxima.",
-    "En cuanto a la arquitectura del código, se aplican diferentes patrones de diseño que permiten una fácil escalabilidad y mantenimiento de este tales como el patrón estrategia o estado."
+    "%work-view.leba.description.1",
+    "%work-view.leba.description.2",
+    "%work-view.leba.description.3"
   ],
   "state": {
-    "Disponibilidad": "El juego está disponible en Play Store para su descarga."
+    "%work-view.leba.state.1.title": "%work-view.leba.state.1.detail"
   },
   "multimedia": {
     "type": "Phone",
