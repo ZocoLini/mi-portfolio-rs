@@ -11,6 +11,13 @@ mod resources;
 mod styles;
 mod ui_structure;
 
+// TODO: Memory leak somewhere
+// TODO: Stop passing Strings to Properties and use Yew Attr instead
+// TODO: Remove the clones used in several places to improver memory usage and performance
+// TODO: Dont load translations if they are already loaded
+// TODO: Add a button to change the language
+// TODO: Review the en_EN translations
+
 #[derive(PartialEq, Clone, Routable)]
 enum Route {
     #[at("/")]
@@ -37,6 +44,9 @@ fn app() -> Html {
     if !*translations_loaded {
         let state = translations_loaded.clone();
         spawn_local(async move {
+            #[cfg(debug_assertions)]
+            web_sys::console::log_1(&"Loading translations".into());
+            
             lang::load_translations().await;
             state.set(true);
         });

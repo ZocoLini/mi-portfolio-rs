@@ -25,15 +25,13 @@ where
         if let Some(data) = state.clone().as_ref() {
             self.html_with_data((*data).clone())
         } else {
-            let a = {
+            {
                 let data: Self = self.clone();
                 let state = state.clone();
                 spawn_local(async move {
                     state.set(Some(data.data().await));
                 });
             };
-
-            use_effect_with((), move |_| a);
             
             self.html_without_data()
         }
@@ -54,10 +52,10 @@ where
             "/resources/dyn-data/{}.json",
             self.resouce_id()
         );
-        
+
         #[cfg(debug_assertions)]
         console::log_1(&(&data_path).into());
-        
+
         let fetched_data = Request::get(&data_path)
         .send()
         .await

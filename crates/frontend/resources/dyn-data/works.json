@@ -12,7 +12,7 @@
             "%general.developer": "%general.my-name",
             "%general.type": "%work.mk-template.type",
             "%general.date": "2024",
-            "%general.role": "%work.architect-developer"
+            "%general.role": "%work.role.architect-developer"
           },
           "state": "Building"
         },
@@ -27,7 +27,7 @@
             "%general.technology": "%work.technology.rocket",
             "%general.type": "%work.trt-api.type",
             "%general.date": "2024",
-            "%general.role": "%work.architect-developer"
+            "%general.role": "%work.role.architect-developer"
           },
           "state": "Deployed"
         }
@@ -46,7 +46,7 @@
             "%general.technology": "%work.technology.java-fx",
             "%general.type": "%work.seal-code.type",
             "%general.date": "2024",
-            "%general.role": "%work.architect-developer"
+            "%general.role": "%work.role.architect-developer"
           },
           "state": "Concept"
         },
@@ -61,7 +61,7 @@
             "%general.technology": "%work.technology.spring-boot",
             "%general.type": "%work.leba-api.type",
             "%general.date": "2024",
-            "%general.role": "%work.architect-developer"
+            "%general.role": "%work.role.architect-developer"
           },
           "state": "Deployed"
         },
@@ -75,7 +75,7 @@
             "%general.technology": "%work.technology.java-fx",
             "%general.type": "%work.the-round-table.type",
             "%general.date": "2024",
-            "%general.role": "%work.architect-developer"
+            "%general.role": "%work.role.architect-developer"
           },
           "state": "Building"
         }

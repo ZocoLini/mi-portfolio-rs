@@ -117,7 +117,7 @@ h2, h1 {
     "#
         .to_string()
         .into_css();
-
+        
         // TODO: Remove the necessity of cloning the data. Implement the Components trait manually
         //  to incorporate lifetime into de props
 

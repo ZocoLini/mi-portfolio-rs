@@ -1,11 +1,12 @@
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
-use crate::resources;
-use crate::styles::Css;
+use crate::styles::{Css, PaneType};
+use crate::{resources, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fmt::Display;
+use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use yew::prelude::*;
@@ -48,7 +49,10 @@ impl DynGenerable for WorksProps {
 
     fn html_with_data(&self, data: Self::Data) -> Html {
         let css = r#"
-
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
         "#
         .to_string()
         .into_css();
@@ -79,6 +83,10 @@ impl IntoHtml for WorkSectionData {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 20px;
+            }
+            
+            h1 {
+                text-align: center;
             }
         "#
         .to_string()
@@ -175,9 +183,7 @@ impl IntoHtml for WorkData {
             border-radius: 10px;
             padding: 0 10px;
             transition: background-color 0.3s, color 0.3s;
-            background-color: var(--color-ibox-background);
             text-decoration: none;
-            color: var(--color-primary-text);
               
             :hover
             {
@@ -195,6 +201,8 @@ impl IntoHtml for WorkData {
             }
         "#
         .to_string()
+        .add(&styles::PaneStyle::new(PaneType::Secondary).css())
+        .add(&styles::primary_text_style_as_string())
         .into_css();
 
         let work_icon_css = css!(
@@ -227,7 +235,7 @@ impl IntoHtml for WorkData {
               <ul>
                 {
                   for self.info.iter().map(|(key, value)|
-                    html! { <li><strong>{ key }</strong>{ value }</li>
+                    html! { <li><strong>{ key }{": "}</strong>{ value }</li>
                   })
                 }
               </ul>

@@ -15,7 +15,7 @@
     },
     {
       "icon_id": "calendario.png",
-      "title": "%general.creation-date",
+      "title": "%general.date",
       "detail": "2024"
     },
     {
@@ -52,7 +52,7 @@
     "%work-view.the-round-table.description.3"
   ],
   "state": {
-    "work-view.the-round-table.state.1.title": "%work-view.the-round-table.state.1.detail"
+    "%work-view.the-round-table.state.1.title": "%work-view.the-round-table.state.1.detail"
   },
   "multimedia": {
     "type": "Pc",

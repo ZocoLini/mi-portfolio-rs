@@ -15,7 +15,7 @@
     },
     {
       "icon_id": "calendario.png",
-      "title": "%general.creation-date",
+      "title": "%general.date",
       "detail": "2024"
     },
     {
@@ -45,8 +45,8 @@
   ],
   "state": {
     "%work-view.mk-template.state.1.title": "%work-view.mk-template.state.1.detail",
-    "%work-view.mk-template.state.2.title": "work-view.mk-template.state.2.detail",
-    "%work-view.mk-template.state.3.title": "work-view.mk-template.state.3.detail"
+    "%work-view.mk-template.state.2.title": "%work-view.mk-template.state.2.detail",
+    "%work-view.mk-template.state.3.title": "%work-view.mk-template.state.3.detail"
   },
   "links": [
     {

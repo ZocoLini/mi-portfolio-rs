@@ -2,7 +2,7 @@ use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
 use std::sync::RwLock;
-use web_sys::{window};
+use web_sys::window;
 
 pub trait MultiLang {
     fn translate(self) -> Self;
@@ -17,27 +17,42 @@ pub(crate) fn translate(id: &str) -> String {
 
     let translations = TRANSLATIONS.read();
 
-    let translations = if translations.is_err() {
-        return format!("{}", id);
+    let translations = if let Ok(res) = translations {
+        res
     } else {
-        translations.unwrap()
+        #[cfg(debug_assertions)]
+        web_sys::console::log_1(&"Error getting the translations data".into());
+
+        return id.to_string();
     };
 
-    if let Some(trans) = translations
+    let translations = translations
         .as_ref()
-        .expect("Translations map should be preloaded")
-        .get(&id[1..])
-    {
+        .expect("Translations map should be preloaded");
+
+    if let Some(trans) = translations.get(&id[1..]) {
         trans.clone()
     } else {
-        format!("{}", id)
+        #[cfg(debug_assertions)]
+        {
+            web_sys::console::log_1(
+                &format!(
+                    "Translation not found: {}. Translations loaded: {}",
+                    id,
+                    translations.len()
+                )
+                .into(),
+            );
+        }
+
+        id.to_string()
     }
 }
 
 pub async fn load_translations() {
     let locale = get_locale();
     let fetched_data = Request::get(&format!(
-        "resources/langs/{}.properties",
+        "/resources/langs/{}.properties",
         locale.replace("-", "_")
     ))
     .send()
@@ -48,17 +63,17 @@ pub async fn load_translations() {
         .text()
         .await
         .expect("Failed to parse translations");
-    
+
     let new_translations = parse_translations(response);
 
     let old_translations = TRANSLATIONS.write();
-    
-    let mut old_translations = if old_translations.is_err() {
-        return;
+
+    let mut old_translations = if let Ok(res) = old_translations {
+        res
     } else {
-        old_translations.unwrap()
+        return;
     };
-    
+
     old_translations.replace(new_translations);
 }
 
@@ -132,11 +147,10 @@ impl MultiLang for bool {
 }
 
 impl<T> MultiLang for Option<T>
-where 
-    T: MultiLang
+where
+    T: MultiLang,
 {
     fn translate(self) -> Self {
         self.map(|x| x.translate())
     }
-    
 }
