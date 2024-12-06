@@ -130,3 +130,13 @@ impl MultiLang for bool {
         self
     }
 }
+
+impl<T> MultiLang for Option<T>
+where 
+    T: MultiLang
+{
+    fn translate(self) -> Self {
+        self.map(|x| x.translate())
+    }
+    
+}

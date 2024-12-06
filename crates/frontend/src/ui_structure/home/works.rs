@@ -155,6 +155,7 @@ impl MultiLang for WorkState {
 #[derive(Deserialize, MultiLang, Clone)]
 pub struct WorkData {
     title: String,
+    image_id: String,
     work_id: String,
     #[serde(default)]
     is_api: bool,
@@ -215,7 +216,7 @@ impl IntoHtml for WorkData {
 
         html!(
           <a class={ css} href={format!("work/{}", self.work_id)} target="_parent">
-            <img src={resources::get_work_icon_src(&self.work_id)} alt={self.work_id}/>
+            <img src={resources::get_work_icon_src(&self.image_id)} alt={self.work_id}/>
             if self.is_api {
                 <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
             }

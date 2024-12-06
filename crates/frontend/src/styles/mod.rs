@@ -3,7 +3,7 @@ use stylist::{StyleSource};
 use stylist::ast::Sheet;
 
 mod pane;
-mod text;
+#[allow(unused)] mod text;
 
 pub use pane::*;
 pub use text::*;

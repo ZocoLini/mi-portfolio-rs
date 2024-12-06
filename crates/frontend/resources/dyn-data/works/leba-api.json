@@ -1,0 +1,48 @@
+{
+  "name": "Leba REST API",
+  "image_id": "leba",
+  "id": "leba-api",
+  "is_api": true,
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "Tecnologías utilizadas",
+      "detail": "Java y Spring Boot"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "Equipo y colaboradores",
+      "detail": "Borja Castellano"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "Fecha de creación",
+      "detail": "2024"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "Rol en el proyecto",
+      "detail": "Arquitectura y desarrollo"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "logo-spring-data.png",
+      "title": "",
+      "detail": "Uso de Spring Boot"
+    },
+    {
+      "icon_id": "logo-lombok.png",
+      "title": "",
+      "detail": "Uso de Lombok"
+    }
+  ],
+  "description": [
+    "Esta API es la encargada de gestionar los usuarios, recolectar datos sobre el gameplay y la leaderboard. Toda la información es almacenada en una base de datos MySQL en el servidor.",
+    "Actualmente se encuentra en producción y es usada por la aplicación móvil de Leba, que cuenta con mas de 2000 descargas en la Play Store."
+  ],
+  "state": {
+    "Disponibilidad del código": "Por razones de seguridad, el código fuente no está disponible."
+  },
+  "links": []
+}

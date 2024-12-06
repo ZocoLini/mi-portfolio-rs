@@ -11,7 +11,7 @@ use std::convert::From;
 use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
-use yew::{function_component, html, props, use_state, Callback, Html, Properties};
+use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct ViewProps {
@@ -21,12 +21,15 @@ pub struct ViewProps {
 #[derive(Clone, Deserialize, MultiLang, PartialEq)]
 pub struct ViewData {
     name: String,
+    image_id: String,
     id: String,
+    #[serde(default)]
+    is_api: bool,
     technicaldata: Vec<IconizedItemData>,
     features: Vec<IconizedItemData>,
     description: Vec<String>,
     state: HashMap<String, String>,
-    multimedia: MultimediaData,
+    multimedia: Option<MultimediaData>,
     links: Vec<LinkItemData>,
 }
 
@@ -189,7 +192,7 @@ align-items: center;
     html! {
         <left-pane class={ css }>
             <div id="iconoProyecto-container">
-              <img id="iconoProyecto" src={ resources::get_work_icon_src(&props.view_data.id) } alt={ cloned_name }/>
+              <img id="iconoProyecto" src={ resources::get_work_icon_src(&props.view_data.image_id) } alt={ cloned_name }/>
             </div>
             <h1>{ name }</h1>
             <Technicaldata view_data={ props.view_data.clone() }/>
@@ -379,9 +382,11 @@ margin: 0 auto;
     .add(&styles::PaneStyle::new(styles::PaneType::Primary).css())
     .into_css();
 
-    let props = props.clone();
-
-    let multimedia_type = props.view_data.multimedia.r#type.to_string();
+    if props.view_data.multimedia.is_none() { return html!(); }
+    
+    let multimedia = props.clone().view_data.multimedia.unwrap();
+    let images_ids = multimedia.images_ids;
+    let multimedia_type = multimedia.r#type.to_string();
     let work_id = props.view_data.id.clone();
     
     html! {
@@ -390,7 +395,7 @@ margin: 0 auto;
             <div id="img-container">
                 <div id={ format!("imgs-{}", multimedia_type)}>
                     {
-                        for props.view_data.multimedia.images_ids.into_iter().map(move |img_id| {
+                        for images_ids.into_iter().map(move |img_id| {
                             html! { 
                                 <img src={ format!("/resources/img/works/{}/{}", work_id, img_id) } 
                                     alt={ img_id }/> 
@@ -434,10 +439,11 @@ a {
             <a href="/" target="_parent">
                 <IconButton icon_id="home.png" label="" onclick={ &callback } />
             </a>
-            <a href="#img-container" target="_parent">
-                <IconButton icon_id="multimedia.png" label="" onclick={ &callback } />
-            </a>
-        
+            if props.view_data.multimedia.is_some() {
+                <a href="#img-container" target="_parent">
+                    <IconButton icon_id="multimedia.png" label="" onclick={ &callback } />
+                </a>
+            }  
             {
                 for props.view_data.links.into_iter().map(move |link| {
                     html! {

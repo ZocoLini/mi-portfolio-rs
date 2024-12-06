@@ -1,7 +1,6 @@
 extern crate proc_macro;
 use proc_macro::TokenStream;
 use quote::quote;
-use syn;
 use syn::{parse_macro_input, DeriveInput, Fields, Type};
 
 #[proc_macro_derive(MultiLang)]
