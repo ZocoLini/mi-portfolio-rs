@@ -5,6 +5,7 @@
 use crate::lang::MultiLang;
 use gloo_net::http::Request;
 use serde::Deserialize;
+use web_sys::console;
 use yew::platform::spawn_local;
 use yew::{html, use_effect_with, Html, Properties, UseStateHandle};
 use crate::components;
@@ -49,10 +50,15 @@ where
     where
         for<'a> Self::Data: Deserialize<'a>,
     {
-        let fetched_data = Request::get(&format!(
-            "resources/dyn-data/{}.json",
+        let data_path = format!(
+            "/resources/dyn-data/{}.json",
             self.resouce_id()
-        ))
+        );
+        
+        #[cfg(debug_assertions)]
+        console::log_1(&(&data_path).into());
+        
+        let fetched_data = Request::get(&data_path)
         .send()
         .await
         .expect("Failed to fetch JSON");

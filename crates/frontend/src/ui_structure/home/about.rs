@@ -64,7 +64,7 @@ impl DynGenerable for SkillsContainerProps {
                 <h2>{ lang::translate("%general.skills") }</h2>
                 <div id="skills">
                     {
-                        for skills.iter().map(move |skill| {
+                        for skills.into_iter().map(move |skill| {
                             skill.clone().into_html()
                         })
                     }
