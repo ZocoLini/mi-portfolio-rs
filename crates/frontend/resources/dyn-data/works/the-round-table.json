@@ -1,0 +1,73 @@
+{
+  "name": "The Round Table",
+  "image_id": "the-round-table",
+  "id": "the-round-table",
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "Tecnologías utilizadas",
+      "detail": "Java y Java FX"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "Equipo y colaboradores",
+      "detail": "Borja Castellano"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "Fecha de creación",
+      "detail": "2024"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "Rol en el proyecto",
+      "detail": "Arquitectura y desarrollo"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "receipt.png",
+      "title": "",
+      "detail": "Impresión y gestión de recibos"
+    },
+    {
+      "icon_id": "products.png",
+      "title": "",
+      "detail": "Gestión de productos"
+    },
+    {
+      "icon_id": "table.png",
+      "title": "",
+      "detail": "Gestión de las mesas del local"
+    },
+    {
+      "icon_id": "core.png",
+      "title": "",
+      "detail": "Arquitectura micro-kernel"
+    }
+  ],
+  "description": [
+    "Software TPV para la gestión de restaurantes y bares. Permite la gestión de productos, mesas y la impresión de recibos. Además permite la visualización de estadísticas ya que todos los datos de recibos se guardan en un base de datos SQLite.",
+    "El sotware está desarrollado en Java y se ha utilizado JavaFX para la interfaz gráfica. Se pude comunicar mediante ESC/POS con impresoras de tickets.",
+    "En cuanto a la arquitectura del software, se ha utilizado una arquitectura micro-kernel para separar la lógica principal de la aplicación de los plugins que se pueden añadir para ampliar las funcionalidades de este. Tambien se ha utilizado un patrón de diseño MVC para separar la lógica de la interfaz gráfica junto a otros tantos patrones de diseño que permiten una fácil escalabilidad y mantenimiento del código."
+  ],
+  "state": {
+    "Disponibilidad": "Aunque la aplicación ya se está usando en algunos bares en fase beta, no está disponible para el público en general. Se espera que en el futuro se pueda distribuir una versión pública. De todos modos, enviando un correo a support@lebastudios.org se puede solicitar una copia de la aplicación para probarla totalmente gratis por tiempo limitado."
+  },
+  "multimedia": {
+    "type": "Pc",
+    "images_ids": [
+      "captura1.png",
+      "captura2.png",
+      "captura3.png",
+      "captura4.png"
+    ]
+  },
+  "links": [
+    {
+      "icon_id": "github.png",
+      "title": "Github",
+      "url": "https://github.com/ZocoLini/the-round-table"
+    }
+  ]
+}

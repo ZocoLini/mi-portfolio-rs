@@ -1,0 +1,58 @@
+{
+  "name": "MK Template",
+  "image_id": "mk-template",
+  "id": "mk-template",
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "Tecnologías utilizadas",
+      "detail": "Rust"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "Equipo y colaboradores",
+      "detail": "Borja Castellano"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "Fecha de creación",
+      "detail": "2024"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "Rol en el proyecto",
+      "detail": "Arquitectura y desarrollo"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "save.png",
+      "title": "",
+      "detail": "Guardado de diferentes formato de plantilla"
+    },
+    {
+      "icon_id": "directory.png",
+      "title": "",
+      "detail": "Creación de archivos y direcorios"
+    }
+  ],
+  "description": [
+    "Más de una vez me he encontrado con la necesidad una estructura de archivos y directorios que ya había utilizado en otros proyectos y, para no tener que pasar por este infierno cada vez he decidido crear una aplicación de consola que me permita guardar diferentes formatos de plantillas para ser instanciadas en un futuro de una manera rápida y sencilla.",
+    "Actualmente la aplicación soporta:",
+    "    • Guardar un directorio con todo su contenido como plantilla a copiar en el futuro.",
+    "    • Guardar una URI a un .git al que se le hará git clone cada vez que se instancie la plantilla.",
+    "    • Uso de una structura XML definida para guardar y crear las plantillas."
+  ],
+  "state": {
+    "Disponibilidad": "El codigo fuente esta disponible en GitHub. Ejecutando el archivo install.sh se compilará el proyecto y se copiará el ejecutable en la carpeta ~/.local/bin. El proyecto es Open Source y se puede modificar y distribuir libremente.",
+    "Actualización": "El proyecto se encuentra en constante desarrollo y se irán añadiendo nuevos tipos de plantilla soportado, así como un XML propio para definir nuevas plantillas.",
+    "Documentación": "La documentación del proyecto se encuentra en el archivo README.md y, si este aún no existe, se creará en un futuro próximo."
+  },
+  "links": [
+    {
+      "icon_id": "github.png",
+      "title": "GitHub",
+      "url": "https://github.com/ZocoLini/mk-template"
+    }
+  ]
+}
