@@ -167,7 +167,9 @@ pub struct WorkData {
 impl IntoHtml for WorkData {
     fn into_html(self) -> Html {
         let css = r#"
-            width: min(45%, 300px);
+            min-width: 300px;
+            max-width: 400px;
+            width: 45%;
             display: flex;
             position: relative;
             border-radius: 10px;
@@ -182,13 +184,6 @@ impl IntoHtml for WorkData {
               background-color: var(--color-button-hover);
               color: white;
             }
-            img
-            {
-              width: 50px;
-              height: 50px;
-              margin-top: 10px;
-              margin-right: 10px;
-            }
             ul
             {
               padding: 0;
@@ -202,6 +197,15 @@ impl IntoHtml for WorkData {
         .to_string()
         .into_css();
 
+        let work_icon_css = css!(
+            r#"
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+            margin-right: 10px;
+            "#
+        );
+
         let api_icon_css = css!(
             r#"
             position: absolute;
@@ -214,7 +218,7 @@ impl IntoHtml for WorkData {
 
         html!(
           <a class={ css } href={format!("work/{}", self.work_id)} target="_parent">
-            <img src={resources::get_work_icon_src(&self.image_id)} alt={self.work_id}/>
+            <img class={ work_icon_css } src={resources::get_work_icon_src(&self.image_id)} alt={self.work_id}/>
             if self.is_api {
                 <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
             }

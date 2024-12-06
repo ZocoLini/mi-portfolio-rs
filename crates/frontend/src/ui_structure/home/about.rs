@@ -85,7 +85,9 @@ struct SkillData {
 impl IntoHtml for SkillData {
     fn into_html(self) -> Html {
         let css = r#"
-            width: min(45%, 300px);
+            min-width: 300px;
+            max-width: 400px;
+            width: 45%;
             display: flex;
             overflow: hidden;
 

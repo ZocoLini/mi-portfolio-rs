@@ -11,6 +11,7 @@ use std::convert::From;
 use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
+use stylist::css;
 use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
@@ -92,15 +93,11 @@ impl DynGenerable for ViewProps {
         let css = r#"
 display: flex;
 margin: 0 auto;
-width: min(85%, 1200px);
+width: 80%;
 padding-top: 100px;
 
 h2, h1 {
   text-align: center;
-}
-
-.controlled-size {
-  width: min(85%, 1200px);
 }
 
 #main-pane {
@@ -114,8 +111,7 @@ h2, h1 {
     align-items: center;
   }
 
-  min-width: 350px;
-  max-width: 700px;
+  max-width: 450px;
   width: 80%;
 }
     "#
@@ -156,7 +152,7 @@ fn left_pane(props: &LeftPaneProps) -> Html {
     let css = r#"
 height: fit-content;
 min-width: 350px;
-max-width: 550px;
+max-width: 450px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -185,6 +181,8 @@ align-items: center;
     .add(&styles::PaneStyle::new(styles::PaneType::Primary).css())
     .into_css();
 
+    let api_icon_css = css!("position: absolute; left: -5px; top: -15px;");
+    
     let cloned_name = props.view_data.name.clone();
     let name = &props.view_data.name;
 
@@ -192,6 +190,9 @@ align-items: center;
         <left-pane class={ css }>
             <div id="iconoProyecto-container">
               <img id="iconoProyecto" src={ resources::get_work_icon_src(&props.view_data.image_id) } alt={ cloned_name }/>
+              if props.view_data.is_api {
+                  <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
+              }
             </div>
             <h1>{ name }</h1>
             <Technicaldata view_data={ props.view_data.clone() }/>
@@ -382,12 +383,12 @@ margin: 0 auto;
     .into_css();
 
     if props.view_data.multimedia.is_none() { return html!(); }
-    
+
     let multimedia = props.clone().view_data.multimedia.unwrap();
     let images_ids = multimedia.images_ids;
     let multimedia_type = multimedia.r#type.to_string();
     let work_id = props.view_data.id.clone();
-    
+
     html! {
         <div class={ css }>
             <h2>{ lang::translate("%work-view.section-title.multimedia") }</h2>
@@ -395,9 +396,9 @@ margin: 0 auto;
                 <div id={ format!("imgs-{}", multimedia_type)}>
                     {
                         for images_ids.into_iter().map(move |img_id| {
-                            html! { 
-                                <img src={ format!("/resources/img/works/{}/{}", work_id, img_id) } 
-                                    alt={ img_id }/> 
+                            html! {
+                                <img src={ format!("/resources/img/works/{}/{}", work_id, img_id) }
+                                    alt={ img_id }/>
                             }
                         })
                     }
@@ -432,7 +433,7 @@ a {
 
     let callback = Callback::from(|_| ());
     let props = props.clone();
-    
+
     html! {
         <nav-bar class={ css }>
             <a href="/" target="_parent">
@@ -442,7 +443,7 @@ a {
                 <a href="#img-container" target="_parent">
                     <IconButton icon_id="multimedia.png" label="" onclick={ &callback } />
                 </a>
-            }  
+            }
             {
                 for props.view_data.links.into_iter().map(move |link| {
                     html! {
