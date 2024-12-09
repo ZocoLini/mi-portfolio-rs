@@ -6,6 +6,7 @@ addresses = ["127.0.0.1"]
 # The port to serve on.
 port = 8000
 
-[output]
+[build]
+target = "index.html"
 public_url = "/zocolini/portfolio/"
 
