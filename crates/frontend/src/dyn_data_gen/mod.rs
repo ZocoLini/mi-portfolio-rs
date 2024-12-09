@@ -1,14 +1,14 @@
 // TODO: Make the social links autogenerables
 // TODO: Make the contact Info autogenerables
-// TODO: Make the works autogenerables
 
 use crate::lang::MultiLang;
 use gloo_net::http::Request;
 use serde::Deserialize;
+#[cfg(debug_assertions)]
 use web_sys::console;
 use yew::platform::spawn_local;
-use yew::{html, use_effect_with, Html, Properties, UseStateHandle};
-use crate::components;
+use yew::{html, Html, Properties, UseStateHandle};
+use crate::{components, resources};
 
 pub trait DynGenerable: Clone + Properties + PartialEq
 where
@@ -48,10 +48,7 @@ where
     where
         for<'a> Self::Data: Deserialize<'a>,
     {
-        let data_path = format!(
-            "/resources/dyn-data/{}.json",
-            self.resouce_id()
-        );
+        let data_path = resources::get_dyn_data_src(&self.resouce_id());
 
         #[cfg(debug_assertions)]
         console::log_1(&(&data_path).into());

@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use std::hash::Hash;
 use std::sync::RwLock;
 use web_sys::window;
+use crate::resources;
 
 pub trait MultiLang {
     fn translate(self) -> Self;
@@ -49,12 +50,14 @@ pub(crate) fn translate(id: &str) -> String {
     }
 }
 
-pub async fn load_translations() {
+pub async fn load_default_translations() {
     let locale = get_locale();
-    let fetched_data = Request::get(&format!(
-        "/resources/langs/{}.properties",
-        locale.replace("-", "_")
-    ))
+    
+    load_translations(locale).await;
+}
+
+pub async fn load_translations(locale: String) {
+    let fetched_data = Request::get(&resources::get_translations_src(&locale))
     .send()
     .await
     .expect("Failed to fetch translations");
@@ -91,7 +94,7 @@ fn parse_translations(data: String) -> HashMap<String, String> {
     translations
 }
 
-fn get_locale() -> String {
+pub fn get_locale() -> String {
     let window = window();
 
     if let Some(window) = window {

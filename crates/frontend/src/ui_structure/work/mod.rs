@@ -397,7 +397,7 @@ margin: 0 auto;
                     {
                         for images_ids.into_iter().map(move |img_id| {
                             html! {
-                                <img src={ format!("/resources/img/works/{}/{}", work_id, img_id) }
+                                <img src={ resources::get_work_image_src(&work_id, &img_id) }
                                     alt={ img_id }/>
                             }
                         })
@@ -436,7 +436,7 @@ a {
 
     html! {
         <nav-bar class={ css }>
-            <a href="/" target="_parent">
+            <a href="https://lebastudios.org/zocolini/portfolio" target="_parent">
                 <IconButton icon_id="home.png" label="" onclick={ &callback } />
             </a>
             if props.view_data.multimedia.is_some() {

@@ -5,3 +5,7 @@ addresses = ["127.0.0.1"]
 # address = "0.0.0.0"
 # The port to serve on.
 port = 8000
+
+[output]
+public_url = "/zocolini/portfolio/"
+

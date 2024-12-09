@@ -15,7 +15,6 @@ mod ui_structure;
 // TODO: Stop passing Strings to Properties and use Yew Attr instead
 // TODO: Remove the clones used in several places to improver memory usage and performance
 // TODO: Dont load translations if they are already loaded
-// TODO: Add a button to change the language
 // TODO: Review the en_EN translations
 
 #[derive(PartialEq, Clone, Routable)]
@@ -46,21 +45,21 @@ fn app() -> Html {
         spawn_local(async move {
             #[cfg(debug_assertions)]
             web_sys::console::log_1(&"Loading translations".into());
-            
-            lang::load_translations().await;
+
+            lang::load_default_translations().await;
             state.set(true);
         });
     }
     
     html! {
-        if *translations_loaded {
-            <BrowserRouter>
-                <Switch<Route> render={switch} />
-            </BrowserRouter>
-        } else {
-            <components::LoadingSpinner/>
+            if *translations_loaded {
+                <BrowserRouter>
+                    <Switch<Route> render={switch} />
+                </BrowserRouter>
+            } else {
+                <components::LoadingSpinner/>
+            }
         }
-    }
 }
 
 fn main() {
