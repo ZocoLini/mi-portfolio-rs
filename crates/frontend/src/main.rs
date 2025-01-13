@@ -1,5 +1,4 @@
 use crate::ui_structure::{home, work};
-use crate::Route::{Home, Work};
 use yew::platform::spawn_local;
 use yew::{function_component, html, use_state, Html};
 use yew_router::prelude::*;
@@ -23,15 +22,27 @@ enum Route {
     Home,
     #[at("/work/:id")]
     Work { id: String },
+    #[at("/doc/:file")]
+    Doc { file: String },
 }
 
 fn switch(route: Route) -> Html {
     match route {
-        Home => {
+        Route::Home => {
             html! { <home::View /> }
         }
-        Work { id } => {
+        Route::Work { id } => {
             html! { <work::View work_id={ id } /> }
+        }
+        Route::Doc { file } => {
+            html! {
+                <iframe
+                        src={format!("static/docs/{}", file)}
+                        width="100%"
+                        height="100%"
+                        title={format!("Document: {}", file)}
+                    />
+            }
         }
     }
 }
