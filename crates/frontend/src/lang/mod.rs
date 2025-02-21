@@ -1,9 +1,9 @@
+use crate::resources;
 use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
 use std::sync::RwLock;
 use web_sys::window;
-use crate::resources;
 
 pub trait MultiLang {
     fn translate(self) -> Self;
@@ -50,22 +50,23 @@ pub(crate) fn translate(id: &str) -> String {
     }
 }
 
-pub async fn load_default_translations() {
+pub async fn load_local_translations() {
     let locale = get_locale();
-    
+
     load_translations(locale).await;
 }
 
 pub async fn load_translations(locale: String) {
-    let fetched_data = Request::get(&resources::get_translations_src(&locale))
-    .send()
-    .await
-    .expect("Failed to fetch translations");
+    let mut response = get_translations(&locale).await;
 
-    let response = fetched_data
-        .text()
-        .await
-        .expect("Failed to parse translations");
+    #[cfg(debug_assertions)]
+    {
+        web_sys::console::log_1(&format!("Translations: {}", response).into());
+    }
+
+    if response.contains("<!doctype html>") {
+        response = get_translations("en_US").await.to_string()
+    }
 
     let new_translations = parse_translations(response);
 
@@ -78,6 +79,15 @@ pub async fn load_translations(locale: String) {
     };
 
     old_translations.replace(new_translations);
+}
+
+async fn get_translations(locale: &str) -> String {
+    let fetched_data = Request::get(&resources::get_translations_src(locale))
+        .send()
+        .await
+        .expect("Failed to fetch translations");
+
+    fetched_data.text().await.expect("Failed to get translations text")
 }
 
 fn parse_translations(data: String) -> HashMap<String, String> {

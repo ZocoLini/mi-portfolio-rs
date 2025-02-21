@@ -57,7 +57,7 @@ fn app() -> Html {
             #[cfg(debug_assertions)]
             web_sys::console::log_1(&"Loading translations".into());
 
-            lang::load_default_translations().await;
+            lang::load_local_translations().await;
             state.set(true);
         });
     }
