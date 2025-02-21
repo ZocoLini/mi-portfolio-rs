@@ -51,8 +51,13 @@ pub(crate) fn translate(id: &str) -> String {
 }
 
 pub async fn load_local_translations() {
-    let locale = get_locale();
+    #[cfg(debug_assertions)]
+    {
+        load_translations("es_ES".to_string()).await;
+        return;
+    }
 
+    let locale = get_locale();
     load_translations(locale).await;
 }
 

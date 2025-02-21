@@ -10,9 +10,8 @@ mod resources;
 mod styles;
 mod ui_structure;
 
-// TODO: Memory leak somewhere
 // TODO: Stop passing Strings to Properties and use Yew Attr instead
-// TODO: Remove the clones used in several places to improver memory usage and performance
+// TODO: Remove the clones used in several places to improve memory usage and performance
 // TODO: Dont load translations if they are already loaded
 // TODO: Review the en_EN translations
 
@@ -38,7 +37,7 @@ fn switch(route: Route) -> Html {
             html! {
                 <iframe
                         src={format!("static/docs/{}", file)}
-                        width="100%"
+                        width="98%"
                         height="100%"
                         title={format!("Document: {}", file)}
                     />
