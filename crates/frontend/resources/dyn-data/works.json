@@ -1,41 +1,22 @@
 {
   "sections": [
     {
-      "title": "%work-section.rust.title",
+      "title": "%work-section.java.title",
       "works": [
         {
-          "title": "%work.mk-template.title",
-          "description": "%work.mk-template.description",
-          "image_id": "mk-template",
-          "work_id": "mk-template",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.type": "%work.mk-template.type",
-            "%general.date": "2024",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Building"
-        },
-        {
-          "title": "%work.trt-api.title",
-          "description": "%work.trt-api.description",
+          "title": "%work.the-round-table.title",
+          "description": "%work.the-round-table.description",
           "image_id": "the-round-table",
-          "work_id": "trt-api",
-          "is_api": true,
+          "work_id": "the-round-table",
           "info": {
             "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.rocket",
-            "%general.type": "%work.trt-api.type",
-            "%general.date": "2024",
+            "%general.technology": "%work.technology.trt",
+            "%general.type": "%work.the-round-table.type",
+            "%general.date": "2024 - Current",
             "%general.role": "%work.role.architect-developer"
           },
           "state": "Deployed"
-        }
-      ]
-    },
-    {
-      "title": "%work-section.java.title",
-      "works": [
+        },
         {
           "title": "%work.seal-code.title",
           "description": "%work.seal-code.description",
@@ -64,20 +45,39 @@
             "%general.role": "%work.role.architect-developer"
           },
           "state": "Deployed"
-        },
+        }
+      ]
+    },
+    {
+      "title": "%work-section.rust.title",
+      "works": [
         {
-          "title": "%work.the-round-table.title",
-          "description": "%work.the-round-table.description",
-          "image_id": "the-round-table",
-          "work_id": "the-round-table",
+          "title": "%work.mk-template.title",
+          "description": "%work.mk-template.description",
+          "image_id": "mk-template",
+          "work_id": "mk-template",
           "info": {
             "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.java-fx",
-            "%general.type": "%work.the-round-table.type",
+            "%general.type": "%work.mk-template.type",
             "%general.date": "2024",
             "%general.role": "%work.role.architect-developer"
           },
           "state": "Building"
+        },
+        {
+          "title": "%work.trt-api.title",
+          "description": "%work.trt-api.description",
+          "image_id": "the-round-table",
+          "work_id": "trt-api",
+          "is_api": true,
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.technology": "%work.technology.rocket",
+            "%general.type": "%work.trt-api.type",
+            "%general.date": "2024- Current",
+            "%general.role": "%work.role.architect-developer"
+          },
+          "state": "Deployed"
         }
       ]
     },

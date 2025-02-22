@@ -49,10 +49,16 @@
   "description": [
     "%work-view.the-round-table.description.1",
     "%work-view.the-round-table.description.2",
-    "%work-view.the-round-table.description.3"
+    "%work-view.the-round-table.description.3",
+    "%work-view.the-round-table.description.4",
+    "%work-view.the-round-table.description.5",
+    "%work-view.the-round-table.description.6",
+    "%work-view.the-round-table.description.7"
   ],
   "state": {
-    "%work-view.the-round-table.state.1.title": "%work-view.the-round-table.state.1.detail"
+    "%work-view.the-round-table.state.1.title": "%work-view.the-round-table.state.1.detail",
+    "%work-view.the-round-table.state.2.title": "%work-view.the-round-table.state.2.detail",
+    "%work-view.the-round-table.state.3.title": "%work-view.the-round-table.state.3.detail"
   },
   "multimedia": {
     "type": "Pc",
@@ -60,14 +66,15 @@
       "captura1.png",
       "captura2.png",
       "captura3.png",
-      "captura4.png"
+      "captura4.png",
+      "captura5.png"
     ]
   },
   "links": [
     {
       "icon_id": "github.png",
       "title": "Github",
-      "url": "https://github.com/ZocoLini/the-round-table"
+      "url": "https://github.com/trt-pos/"
     }
   ]
 }

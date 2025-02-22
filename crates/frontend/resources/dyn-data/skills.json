@@ -2,6 +2,24 @@
   "skills":
   [
     {
+      "title": "%skill.rust.title",
+      "description": "%skill.rust.description",
+      "icon":
+      {
+        "icon_size": 50,
+        "id": "rust.png"
+      }
+    },
+    {
+      "title": "%skill.problem-solving.title",
+      "description": "%skill.problem-solving.description",
+      "icon":
+      {
+        "icon_size": 50,
+        "id": "puzzle.png"
+      }
+    },
+    {
       "title": "%skill.cs-unity.title",
       "description": "%skill.cs-unity.description",
       "icon":
@@ -17,33 +35,6 @@
       {
         "icon_size": 50,
         "id": "java-logo.png"
-      }
-    },
-    {
-      "title": "%skill.microservices.title",
-      "description": "%skill.microservices.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "microservices.png"
-      }
-    },
-    {
-      "title": "%skill.problem-solving.title",
-      "description": "%skill.problem-solving.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "puzzle.png"
-      }
-    },
-    {
-      "title": "%skill.rust.title",
-      "description": "%skill.rust.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "rust.png"
       }
     },
     {

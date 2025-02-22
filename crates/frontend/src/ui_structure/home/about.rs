@@ -17,6 +17,7 @@ pub fn view() -> Html {
             <h1>{ lang::translate("%general.about-me") }</h1>
             <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
             <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
+            <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-3") }</p>
 
             <SkillsContainer />
         </div>

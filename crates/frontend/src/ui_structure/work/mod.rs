@@ -13,6 +13,7 @@ use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use yew::prelude::*;
+use crate::ui_structure::work::_StateProps::view_data;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct ViewProps {
@@ -434,13 +435,15 @@ a {
     let callback = Callback::from(|_| ());
     let props = props.clone();
 
+    let href = format!("work/{}#img-container", props.view_data.id);
+
     html! {
         <nav-bar class={ css }>
-            <a href="https://lebastudios.org/zocolini/portfolio" target="_parent">
+            <a href="" target="_parent">
                 <IconButton icon_id="home.png" label="" onclick={ &callback } />
             </a>
             if props.view_data.multimedia.is_some() {
-                <a href="#img-container" target="_parent">
+                <a href={ href } target="_parent">
                     <IconButton icon_id="multimedia.png" label="" onclick={ &callback } />
                 </a>
             }

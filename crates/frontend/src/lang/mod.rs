@@ -50,6 +50,7 @@ pub(crate) fn translate(id: &str) -> String {
     }
 }
 
+#[allow(unreachable_code)]
 pub async fn load_local_translations() {
     #[cfg(debug_assertions)]
     {
