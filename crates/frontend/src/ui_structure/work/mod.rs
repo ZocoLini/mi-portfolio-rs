@@ -29,6 +29,7 @@ pub struct ViewData {
     is_api: bool,
     technicaldata: Vec<IconizedItemData>,
     features: Vec<IconizedItemData>,
+    downloads: Option<Vec<DownloadsItemData>>,
     description: Vec<String>,
     state: HashMap<String, String>,
     multimedia: Option<MultimediaData>,
@@ -40,6 +41,7 @@ struct IconizedItemData {
     icon_id: String,
     title: String,
     detail: String,
+    link: Option<String>
 }
 
 #[derive(Clone, Deserialize, MultiLang, PartialEq)]
@@ -47,6 +49,12 @@ struct LinkItemData {
     icon_id: String,
     title: String,
     url: String,
+}
+
+#[derive(Clone, Deserialize, MultiLang, PartialEq)]
+struct DownloadsItemData {
+    link: String,
+    icon: IconizedItemData
 }
 
 #[derive(Deserialize, Clone, PartialEq)]
@@ -198,6 +206,10 @@ align-items: center;
             <h1>{ name }</h1>
             <Technicaldata view_data={ props.view_data.clone() }/>
             <Features view_data={ props.view_data.clone() }/>
+
+            if (props.view_data.downloads.is_some()) {
+                <Downloads view_data={ props.view_data.clone() }/>
+            }
         </left-pane>
     }
 }
@@ -269,6 +281,61 @@ width: 90%;
                 })
             }
         </features>
+    }
+}
+
+#[derive(Clone, PartialEq, Properties)]
+struct DownloadsProps {
+    view_data: ViewData,
+}
+
+#[function_component(Downloads)]
+fn features(props: &DownloadsProps) -> Html {
+    let css = r#"
+width: 90%;
+
+p { text-decoration: none;
+}
+    "#
+        .to_string()
+        .add(&styles::PaneStyle::new(styles::PaneType::Secondary).css())
+        .into_css();
+
+    let link_css = r#"
+:hover p {
+    color: white;
+}
+
+iconized-item:hover {
+    background-color: var(--color-button-hover);
+}
+
+iconized-item {
+    border-radius: 5px;
+    padding: 2px;
+}
+    "#.to_string().into_css();
+
+    let props = props.clone();
+
+    html! {
+        <downloads class={ css }>
+            <h2>{ lang::translate("%work-view.section-title.downloads") }</h2>
+            {
+                for props.view_data.downloads.unwrap().into_iter().map(move |download| {
+                    html! {
+                        <a class={ link_css.clone() } href={ download.link } >
+                            <IconizedItem
+                            icon_id={ download.icon.icon_id.clone() }
+                            alt_text={ download.icon.icon_id }
+                            title={ download.icon.title }
+                            detail={ download.icon.detail }
+                            />
+                        </a>
+                    }
+                })
+            }
+        </downloads>
     }
 }
 

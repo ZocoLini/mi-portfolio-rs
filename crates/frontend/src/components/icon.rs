@@ -77,6 +77,7 @@ pub fn iconized_item(props: &IconizedItemProps) -> Html {
         r#"
         display: flex;
         margin: 10px;
+        align-items: center;
 
         p {
             margin: 0 0 0 10px;
