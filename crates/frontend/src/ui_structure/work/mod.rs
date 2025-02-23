@@ -13,7 +13,6 @@ use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use yew::prelude::*;
-use crate::ui_structure::work::_StateProps::view_data;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct ViewProps {
@@ -207,7 +206,7 @@ align-items: center;
             <Technicaldata view_data={ props.view_data.clone() }/>
             <Features view_data={ props.view_data.clone() }/>
 
-            if (props.view_data.downloads.is_some()) {
+            if props.view_data.downloads.is_some() {
                 <Downloads view_data={ props.view_data.clone() }/>
             }
         </left-pane>
