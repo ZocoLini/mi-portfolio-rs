@@ -1,0 +1,49 @@
+{
+  "name": "DB-Sniffer",
+  "image_id": "db-sniffer",
+  "id": "db-sniffer",
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "%general.technologies",
+      "detail": "%work-view.db-sniffer.technicaldata.technologies"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "%general.date",
+      "detail": "2025"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "%general.role",
+      "detail": "%work-view.db-sniffer.technicaldata.role"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "sql.png",
+      "title": "",
+      "detail": "%work-view.db-sniffer.features.1"
+    }
+  ],
+  "description": [
+    "%work-view.db-sniffer.description.1",
+    "%work-view.db-sniffer.description.2"
+  ],
+  "state": {
+    "%work-view.db-sniffer.state.1.title": "%work-view.db-sniffer.state.1.detail"
+  },
+
+  "links": [
+    {
+      "icon_id": "github.png",
+      "title": "GitHub",
+      "url": "https://github.com/ZocoLini/db-sniffer"
+    }
+  ]
+}

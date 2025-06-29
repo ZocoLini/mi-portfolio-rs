@@ -235,7 +235,7 @@ fn download_cv() -> Html {
     );
 
     html! {
-        <a class={css} href="doc/CV-Borja-Castellano-actual.pdf" target="_blank">
+        <a class={css} href="doc/resume.pdf" target="_blank">
             <div>
                 <img src="resources/img/icon/download.png" alt="Download" />
                 <p>{ lang::translate("%home.left-pane.download-cv") }</p>

@@ -20,12 +20,12 @@
       }
     },
     {
-      "title": "%skill.cs-unity.title",
-      "description": "%skill.cs-unity.description",
+      "title": "%skill.c.title",
+      "description": "%skill.c.description",
       "icon":
       {
         "icon_size": 50,
-        "id": "csharp-logo.png"
+        "id": "c-logo.png"
       }
     },
     {
@@ -53,6 +53,15 @@
       {
         "icon_size": 50,
         "id": "liderazgo.png"
+      }
+    },
+    {
+      "title": "%skill.cs-unity.title",
+      "description": "%skill.cs-unity.description",
+      "icon":
+      {
+        "icon_size": 50,
+        "id": "csharp-logo.png"
       }
     }
   ]

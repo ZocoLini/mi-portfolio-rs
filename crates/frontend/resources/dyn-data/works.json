@@ -62,7 +62,20 @@
             "%general.date": "2024",
             "%general.role": "%work.role.architect-developer"
           },
-          "state": "Building"
+          "state": "Deployed"
+        },
+        {
+          "title": "%work.db-sniffer.title",
+          "description": "%work.db-sniffer.description",
+          "image_id": "db-sniffer",
+          "work_id": "db-sniffer",
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.type": "%work.db-sniffer.type",
+            "%general.date": "2025",
+            "%general.role": "%work.role.architect-developer"
+          },
+          "state": "Deployed"
         },
         {
           "title": "%work.trt-api.title",
@@ -74,8 +87,26 @@
             "%general.developer": "%general.my-name",
             "%general.technology": "%work.technology.rocket",
             "%general.type": "%work.trt-api.type",
-            "%general.date": "2024- Current",
+            "%general.date": "2025",
             "%general.role": "%work.role.architect-developer"
+          },
+          "state": "Deployed"
+        }
+      ]
+    },
+    {
+      "title": "%work-section.scientific.title",
+      "works": [
+        {
+          "title": "%work.cuqdyn-c.title",
+          "description": "%work.cuqdyn-c.description",
+          "image_id": "cuqdyn-c",
+          "work_id": "cuqdyn-c",
+          "info": {
+            "%general.developer": "%general.my-name",
+            "%general.type": "%work.cuqdyn-c.type",
+            "%general.date": "2025",
+            "%general.role": "%work.role.lead-developer"
           },
           "state": "Deployed"
         }

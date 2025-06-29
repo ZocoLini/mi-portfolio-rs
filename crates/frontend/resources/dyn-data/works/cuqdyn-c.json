@@ -1,0 +1,59 @@
+{
+  "name": "Cuqdyn-C",
+  "image_id": "cuqdyn-c",
+  "id": "cuqdyn-c",
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "%general.technologies",
+      "detail": "%work-view.cuqdyn-c.technicaldata.technologies"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "%general.date",
+      "detail": "2025"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "%general.role",
+      "detail": "%work-view.cuqdyn-c.technicaldata.role"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "core.png",
+      "title": "",
+      "detail": "%work-view.cuqdyn-c.features.1"
+    },
+    {
+      "icon_id": "paralellization.png",
+      "title": "",
+      "detail": "%work-view.cuqdyn-c.features.2"
+    },
+    {
+      "icon_id": "line-graph.png",
+      "title": "",
+      "detail": "%work-view.cuqdyn-c.features.3"
+    }
+  ],
+  "description": [
+    "%work-view.cuqdyn-c.description.1",
+    "%work-view.cuqdyn-c.description.2",
+    "%work-view.cuqdyn-c.description.3"
+  ],
+  "state": {
+    "%work-view.cuqdyn-c.state.1.title": "%work-view.cuqdyn-c.state.1.detail"
+  },
+  "links": [
+    {
+      "icon_id": "github.png",
+      "title": "GitHub",
+      "url": "https://github.com/ZocoLini/cuqdyn-c"
+    }
+  ]
+}
