@@ -1,12 +1,11 @@
 [serve]
 # The address to serve on LAN.
-addresses = ["127.0.0.1"]
+# addresses = ["172.16.1.10"]
 # The address to serve on WAN.
-# address = "0.0.0.0"
+address = "0.0.0.0"
 # The port to serve on.
 port = 8000
 
 [build]
 target = "index.html"
 public_url = "/zocolini/portfolio/"
-

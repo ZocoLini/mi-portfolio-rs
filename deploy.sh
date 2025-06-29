@@ -1,6 +1,5 @@
 #!/bin/bash
-
-cd crates/frontend || exit
+# 
 trunk build --release
 
 ssh root@nginx.master.lebastudios.lan "
