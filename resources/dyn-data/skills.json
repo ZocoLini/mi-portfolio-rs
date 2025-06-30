@@ -1,68 +1,60 @@
 {
-  "skills":
-  [
-    {
-      "title": "%skill.rust.title",
-      "description": "%skill.rust.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "rust.png"
-      }
-    },
-    {
-      "title": "%skill.problem-solving.title",
-      "description": "%skill.problem-solving.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "puzzle.png"
-      }
-    },
-    {
-      "title": "%skill.c.title",
-      "description": "%skill.c.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "c-logo.png"
-      }
-    },
-    {
-      "title": "%skill.java-javafx.title",
-      "description": "%skill.java-javafx.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "java-logo.png"
-      }
-    },
-    {
-      "title": "%skill.selftaught.title",
-      "description": "%skill.selftaught.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "aprendizaje.png"
-      }
-    },
-    {
-      "title": "%skill.teamwork-leadership.title",
-      "description": "%skill.teamwork-leadership.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "liderazgo.png"
-      }
-    },
-    {
-      "title": "%skill.cs-unity.title",
-      "description": "%skill.cs-unity.description",
-      "icon":
-      {
-        "icon_size": 50,
-        "id": "csharp-logo.png"
-      }
-    }
-  ]
+ "skills": [
+  {
+   "title": "%skill.rust.title",
+   "description": "%skill.rust.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "lang-rust.png"
+   }
+  },
+  {
+   "title": "%skill.problem-solving.title",
+   "description": "%skill.problem-solving.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "puzzle.png"
+   }
+  },
+  {
+   "title": "%skill.c.title",
+   "description": "%skill.c.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "lang-c.png"
+   }
+  },
+  {
+   "title": "%skill.java-javafx.title",
+   "description": "%skill.java-javafx.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "lang-java.png"
+   }
+  },
+  {
+   "title": "%skill.selftaught.title",
+   "description": "%skill.selftaught.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "aprendizaje.png"
+   }
+  },
+  {
+   "title": "%skill.teamwork-leadership.title",
+   "description": "%skill.teamwork-leadership.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "liderazgo.png"
+   }
+  },
+  {
+   "title": "%skill.cs-unity.title",
+   "description": "%skill.cs-unity.description",
+   "icon": {
+    "icon_size": 50,
+    "id": "lang-cs.png"
+   }
+  }
+ ]
 }

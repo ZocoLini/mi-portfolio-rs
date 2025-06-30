@@ -1,0 +1,53 @@
+{
+ "categories": [
+  {
+   "name": "Programming Languages",
+   "items": [
+    {
+     "name": "Java",
+     "level": 0.85,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-java.png"
+     }
+    },
+    {
+     "name": "C",
+     "level": 0.5,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-c.png"
+     }
+    },
+    {
+     "name": "C#",
+     "level": 0.6,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-cs.png"
+     }
+    },
+    {
+     "name": "Matlab",
+     "level": 0.25,
+     "icon": {
+      "icon_size": 50,
+      "id": "puzzle.png"
+     }
+    },
+    {
+     "name": "Rust",
+     "level": 0.75,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-rust.png"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Frameworks",
+   "items": []
+  }
+ ]
+}

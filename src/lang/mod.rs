@@ -93,7 +93,10 @@ async fn get_translations(locale: &str) -> String {
         .await
         .expect("Failed to fetch translations");
 
-    fetched_data.text().await.expect("Failed to get translations text")
+    fetched_data
+        .text()
+        .await
+        .expect("Failed to get translations text")
 }
 
 fn parse_translations(data: String) -> HashMap<String, String> {
@@ -120,6 +123,12 @@ pub fn get_locale() -> String {
     }
 
     "en_US".to_string()
+}
+
+impl MultiLang for f32 {
+    fn translate(self) -> Self {
+        self
+    }
 }
 
 impl MultiLang for String {

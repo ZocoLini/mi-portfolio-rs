@@ -1,15 +1,16 @@
 use crate::components::{IconButton, IconLink, IconizedItem};
-use crate::styles::{Css};
+use crate::styles::Css;
+use crate::styles::PaneType::{Primary, Secondary};
+use crate::{lang, styles};
 use std::convert::From;
 use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
 use stylist::yew::styled_component;
 use yew::prelude::*;
-use crate::{lang, styles};
-use crate::styles::PaneType::{Primary, Secondary};
 
 mod about;
+mod knowledge;
 mod works;
 
 #[function_component(View)]
@@ -21,7 +22,7 @@ pub fn view() -> Html {
         margin: 0 auto;
         display: flex;
         justify-content: center;
-        
+
         @media (max-width: 1080px) {
           margin: 0 auto;
           display: flex;
@@ -60,7 +61,7 @@ pub fn view() -> Html {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        
+
         @media (max-width: 700px) {
           display: flex;
           flex-direction: row;
@@ -83,6 +84,11 @@ pub fn view() -> Html {
         Callback::from(move |_| current_view.set(html! { <works::View /> }))
     };
 
+    let knowledge_click = {
+        let current_view = current_view.clone();
+        Callback::from(move |_| current_view.set(html! { <knowledge::View /> }))
+    };
+
     html! {
         <main class={main_css}>
             <LeftPane />
@@ -91,6 +97,7 @@ pub fn view() -> Html {
             </center-pane>
             <right-pane class={right_css}>
                 <IconButton icon_id="about.png" label="" onclick={about_click}/>
+                <IconButton icon_id="knowledge.png" label="" onclick={knowledge_click}/>
                 <IconButton icon_id="works.png" label="" onclick={works_click}/>
             </right-pane>
         </main>
@@ -106,7 +113,7 @@ fn left_pane() -> Html {
     gap: 10px;
     flex-direction: column;
     align-items: center;
-    
+
     #profile-img-container
     {
       height: 200px;
@@ -224,7 +231,7 @@ fn download_cv() -> Html {
           width: 30px;
           filter: brightness(0) invert(1);
         }
-        
+
         p
         {
           margin: 0;
