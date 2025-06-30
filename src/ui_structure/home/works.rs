@@ -59,7 +59,7 @@ impl DynGenerable for WorksProps {
 
         html!(
             <div class={ css }>
-                <h1>{lang::translate("Works")}</h1>
+                <h1>{lang::translate("%work.view.title")}</h1>
                 {
                     for data.sections.iter().map(|work_section|
                         work_section.clone().into_html()
