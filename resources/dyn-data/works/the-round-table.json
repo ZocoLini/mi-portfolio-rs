@@ -50,7 +50,7 @@
     {
       "link": "https://lebastudios.org/api/v1/theroundtable/installer.sh",
       "icon": {
-        "icon_id": "linux.png",
+        "icon_id": "logo-linux.png",
         "title": "Linux",
         "detail": "Installer x64"
       }
@@ -58,7 +58,7 @@
     {
       "link": "https://lebastudios.org/api/v1/theroundtable/update/theroundtable-linux-x64.zip",
       "icon": {
-        "icon_id": "linux.png",
+        "icon_id": "logo-linux.png",
         "title": "Linux",
         "detail": "Portable x64"
       }

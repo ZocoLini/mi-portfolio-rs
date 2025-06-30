@@ -147,7 +147,7 @@ fn left_pane() -> Html {
             <h3>{ lang::translate("%home.left-pane.profession") }</h3>
             <div style="display: flex; gap: 10px;">
                 <IconLink href="https://www.linkedin.com/in/borja-cas/" icon_id="linkedin.png" alt_text="LinkedIn" />
-                <IconLink href="https://www.github.com/ZocoLini/" icon_id="github.png" alt_text="GitHub" />
+                <IconLink href="https://www.github.com/ZocoLini/" icon_id="logo-github.png" alt_text="GitHub" />
                 <IconLink href="https://www.instagram.com/_zocoo/" icon_id="instagram.png" alt_text="Instagram" />
             </div>
 

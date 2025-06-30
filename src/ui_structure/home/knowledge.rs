@@ -1,7 +1,7 @@
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::ops::Add;
-use yew::{function_component, html, use_state, Html, Properties};
+use yew::{Html, Properties, function_component, html, use_state};
 
 use crate::{
     components::Icon,
@@ -14,7 +14,7 @@ use crate::{
 pub fn view() -> Html {
     html! {
         <div>
-            <h1>{ lang::translate("%general.knowledge") }</h1>
+            <h1>{ lang::translate("%knowledge.view.title") }</h1>
 
             <KnowledgeContainer />
         </div>
@@ -116,32 +116,42 @@ struct KnowledgeItemData {
 
 impl IntoHtml for KnowledgeItemData {
     fn into_html(self) -> Html {
-        let css = r#"
+        let color = match self.level {
+            0.0..=0.25 => "#E84024",
+            0.25..=0.5 => "#C7BA1E",
+            0.5..=0.75 => "#D3E724",
+            0.75..1.0 => "#7EC71E",
+            1.0 => "#2FB6FA",
+            _ => "#0000FF",
+        };
+
+        let css = format!(
+            r#"
             min-width: 300px;
             max-width: 400px;
-            width: 45%;
+            width: 30%;
             display: flex;
             overflow: hidden;
 
             img
-            {
+            {{
               width: 50px;
               height: 50px;
               margin-top: 10px;
               margin-right: 10px;
-            }
+            }}
 
-            #progress-bar {
-              height: 100%;
-              width: 100%;
-              background-color: #4caf50;
+            #progress-bar {{
+              height: 15px;
+              background-color: {color};
               text-align: center;
               color: white;
               border-radius: 5px;
               line-height: 25px;
-              transition: width 0.4s ease;
-            }
+              transition: width 1s ease;
+            }}
         "#
+        )
         .to_string()
         .add(&styles::PaneStyle::new(styles::PaneType::Secondary).css())
         .into_css();
@@ -149,9 +159,11 @@ impl IntoHtml for KnowledgeItemData {
         html! {
             <knowledge class={css}>
                 { self.icon.html() }
-                <div>
+                <div style="width: 80%;">
                     <h3>{ &self.name }</h3>
-                    <div id="progress-bar"/>
+                    <div>
+                        <div id="progress-bar" style={format!("width: {}%", self.level * 100.0)}/>
+                    </div>
                 </div>
             </knowledge>
         }

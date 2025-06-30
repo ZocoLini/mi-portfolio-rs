@@ -1,5 +1,5 @@
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
-use crate::lang::MultiLang;
+use crate::lang::{self, MultiLang};
 use crate::styles::{Css, PaneType};
 use crate::{resources, styles};
 use frontend::MultiLang;
@@ -59,6 +59,7 @@ impl DynGenerable for WorksProps {
 
         html!(
             <div class={ css }>
+                <h1>{lang::translate("Works")}</h1>
                 {
                     for data.sections.iter().map(|work_section|
                         work_section.clone().into_html()
@@ -84,8 +85,8 @@ impl IntoHtml for WorkSectionData {
                 justify-content: center;
                 gap: 20px;
             }
-            
-            h1 {
+
+            h2 {
                 text-align: center;
             }
         "#
@@ -94,7 +95,7 @@ impl IntoHtml for WorkSectionData {
 
         html!(
         <div class={ css }>
-          <h1>{ &self.title }</h1>
+          <h2>{ &self.title }</h2>
 
           <div id="contenedor-works">
               {
@@ -184,7 +185,7 @@ impl IntoHtml for WorkData {
             padding: 0 10px;
             transition: background-color 0.3s, color 0.3s;
             text-decoration: none;
-              
+
             :hover
             {
               background-color: var(--color-button-hover);
@@ -195,7 +196,7 @@ impl IntoHtml for WorkData {
               padding: 0;
               list-style-type: none;
             }
-            
+
             li {
               margin-bottom: 5px;
             }

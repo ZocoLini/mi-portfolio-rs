@@ -1,11 +1,19 @@
 {
  "categories": [
   {
-   "name": "Programming Languages",
+   "name": "%knowledge.category.prog-langs",
    "items": [
     {
-     "name": "Java",
+     "name": "Rust",
      "level": 0.85,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-rust.png"
+     }
+    },
+    {
+     "name": "Java",
+     "level": 1,
      "icon": {
       "icon_size": 50,
       "id": "lang-java.png"
@@ -13,7 +21,7 @@
     },
     {
      "name": "C",
-     "level": 0.5,
+     "level": 0.65,
      "icon": {
       "icon_size": 50,
       "id": "lang-c.png"
@@ -21,33 +29,181 @@
     },
     {
      "name": "C#",
-     "level": 0.6,
+     "level": 0.65,
      "icon": {
       "icon_size": 50,
       "id": "lang-cs.png"
-     }
-    },
-    {
-     "name": "Matlab",
-     "level": 0.25,
-     "icon": {
-      "icon_size": 50,
-      "id": "puzzle.png"
-     }
-    },
-    {
-     "name": "Rust",
-     "level": 0.75,
-     "icon": {
-      "icon_size": 50,
-      "id": "lang-rust.png"
      }
     }
    ]
   },
   {
-   "name": "Frameworks",
-   "items": []
+   "name": "%knowledge.category.frameworks",
+   "items": [
+    {
+     "name": "JavaFX",
+     "level": 1,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-javafx.png"
+     }
+    },
+    {
+     "name": "Iced",
+     "level": 0.6,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-iced.svg"
+     }
+    },
+    {
+     "name": "Spring Boot",
+     "level": 0.5,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-spring.png"
+     }
+    },
+    {
+     "name": "Actix",
+     "level": 0.8,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-actix.png"
+     }
+    },
+    {
+     "name": "Yew",
+     "level": 0.8,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-yew.svg"
+     }
+    },
+    {
+     "name": "Unity",
+     "level": 0.7,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-unity.png"
+     }
+    }
+   ]
+  },
+  {
+   "name": "%knowledge.category.tech&tools",
+   "items": [
+    {
+     "name": "Docker",
+     "level": 0.75,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-docker.png"
+     }
+    },
+    {
+     "name": "Git",
+     "level": 0.9,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-git.png"
+     }
+    },
+    {
+     "name": "GitHub",
+     "level": 0.8,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-github.png"
+     }
+    }
+   ]
+  },
+  {
+   "name": "%knowledge.category.databases",
+   "items": [
+    {
+     "name": "MySQL",
+     "level": 0.9,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-mysql.png"
+     }
+    },
+    {
+     "name": "MariaDB",
+     "level": 0.9,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-mariadb.png"
+     }
+    },
+    {
+     "name": "MS SQL Server",
+     "level": 0.75,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-mssql.png"
+     }
+    },
+    {
+     "name": "SQLite",
+     "level": 1,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-sqlite.png"
+     }
+    },
+    {
+     "name": "MongoDB",
+     "level": 0.5,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-mongodb.png"
+     }
+    }
+   ]
+  },
+  {
+   "name": "DevOps & Infrastructure",
+   "items": [
+    {
+     "name": "Nginx",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-nginx.png" }
+    },
+    {
+     "name": "GitHub Actions",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-github.png" }
+    },
+    {
+     "name": "Ubuntu Server",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-ubuntu.png" }
+    }
+   ]
+  },
+  {
+   "name": "%knowledge.category.miscellaneous",
+   "items": [
+    {
+     "name": "Linux",
+     "level": 1,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-linux.png"
+     }
+    },
+    {
+     "name": "MPI",
+     "level": 0.7,
+     "icon": {
+      "icon_size": 50,
+      "id": "logo-mpi.png"
+     }
+    }
+   ]
   }
  ]
 }
