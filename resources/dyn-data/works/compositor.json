@@ -1,0 +1,56 @@
+{
+  "name": "Compositor",
+  "image_id": "compositor",
+  "id": "compositor",
+  "technicaldata": [
+    {
+      "icon_id": "codigo.png",
+      "title": "%general.technologies",
+      "detail": "%work-view.compositor.technicaldata.technologies"
+    },
+    {
+      "icon_id": "empresa.png",
+      "title": "%general.team-and-colaborators",
+      "detail": "%general.my-name"
+    },
+    {
+      "icon_id": "calendario.png",
+      "title": "%general.date",
+      "detail": "2025"
+    },
+    {
+      "icon_id": "dado.png",
+      "title": "%general.role",
+      "detail": "%work-view.compositor.technicaldata.role"
+    }
+  ],
+  "features": [
+    {
+      "icon_id": "tiles.png",
+      "title": "",
+      "detail": "%work-view.compositor.features.1"
+    },
+    {
+      "icon_id": "workspaces.png",
+      "title": "",
+      "detail": "%work-view.compositor.features.2"
+    },
+    {
+      "icon_id": "alt.png",
+      "title": "",
+      "detail": "%work-view.compositor.features.3"
+    }
+  ],
+  "description": [
+    "%work-view.compositor.description.1"
+  ],
+  "state": {
+  },
+  "links": [
+    {
+      "icon_id": "github.png",
+      "title": "GitHub",
+      "url": "https://github.com/ZocoLini/compositor"
+    }
+  ]
+}

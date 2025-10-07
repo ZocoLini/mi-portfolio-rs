@@ -1,135 +1,167 @@
 {
-  "sections": [
+ "sections": [
+  {
+   "title": "%work-section.rust.title",
+   "works": [
     {
-      "title": "%work-section.java.title",
-      "works": [
-        {
-          "title": "%work.the-round-table.title",
-          "description": "%work.the-round-table.description",
-          "image_id": "the-round-table",
-          "work_id": "the-round-table",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.trt",
-            "%general.type": "%work.the-round-table.type",
-            "%general.date": "2024 - Current",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Deployed"
-        },
-        {
-          "title": "%work.seal-code.title",
-          "description": "%work.seal-code.description",
-          "image_id": "seal-code",
-          "work_id": "seal-code",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.java-fx",
-            "%general.type": "%work.seal-code.type",
-            "%general.date": "2024",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Concept"
-        },
-        {
-          "title": "%work.leba-api.title",
-          "description": "%work.leba-api.description",
-          "image_id": "leba",
-          "work_id": "leba-api",
-          "is_api": true,
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.spring-boot",
-            "%general.type": "%work.leba-api.type",
-            "%general.date": "2024",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Deployed"
-        }
-      ]
+     "title": "%work.fee.title",
+     "description": "%work.fee.description",
+     "image_id": "fee",
+     "work_id": "fee",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.type": "%work.fee.type",
+      "%general.date": "2025",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
     },
     {
-      "title": "%work-section.rust.title",
-      "works": [
-        {
-          "title": "%work.mk-template.title",
-          "description": "%work.mk-template.description",
-          "image_id": "mk-template",
-          "work_id": "mk-template",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.type": "%work.mk-template.type",
-            "%general.date": "2024",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Deployed"
-        },
-        {
-          "title": "%work.db-sniffer.title",
-          "description": "%work.db-sniffer.description",
-          "image_id": "db-sniffer",
-          "work_id": "db-sniffer",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.type": "%work.db-sniffer.type",
-            "%general.date": "2025",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Deployed"
-        },
-        {
-          "title": "%work.trt-api.title",
-          "description": "%work.trt-api.description",
-          "image_id": "the-round-table",
-          "work_id": "trt-api",
-          "is_api": true,
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.rocket",
-            "%general.type": "%work.trt-api.type",
-            "%general.date": "2025",
-            "%general.role": "%work.role.architect-developer"
-          },
-          "state": "Deployed"
-        }
-      ]
+     "title": "%work.mk-template.title",
+     "description": "%work.mk-template.description",
+     "image_id": "mk-template",
+     "work_id": "mk-template",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.type": "%work.mk-template.type",
+      "%general.date": "2024",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
     },
     {
-      "title": "%work-section.scientific.title",
-      "works": [
-        {
-          "title": "%work.cuqdyn-c.title",
-          "description": "%work.cuqdyn-c.description",
-          "image_id": "cuqdyn-c",
-          "work_id": "cuqdyn-c",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.type": "%work.cuqdyn-c.type",
-            "%general.date": "2025",
-            "%general.role": "%work.role.lead-developer"
-          },
-          "state": "Deployed"
-        }
-      ]
+     "title": "%work.db-sniffer.title",
+     "description": "%work.db-sniffer.description",
+     "image_id": "db-sniffer",
+     "work_id": "db-sniffer",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.type": "%work.db-sniffer.type",
+      "%general.date": "2025",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
     },
     {
-      "title": "%work-section.csharp.title",
-      "works": [
-        {
-          "title": "%work.leba.title",
-          "description": "%work.leba.description",
-          "image_id": "leba",
-          "work_id": "leba",
-          "info": {
-            "%general.developer": "%general.my-name",
-            "%general.technology": "%work.technology.unity",
-            "%general.type": "%work.leba.type",
-            "%general.date": "2021",
-            "%general.role": "%work.leba.role"
-          },
-          "state": "Deployed"
-        }
-      ]
+     "title": "%work.trt-api.title",
+     "description": "%work.trt-api.description",
+     "image_id": "the-round-table",
+     "work_id": "trt-api",
+     "is_api": true,
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.technology": "%work.technology.rocket",
+      "%general.type": "%work.trt-api.type",
+      "%general.date": "2025",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
     }
-  ]
+   ]
+  },
+  {
+   "title": "%work-section.scientific.title",
+   "works": [
+    {
+     "title": "%work.cuqdyn-c.title",
+     "description": "%work.cuqdyn-c.description",
+     "image_id": "cuqdyn-c",
+     "work_id": "cuqdyn-c",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.type": "%work.cuqdyn-c.type",
+      "%general.date": "2025",
+      "%general.role": "%work.role.lead-developer"
+     },
+     "state": "Deployed"
+    }
+   ]
+  },
+  {
+   "title": "%work-section.cpp.title",
+   "works": [
+    
+    {
+     "title": "%work.compositor.title",
+     "description": "%work.compositor.description",
+     "image_id": "compositor",
+     "work_id": "compositor",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.type": "%work.compositor.type",
+      "%general.date": "2025",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
+    }
+   ]
+  },
+  {
+   "title": "%work-section.java.title",
+   "works": [
+    {
+     "title": "%work.the-round-table.title",
+     "description": "%work.the-round-table.description",
+     "image_id": "the-round-table",
+     "work_id": "the-round-table",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.technology": "%work.technology.trt",
+      "%general.type": "%work.the-round-table.type",
+      "%general.date": "2024 - Current",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
+    },
+    {
+     "title": "%work.seal-code.title",
+     "description": "%work.seal-code.description",
+     "image_id": "seal-code",
+     "work_id": "seal-code",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.technology": "%work.technology.java-fx",
+      "%general.type": "%work.seal-code.type",
+      "%general.date": "2024",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Concept"
+    },
+    {
+     "title": "%work.leba-api.title",
+     "description": "%work.leba-api.description",
+     "image_id": "leba",
+     "work_id": "leba-api",
+     "is_api": true,
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.technology": "%work.technology.spring-boot",
+      "%general.type": "%work.leba-api.type",
+      "%general.date": "2024",
+      "%general.role": "%work.role.architect-developer"
+     },
+     "state": "Deployed"
+    }
+   ]
+  },
+  {
+   "title": "%work-section.csharp.title",
+   "works": [
+    {
+     "title": "%work.leba.title",
+     "description": "%work.leba.description",
+     "image_id": "leba",
+     "work_id": "leba",
+     "info": {
+      "%general.developer": "%general.my-name",
+      "%general.technology": "%work.technology.unity",
+      "%general.type": "%work.leba.type",
+      "%general.date": "2021",
+      "%general.role": "%work.leba.role"
+     },
+     "state": "Deployed"
+    }
+   ]
+  }
+ ]
 }

@@ -1,0 +1,67 @@
+{
+ "name": "fee",
+ "image_id": "fee",
+ "id": "fee",
+ "technicaldata": [
+  {
+   "icon_id": "codigo.png",
+   "title": "%general.technologies",
+   "detail": "%work-view.fee.technicaldata.technologies"
+  },
+  {
+   "icon_id": "empresa.png",
+   "title": "%general.team-and-colaborators",
+   "detail": "%general.my-name"
+  },
+  {
+   "icon_id": "calendario.png",
+   "title": "%general.date",
+   "detail": "2025"
+  },
+  {
+   "icon_id": "dado.png",
+   "title": "%general.role",
+   "detail": "%work-view.fee.technicaldata.role"
+  }
+ ],
+ "features": [
+  {
+   "icon_id": "performance.png",
+   "title": "",
+   "detail": "%work-view.fee.features.1"
+  },
+  {
+   "icon_id": "operator.png",
+   "title": "",
+   "detail": "%work-view.fee.features.2"
+  },
+  {
+   "icon_id": "flexibility.png",
+   "title": "",
+   "detail": "%work-view.fee.features.3"
+  },
+  {
+   "icon_id": "brain.png",
+   "title": "",
+   "detail": "%work-view.fee.features.4"
+  }
+ ],
+ "description": [
+  "%work-view.fee.description.1",
+  "%work-view.fee.description.2",
+  "%work-view.fee.description.3"
+ ],
+ "state": {},
+ "links": [
+  {
+   "icon_id": "github.png",
+   "title": "GitHub",
+   "url": "https://github.com/ZocoLini/fee"
+  },
+  {
+   "icon_id": "crate.png",
+   "title": "Crates.io",
+   "url": "https://crates.io/crates/fee"
+  }
+ ]
+}
