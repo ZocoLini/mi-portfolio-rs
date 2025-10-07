@@ -5,7 +5,7 @@
    "items": [
     {
      "name": "Rust",
-     "level": 0.85,
+     "level": 1,
      "icon": {
       "icon_size": 50,
       "id": "lang-rust.png"
@@ -25,6 +25,14 @@
      "icon": {
       "icon_size": 50,
       "id": "lang-c.png"
+     }
+    },
+    {
+     "name": "C++",
+     "level": 0.65,
+     "icon": {
+      "icon_size": 50,
+      "id": "lang-cpp.png"
      }
     },
     {
@@ -181,12 +189,12 @@
      "name": "Ubuntu Server",
      "level": 0.75,
      "icon": { "icon_size": 50, "id": "logo-ubuntu.png" }
-    }
-   ]
-  },
-  {
-   "name": "%knowledge.category.miscellaneous",
-   "items": [
+    },
+    {
+     "name": "Proxmox",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-proxmox.png" }
+    },
     {
      "name": "Linux",
      "level": 1,
@@ -194,14 +202,26 @@
       "icon_size": 50,
       "id": "logo-linux.png"
      }
-    },
+    }
+   ]
+  },
+  {
+   "name": "%knowledge.category.hppc",
+   "items": [
     {
      "name": "MPI",
-     "level": 0.7,
-     "icon": {
-      "icon_size": 50,
-      "id": "logo-mpi.png"
-     }
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-mpi.png" }
+    },
+    {
+     "name": "CUDA",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-cuda.jpg" }
+    },
+    {
+     "name": "OpenMP",
+     "level": 0.75,
+     "icon": { "icon_size": 50, "id": "logo-openmp.jpg" }
     }
    ]
   }
