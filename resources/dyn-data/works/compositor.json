@@ -44,8 +44,6 @@
   "description": [
     "%work-view.compositor.description.1"
   ],
-  "state": {
-  },
   "links": [
     {
       "icon_id": "github.png",

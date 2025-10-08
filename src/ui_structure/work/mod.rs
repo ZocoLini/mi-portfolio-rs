@@ -30,7 +30,7 @@ pub struct ViewData {
     features: Vec<IconizedItemData>,
     downloads: Option<Vec<DownloadsItemData>>,
     description: Vec<String>,
-    state: HashMap<String, String>,
+    state: Option<HashMap<String, String>>,
     multimedia: Option<MultimediaData>,
     links: Vec<LinkItemData>,
 }
@@ -40,7 +40,7 @@ struct IconizedItemData {
     icon_id: String,
     title: String,
     detail: String,
-    link: Option<String>
+    link: Option<String>,
 }
 
 #[derive(Clone, Deserialize, MultiLang, PartialEq)]
@@ -53,7 +53,7 @@ struct LinkItemData {
 #[derive(Clone, Deserialize, MultiLang, PartialEq)]
 struct DownloadsItemData {
     link: String,
-    icon: IconizedItemData
+    icon: IconizedItemData,
 }
 
 #[derive(Deserialize, Clone, PartialEq)]
@@ -72,8 +72,9 @@ impl Display for MultimediaType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let str = match self {
             MultimediaType::Phone => "phone",
-            MultimediaType::Pc => "pc"
-        }.to_string();
+            MultimediaType::Pc => "pc",
+        }
+        .to_string();
         write!(f, "{}", str)
     }
 }
@@ -125,7 +126,7 @@ h2, h1 {
     "#
         .to_string()
         .into_css();
-        
+
         // TODO: Remove the necessity of cloning the data. Implement the Components trait manually
         //  to incorporate lifetime into de props
 
@@ -190,7 +191,7 @@ align-items: center;
     .into_css();
 
     let api_icon_css = css!("position: absolute; left: -5px; top: -15px;");
-    
+
     let cloned_name = props.view_data.name.clone();
     let name = &props.view_data.name;
 
@@ -296,9 +297,9 @@ width: 90%;
 p { text-decoration: none;
 }
     "#
-        .to_string()
-        .add(&styles::PaneStyle::new(styles::PaneType::Secondary).css())
-        .into_css();
+    .to_string()
+    .add(&styles::PaneStyle::new(styles::PaneType::Secondary).css())
+    .into_css();
 
     let link_css = r#"
 :hover p {
@@ -313,7 +314,9 @@ iconized-item {
     border-radius: 5px;
     padding: 2px;
 }
-    "#.to_string().into_css();
+    "#
+    .to_string()
+    .into_css();
 
     let props = props.clone();
 
@@ -388,19 +391,22 @@ li {
 
     let props = props.clone();
 
-    html! {
-        <div class={ css }>
-            <h2>{ lang::translate("%work-view.section-title.state") }</h2>
-            <div>
-              <ul>
-                {
-                    for props.view_data.state.iter().map(move |(key, value)| {
-                        html! { <li><strong>{ key }</strong>{": "} { value }</li> }
-                    })
-                }
-              </ul>
+    match props.view_data.state {
+        Some(state) => html! {
+            <div class={ css }>
+                <h2>{ lang::translate("%work-view.section-title.state") }</h2>
+                <div>
+                  <ul>
+                    {
+                        for state.iter().map(move |(key, value)| {
+                            html! { <li><strong>{ key }</strong>{": "} { value }</li> }
+                        })
+                    }
+                  </ul>
+                </div>
             </div>
-        </div>
+        },
+        None => html! {},
     }
 }
 
@@ -449,7 +455,9 @@ margin: 0 auto;
     .add(&styles::PaneStyle::new(styles::PaneType::Primary).css())
     .into_css();
 
-    if props.view_data.multimedia.is_none() { return html!(); }
+    if props.view_data.multimedia.is_none() {
+        return html!();
+    }
 
     let multimedia = props.clone().view_data.multimedia.unwrap();
     let images_ids = multimedia.images_ids;
