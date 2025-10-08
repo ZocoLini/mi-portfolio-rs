@@ -302,13 +302,7 @@ p { text-decoration: none;
     .into_css();
 
     let link_css = r#"
-:hover p {
-    color: white;
-}
 
-iconized-item:hover {
-    background-color: var(--color-button-hover);
-}
 
 iconized-item {
     border-radius: 5px;

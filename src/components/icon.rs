@@ -1,12 +1,12 @@
-use serde::Deserialize;
-use stylist::{css, StyleSource};
-use stylist::yew::styled_component;
-use web_sys::MouseEvent;
-use yew::{function_component, html, Callback, Component, Context, Html, Properties};
-use crate::{lang, styles};
 use crate::lang::MultiLang;
 use crate::resources::get_icon_src;
 use crate::styles::Css;
+use crate::{lang, styles};
+use serde::Deserialize;
+use stylist::yew::styled_component;
+use stylist::{StyleSource, css};
+use web_sys::MouseEvent;
+use yew::{Callback, Component, Context, Html, Properties, function_component, html};
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct IconProps {
@@ -21,7 +21,7 @@ pub struct Icon {
     #[serde(default)]
     alt: String,
     #[serde(default = "default_icon_size")]
-    icon_size: u8
+    icon_size: u8,
 }
 
 fn default_icon_size() -> u8 {
@@ -30,9 +30,7 @@ fn default_icon_size() -> u8 {
 
 impl Icon {
     pub fn html(&self) -> Html {
-        let css = 
-            format!("height: {}px; width: {}px;", self.icon_size, self.icon_size)
-                .into_css();
+        let css = format!("height: {}px; width: {}px;", self.icon_size, self.icon_size).into_css();
 
         html! {
             <img class={ css } src={ get_icon_src(&self.id) } alt={self.alt.clone()} />
@@ -156,23 +154,17 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         overflow: hidden;
         color: var(--color-primary-text);
 
-        img {
-          filter: brightness(0.2);
-        }
         p {
           margin: 0;
           text-align: center;
           font-size: 12px;
         }
-        /*Al pasar el raaton por encima*/
+
         :hover {
           background-color: var(--color-button-hover);
         }
         :hover p{
           color: white;
-        }
-        :hover img{
-          filter: brightness(0) invert(1);
         }
         "#
     );
