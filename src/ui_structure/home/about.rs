@@ -1,8 +1,8 @@
 use crate::components::Icon;
 use crate::dyn_data_gen::{DynGenerable, IntoHtml};
-use crate::{lang, styles};
 use crate::lang::MultiLang;
-use crate::styles::{Css};
+use crate::styles::Css;
+use crate::{lang, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::clone::Clone;
@@ -18,6 +18,8 @@ pub fn view() -> Html {
             <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-1") }</p>
             <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-2") }</p>
             <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-3") }</p>
+            <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-4") }</p>
+            <p class={ styles::primary_text_style() }>{ lang::translate("%about.p-5") }</p>
 
             <SkillsContainer />
         </div>
