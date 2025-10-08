@@ -1,4 +1,4 @@
-use crate::dyn_data_gen::{DynGenerable, IntoHtml};
+use crate::data_gen::{DynGenerable, IntoHtml};
 use crate::lang::{self, MultiLang};
 use crate::styles::{Css, PaneType};
 use crate::{resources, styles};
@@ -138,7 +138,7 @@ impl WorkState {
 
         html! {
             <img class={ css }
-                src={format!("{}.png", resources::get_icon_src(id))}
+                src={format!("{}.png", resources::get_icon(id))}
                 alt={self.to_string()}/>
         }
     }
@@ -227,9 +227,9 @@ impl IntoHtml for WorkData {
 
         html!(
           <a class={ css } href={format!("work/{}", self.work_id)} target="_parent">
-            <img class={ work_icon_css } src={resources::get_work_icon_src(&self.image_id)} alt={self.work_id}/>
+            <img class={ work_icon_css } src={resources::get_work_icon(&self.image_id)} alt={self.work_id}/>
             if self.is_api {
-                <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
+                <img class={ api_icon_css } src={resources::get_icon("api.png")} alt="api"/>
             }
             <div class="work-info">
               <h2>{ &self.title }</h2>

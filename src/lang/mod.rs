@@ -88,7 +88,7 @@ pub async fn load_translations(locale: String) {
 }
 
 async fn get_translations(locale: &str) -> String {
-    let fetched_data = Request::get(&resources::get_translations_src(locale))
+    let fetched_data = Request::get(&resources::get_translation_file(locale))
         .send()
         .await
         .expect("Failed to fetch translations");

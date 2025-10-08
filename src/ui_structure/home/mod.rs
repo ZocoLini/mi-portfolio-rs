@@ -140,7 +140,7 @@ fn left_pane() -> Html {
     html! {
         <left-pane class={css}>
             <div id="profile-img-container">
-                <img style="height: 277px; " src="resources/img/profile.jpg" alt="Profile picture"/>
+                <img style="height: 277px; " src="static/img/profile.jpg" alt="Profile picture"/>
             </div>
 
             <h2>{ "Borja Castellano" }</h2>
@@ -244,7 +244,7 @@ fn download_cv() -> Html {
     html! {
         <a class={css} href="doc/resume.pdf" target="_blank">
             <div>
-                <img src="resources/img/icon/download.png" alt="Download" />
+                <img src="static/img/icon/download.png" alt="Download" />
                 <p>{ lang::translate("%home.left-pane.download-cv") }</p>
             </div>
         </a>

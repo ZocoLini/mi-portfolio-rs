@@ -1,24 +1,24 @@
-pub fn get_icon_src(id: &str) -> String
+pub fn get_icon(id: &str) -> String
 {
-    format!("resources/img/icon/{}", id)
+    format!("static/img/icon/{}", id)
 }
 
-pub fn get_work_icon_src(id: &str) -> String
+pub fn get_work_icon(id: &str) -> String
 {
-    format!("resources/img/works/{}/icon.png", id)
+    get_work_img(id, "icon.png")
 }
 
-pub fn get_work_image_src(work_id: &str, img_id: &str) -> String
+pub fn get_work_img(id: &str, img_id: &str) -> String
 {
-    format!("resources/img/works/{}/{}", work_id, img_id)
+    format!("static/img/works/{}/{}", id, img_id)
 }
 
-pub fn get_translations_src(locale: &str) -> String
+pub fn get_translation_file(locale: &str) -> String
 {
-    format!("resources/langs/{}.properties", locale.replace("-", "_"))
+    format!("static/langs/{}.properties", locale.replace("-", "_"))
 }
 
-pub fn get_dyn_data_src(id: &str) -> String
+pub fn get_data_json(id: &str) -> String
 {
-    format!("resources/dyn-data/{}.json", id)
+    format!("static/data/{}.json", id)
 }

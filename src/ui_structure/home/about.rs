@@ -1,5 +1,5 @@
 use crate::components::Icon;
-use crate::dyn_data_gen::{DynGenerable, IntoHtml};
+use crate::data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
 use crate::styles::Css;
 use crate::{lang, styles};

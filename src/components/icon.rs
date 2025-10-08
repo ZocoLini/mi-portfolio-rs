@@ -1,5 +1,5 @@
 use crate::lang::MultiLang;
-use crate::resources::get_icon_src;
+use crate::resources::get_icon;
 use crate::styles::Css;
 use crate::{lang, styles};
 use serde::Deserialize;
@@ -33,7 +33,7 @@ impl Icon {
         let css = format!("height: {}px; width: {}px;", self.icon_size, self.icon_size).into_css();
 
         html! {
-            <img class={ css } src={ get_icon_src(&self.id) } alt={self.alt.clone()} />
+            <img class={ css } src={ get_icon(&self.id) } alt={self.alt.clone()} />
         }
     }
 }

@@ -1,5 +1,5 @@
 use crate::components::{IconButton, IconizedItem};
-use crate::dyn_data_gen::DynGenerable;
+use crate::data_gen::DynGenerable;
 use crate::lang::MultiLang;
 use crate::styles::Css;
 use crate::{lang, resources, styles};
@@ -198,9 +198,9 @@ align-items: center;
     html! {
         <left-pane class={ css }>
             <div id="iconoProyecto-container">
-              <img id="iconoProyecto" src={ resources::get_work_icon_src(&props.view_data.image_id) } alt={ cloned_name }/>
+              <img id="iconoProyecto" src={ resources::get_work_icon(&props.view_data.image_id) } alt={ cloned_name }/>
               if props.view_data.is_api {
-                  <img class={ api_icon_css } src={resources::get_icon_src("api.png")} alt="api"/>
+                  <img class={ api_icon_css } src={resources::get_icon("api.png")} alt="api"/>
               }
             </div>
             <h1>{ name }</h1>
@@ -466,7 +466,7 @@ margin: 0 auto;
                     {
                         for images_ids.into_iter().map(move |img_id| {
                             html! {
-                                <img src={ resources::get_work_image_src(&work_id, &img_id) }
+                                <img src={ resources::get_work_img(&work_id, &img_id) }
                                     alt={ img_id }/>
                             }
                         })

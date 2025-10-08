@@ -5,7 +5,7 @@ use yew::{Html, Properties, function_component, html, use_state};
 
 use crate::{
     components::Icon,
-    dyn_data_gen::{DynGenerable, IntoHtml},
+    data_gen::{DynGenerable, IntoHtml},
     lang::{self, MultiLang},
     styles::{self, Css},
 };

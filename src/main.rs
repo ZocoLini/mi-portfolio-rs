@@ -4,7 +4,7 @@ use yew::{function_component, html, use_state, Html};
 use yew_router::prelude::*;
 
 mod components;
-mod dyn_data_gen;
+mod data_gen;
 mod lang;
 mod resources;
 mod styles;
@@ -13,7 +13,6 @@ mod ui_structure;
 // TODO: Stop passing Strings to Properties and use Yew Attr instead
 // TODO: Remove the clones used in several places to improve memory usage and performance
 // TODO: Dont load translations if they are already loaded
-// TODO: Review the en_EN translations
 
 #[derive(PartialEq, Clone, Routable)]
 enum Route {

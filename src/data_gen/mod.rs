@@ -48,7 +48,7 @@ where
     where
         for<'a> Self::Data: Deserialize<'a>,
     {
-        let data_path = resources::get_dyn_data_src(&self.resouce_id());
+        let data_path = resources::get_data_json(&self.resouce_id());
 
         #[cfg(debug_assertions)]
         console::log_1(&(&data_path).into());
