@@ -3,6 +3,8 @@ set -e
 
 MODE=$1
 
+bash scripts/db.sh
+
 mkdir -p dist
 
 (
@@ -32,7 +34,7 @@ trunk serve -d ../dist &
 pid1=$!
 cd ..
 
-target/debug/backend &
+DATABASE_URL=sqlite://portfolio.sqlite target/debug/backend &
 pid2=$!
 
 cleanup() {

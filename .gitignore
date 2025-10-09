@@ -15,7 +15,7 @@ Cargo.lock
 *.pdb
 
 .env
-*.sqlite
+portfolio.sqlite*
 
 dist/
 .zed/
