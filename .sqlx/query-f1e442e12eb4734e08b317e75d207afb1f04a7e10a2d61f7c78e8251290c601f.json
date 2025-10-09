@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "insert into qr_scan (reference, created_at, session_id, ip) values ($1, $2, $3, $4)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 4
+    },
+    "nullable": []
+  },
+  "hash": "f1e442e12eb4734e08b317e75d207afb1f04a7e10a2d61f7c78e8251290c601f"
+}

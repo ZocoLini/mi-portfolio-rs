@@ -8,4 +8,4 @@ port = 8000
 
 [build]
 target = "index.html"
-public_url = "/zocolini/portfolio/"
+public_url = "/portfolio/"
