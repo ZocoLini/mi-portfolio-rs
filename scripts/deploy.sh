@@ -7,10 +7,14 @@ bash scripts/build.sh release
 # Deploying the frontend
 (
     ssh $SERVER "
-        rm -rf /var/www/bcastellano.com/portfolio
+        rm -rf /tmp/portfolio
     " || error_exit "SSH commands failed"
 
-    scp -r dist/* $SERVER:/var/www/bcastellano.com/portfolio
+    scp -r dist/* $SERVER:/tmp/portfolio
+    
+    ssh $SERVER "
+        mv /tmp/portfolio /var/www/bcastellano.com/portfolio
+    " || error_exit "SSH commands failed"
 
     ssh $SERVER "
             chown -R www-data:www-data /var/www/bcastellano.com/portfolio
