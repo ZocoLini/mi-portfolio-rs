@@ -11,6 +11,7 @@ use yew::prelude::*;
 
 mod about;
 mod knowledge;
+mod timeline;
 mod works;
 
 #[function_component(View)]
@@ -79,6 +80,11 @@ pub fn view() -> Html {
         Callback::from(move |_| current_view.set(html! { <about::View /> }))
     };
 
+    let timeline_click = {
+        let current_view = current_view.clone();
+        Callback::from(move |_| current_view.set(html! { <timeline::View /> }))
+    };
+
     let works_click = {
         let current_view = current_view.clone();
         Callback::from(move |_| current_view.set(html! { <works::View /> }))
@@ -97,6 +103,7 @@ pub fn view() -> Html {
             </center-pane>
             <right-pane class={right_css}>
                 <IconButton icon_id="about.png" label="" onclick={about_click}/>
+                <IconButton icon_id="timeline.png" label="" onclick={timeline_click}/>
                 <IconButton icon_id="knowledge.png" label="" onclick={knowledge_click}/>
                 <IconButton icon_id="works.png" label="" onclick={works_click}/>
             </right-pane>

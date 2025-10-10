@@ -1,4 +1,5 @@
 use crate::resources;
+use chrono::NaiveDate;
 use gloo_net::http::Request;
 use std::collections::HashMap;
 use std::hash::Hash;
@@ -180,5 +181,11 @@ where
 {
     fn translate(self) -> Self {
         self.map(|x| x.translate())
+    }
+}
+
+impl MultiLang for NaiveDate {
+    fn translate(self) -> Self {
+        self
     }
 }
