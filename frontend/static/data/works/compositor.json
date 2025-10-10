@@ -44,6 +44,12 @@
   "description": [
     "%work-view.compositor.description.1"
   ],
+  "multimedia": {
+    "type": "Pc",
+    "images_ids": [
+      "captura1.png"
+    ]
+  },
   "links": [
     {
       "icon_id": "logo-github.png",
