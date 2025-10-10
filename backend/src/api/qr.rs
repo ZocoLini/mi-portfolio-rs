@@ -34,18 +34,25 @@ pub async fn portfolio_qr(
     let query = query.into_inner();
 
     let mut response = HttpResponse::TemporaryRedirect();
-    response.insert_header((header::LOCATION, "https://bcastellano.com/portfolio"));
 
-    let session_cookie = req.cookie("session_id");
+    #[cfg(debug_assertions)]
+    {
+        response.insert_header((header::LOCATION, "https://127.0.0.1/portfolio"));
+    }
+
+    #[cfg(not(debug_assertions))]
+    {
+        response.insert_header((header::LOCATION, "https://bcastellano.com/portfolio"));
+    }
+
+    let session_cookie = req.cookie("session");
 
     let session_id = if let Some(cookie) = session_cookie {
         cookie.value().to_string()
     } else {
-        let mut uuid_builder = uuid::Builder::nil();
-        uuid_builder.set_version(uuid::Version::Random);
-        let new_session = uuid_builder.into_uuid().to_string();
+        let new_session = uuid::Uuid::new_v4().to_string();
 
-        let cookie = Cookie::build("session_id", new_session.clone())
+        let cookie = Cookie::build("session", new_session.clone())
             .path("/")
             .max_age(time::Duration::MAX)
             .http_only(true)
