@@ -3,10 +3,12 @@ Description=Rust Actix Backend Service
 After=network.target
 
 [Service]
-WorkingDirectory=/home/usuario/proyecto
-ExecStart=/home/usuario/proyecto/dist/backend/backend
+WorkingDirectory=/srv/portfolio-backend
+ExecStart=/srv/portfolio-backend/backend
 Restart=on-failure
 RestartSec=5s
+
+Environment="DATABASE_URL=sqlite://portfolio.sqlite"
 
 [Install]
 WantedBy=multi-user.target
