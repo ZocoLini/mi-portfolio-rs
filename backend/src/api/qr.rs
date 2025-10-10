@@ -37,12 +37,12 @@ pub async fn portfolio_qr(
 
     #[cfg(debug_assertions)]
     {
-        response.insert_header((header::LOCATION, "https://127.0.0.1/portfolio"));
+        response.insert_header((header::LOCATION, "http://127.0.0.1:8000/portfolio/"));
     }
 
     #[cfg(not(debug_assertions))]
     {
-        response.insert_header((header::LOCATION, "https://bcastellano.com/portfolio"));
+        response.insert_header((header::LOCATION, "https://bcastellano.com/portfolio/"));
     }
 
     let session_cookie = req.cookie("session");
