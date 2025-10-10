@@ -73,7 +73,8 @@ fn app() -> Html {
 
 fn main() 
 {
-    spawn_local(async {
+    spawn_local(async 
+    {
         yew::Renderer::<App>::new().render();
     });
 }

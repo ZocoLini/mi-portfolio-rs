@@ -10,7 +10,7 @@ bash scripts/build.sh release
         rm -rf /tmp/portfolio
     " || error_exit "SSH commands failed"
 
-    scp -r dist/* $SERVER:/tmp/portfolio
+    rsync -avz dist/ $SERVER:/tmp/portfolio
     
     ssh $SERVER "
         rm -rf /var/www/bcastellano.com/portfolio && mv /tmp/portfolio /var/www/bcastellano.com/portfolio
