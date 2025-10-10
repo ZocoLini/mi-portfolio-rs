@@ -13,7 +13,7 @@ bash scripts/build.sh release
     scp -r dist/* $SERVER:/tmp/portfolio
     
     ssh $SERVER "
-        mv /tmp/portfolio /var/www/bcastellano.com/portfolio
+        rm -rf /var/www/bcastellano.com/portfolio && mv /tmp/portfolio /var/www/bcastellano.com/portfolio
     " || error_exit "SSH commands failed"
 
     ssh $SERVER "
