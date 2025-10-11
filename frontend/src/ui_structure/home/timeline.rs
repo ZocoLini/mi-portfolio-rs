@@ -38,7 +38,7 @@ struct JobEventData {
     company: String,
     description: String,
     start_date: NaiveDate,
-    end_date: NaiveDate
+    end_date: NaiveDate,
 }
 
 #[derive(Deserialize, MultiLang, Clone, PartialEq)]
@@ -47,7 +47,7 @@ struct EducationEventData {
     institution: String,
     description: String,
     start_date: NaiveDate,
-    end_date: NaiveDate
+    end_date: NaiveDate,
 }
 
 impl IntoHtml for JobEventData {
