@@ -175,9 +175,15 @@ impl TimelineData {
         let mut depth = 0;
 
         for formation in &self.formations {
-            if formation.start_date <= job.start_date && formation.end_date >= job.start_date {
-                depth += 1;
+            if formation.end_date <= job.start_date {
+                continue;
             }
+
+            if formation.start_date >= job.end_date {
+                continue;
+            }
+
+            depth += 1;
         }
 
         for j in &self.jobs {
@@ -185,9 +191,15 @@ impl TimelineData {
                 break;
             }
 
-            if j.start_date <= job.start_date && j.end_date >= job.start_date {
-                depth += 1;
+            if j.end_date <= job.start_date {
+                continue;
             }
+
+            if j.start_date >= job.end_date {
+                continue;
+            }
+
+            depth += 1;
         }
 
         depth * 430
@@ -201,9 +213,15 @@ impl TimelineData {
                 break;
             }
 
-            if f.start_date <= formation.start_date && f.end_date >= formation.start_date {
-                depth += 1;
+            if f.end_date <= formation.start_date {
+                continue;
             }
+
+            if f.start_date >= formation.end_date {
+                continue;
+            }
+
+            depth += 1;
         }
 
         depth * 420
