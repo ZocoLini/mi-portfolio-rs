@@ -51,7 +51,7 @@ impl IntoHtml for JobData {
         let height = self
             .end_date
             .signed_duration_since(self.start_date)
-            .num_days();
+            .num_days() - 30;
 
         let css = format!(
             r#"
@@ -59,6 +59,7 @@ impl IntoHtml for JobData {
             height: {height}px;
             display: flex;
             overflow-y: scroll;
+            border: 2px solid #ccc;
 
             img
             {{
@@ -90,7 +91,7 @@ impl IntoHtml for FormationData {
         let height = self
             .end_date
             .signed_duration_since(self.start_date)
-            .num_days();
+            .num_days() - 30;
 
         let css = format!(
             r#"
@@ -98,6 +99,7 @@ impl IntoHtml for FormationData {
             height: {height}px;
             display: flex;
             overflow-y: scroll;
+            border: 2px solid #ccc;
 
             img
             {{
