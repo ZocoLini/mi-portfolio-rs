@@ -1,9 +1,12 @@
 use chrono::{Datelike, NaiveDate};
 use frontend::MultiLang;
 use serde::Deserialize;
-use stylist::StyleSource;
 use std::ops::Add;
+use stylist::StyleSource;
 use yew::{Html, Properties, function_component, html, use_state};
+
+const EVENT_PANE_X_OFFSET: i32 = 150;
+const PIXELS_PER_DAY: i64 = 1;
 
 use crate::{
     components::Icon,
@@ -53,6 +56,7 @@ impl IntoHtml for JobData {
             .end_date
             .signed_duration_since(self.start_date)
             .num_days()
+            * PIXELS_PER_DAY
             - 30;
 
         let css = event_box_style(height);
@@ -75,6 +79,7 @@ impl IntoHtml for FormationData {
             .end_date
             .signed_duration_since(self.start_date)
             .num_days()
+            * PIXELS_PER_DAY
             - 30;
 
         let css = event_box_style(height);
@@ -91,8 +96,7 @@ impl IntoHtml for FormationData {
     }
 }
 
-fn event_box_style(height: i64) -> StyleSource
-{
+fn event_box_style(height: i64) -> StyleSource {
     format!(
         r#"
         width: 400px;
@@ -235,7 +239,7 @@ impl DynGenerable for TimelineProps {
         let start_date = data.start_date();
         let end_date = data.end_date();
 
-        let heigth = end_date.signed_duration_since(*start_date).num_days() + 10;
+        let heigth = end_date.signed_duration_since(*start_date).num_days() * PIXELS_PER_DAY + 10;
 
         let css = format!(
             r#"
@@ -258,7 +262,12 @@ impl DynGenerable for TimelineProps {
                     {
                         for data.jobs.iter().map(|job|
                             html! {
-                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_job(job) + 150, job.start_date.signed_duration_since(*start_date).num_days())}>
+                                <div style={
+                                    format!("position: absolute; left: {}px; top: {}px;",
+                                        data.x_position_of_job(job) + EVENT_PANE_X_OFFSET,
+                                        job.start_date.signed_duration_since(*start_date).num_days() * PIXELS_PER_DAY
+                                    )
+                                }>
                                     { job.clone().into_html() }
                                 </div>
                             }
@@ -267,7 +276,12 @@ impl DynGenerable for TimelineProps {
                     {
                         for data.formations.iter().map(|formation|
                             html! {
-                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_formation(formation) + 150, formation.start_date.signed_duration_since(*start_date).num_days())}>
+                                <div style={
+                                    format!("position: absolute; left: {}px; top: {}px;",
+                                        data.x_position_of_formation(formation) + EVENT_PANE_X_OFFSET,
+                                        formation.start_date.signed_duration_since(*start_date).num_days() * PIXELS_PER_DAY
+                                    )
+                                }>
                                     { formation.clone().into_html() }
                                 </div>
                             }
@@ -296,11 +310,11 @@ impl TimelineDatesComponent {
 impl IntoHtml for TimelineDatesComponent {
     fn into_html(self) -> Html {
         let css = format!(
-        r#"
+            r#"
         "#
         )
         .into_css();
-        
+
         // Generar una lista de fechas (un punto por mes)
         let mut dates = vec![];
         let mut current = self.start_date;
@@ -339,8 +353,13 @@ impl IntoHtml for TimelineDatesComponent {
             current_y += days_in_month as f64 * 1.0; // 1 px per day
         }
 
-        let heigth = self.end_date.signed_duration_since(self.start_date).num_days() + 10;
-        
+        let heigth = self
+            .end_date
+            .signed_duration_since(self.start_date)
+            .num_days()
+            * PIXELS_PER_DAY
+            + 10;
+
         html!(
             <div class={ css }>
             <svg
