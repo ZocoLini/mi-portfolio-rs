@@ -5,14 +5,16 @@ use std::ops::Add;
 use stylist::StyleSource;
 use yew::{Html, Properties, function_component, html, use_state};
 
-const EVENT_PANE_X_OFFSET: i32 = 150;
+const EVENT_PANE_X_OFFSET: i64 = 150;
 const PIXELS_PER_DAY: i64 = 1;
+const PANE_WIDTH: i64 = 400;
+const PANE_GAP: i64 = 30;
 
 use crate::{
     components::Icon,
     data_gen::{DynGenerable, IntoHtml},
     lang::{self, MultiLang},
-    styles::{self, Css, PaneType},
+    styles::{self, Css},
 };
 
 #[function_component(View)]
@@ -57,9 +59,9 @@ impl IntoHtml for JobData {
             .signed_duration_since(self.start_date)
             .num_days()
             * PIXELS_PER_DAY
-            - 30;
+            - PANE_GAP;
 
-        let css = event_box_style(height);
+        let css = event_pane_style(height);
 
         html!(
         <formation class={ css }>
@@ -80,9 +82,9 @@ impl IntoHtml for FormationData {
             .signed_duration_since(self.start_date)
             .num_days()
             * PIXELS_PER_DAY
-            - 30;
+            - PANE_GAP;
 
-        let css = event_box_style(height);
+        let css = event_pane_style(height);
 
         html!(
         <formation class={ css }>
@@ -96,25 +98,26 @@ impl IntoHtml for FormationData {
     }
 }
 
-fn event_box_style(height: i64) -> StyleSource {
+fn event_pane_style(height: i64) -> StyleSource {
     format!(
         r#"
-        width: 400px;
+        width: {PANE_WIDTH}px;
         height: {height}px;
+        border-radius: 20px;
+        gap: 15px;
         display: flex;
+        padding: 10px;
         overflow-y: scroll;
-        border: 2px solid #ccc;
+        background-color: red;
 
         img
         {{
           width: 50px;
           height: 50px;
-          margin-top: 10px;
-          margin-right: 10px;
+          margin-top: 5px;
         }}
     "#
     )
-    .add(&styles::PaneStyle::new(PaneType::Secondary).css())
     .add(&styles::primary_text_style_as_string())
     .into_css()
 }
@@ -162,7 +165,7 @@ impl TimelineData {
         last_date
     }
 
-    fn x_position_of_job(&self, job: &JobData) -> i32 {
+    fn x_position_of_job(&self, job: &JobData) -> i64 {
         let mut depth = 0;
 
         for formation in &self.formations {
@@ -193,10 +196,10 @@ impl TimelineData {
             depth += 1;
         }
 
-        depth * 430
+        depth * (PANE_WIDTH + PANE_GAP)
     }
 
-    fn x_position_of_formation(&self, formation: &FormationData) -> i32 {
+    fn x_position_of_formation(&self, formation: &FormationData) -> i64 {
         let mut depth = 0;
 
         for f in &self.formations {
@@ -215,7 +218,7 @@ impl TimelineData {
             depth += 1;
         }
 
-        depth * 420
+        depth * (PANE_WIDTH + PANE_GAP)
     }
 }
 
@@ -329,9 +332,9 @@ impl IntoHtml for TimelineDatesComponent {
         }
 
         // Parámetros gráficos del SVG
-        let width = 150.0;
+        let width = EVENT_PANE_X_OFFSET;
         let margin_x = 10.0;
-        let mut current_y = 10.0;
+        let mut current_y = 10;
         let r = 5.0;
 
         // Calcular posiciones Y (distancia según días del mes)
@@ -350,7 +353,7 @@ impl IntoHtml for TimelineDatesComponent {
                 }
                 _ => 30,
             };
-            current_y += days_in_month as f64 * 1.0; // 1 px per day
+            current_y += days_in_month * PIXELS_PER_DAY;
         }
 
         let heigth = self
@@ -373,7 +376,7 @@ impl IntoHtml for TimelineDatesComponent {
                            y1="0"
                            x2={margin_x.to_string()}
                            y2={heigth.to_string()}
-                           stroke="#CBD5E1"
+                           stroke="yellow"
                            stroke-width="3"
                            stroke-linecap="round"
                        />
@@ -388,15 +391,14 @@ impl IntoHtml for TimelineDatesComponent {
                                            cx={margin_x.to_string()}
                                            cy={y.to_string()}
                                            r={r.to_string()}
-                                           fill="#0EA5A4"
+                                           fill="green"
                                        >
-                                           <title>{ label.clone() }</title>
                                        </circle>
                                        <text
                                            x={(margin_x + 15.0).to_string()}
-                                           y={(y + 6.0).to_string()}
+                                           y={(y + 6).to_string()}
                                            font-size="18"
-                                           fill="#475569"
+                                           fill="black"
                                        >
                                            { label }
                                        </text>
