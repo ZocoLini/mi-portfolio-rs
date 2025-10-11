@@ -1,4 +1,4 @@
-use chrono::NaiveDate;
+use chrono::{Datelike, NaiveDate};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::ops::Add;
@@ -51,7 +51,8 @@ impl IntoHtml for JobData {
         let height = self
             .end_date
             .signed_duration_since(self.start_date)
-            .num_days() - 30;
+            .num_days()
+            - 30;
 
         let css = format!(
             r#"
@@ -91,7 +92,8 @@ impl IntoHtml for FormationData {
         let height = self
             .end_date
             .signed_duration_since(self.start_date)
-            .num_days() - 30;
+            .num_days()
+            - 30;
 
         let css = format!(
             r#"
@@ -133,7 +135,7 @@ struct TimelineData {
 }
 
 impl TimelineData {
-    fn first_date(&self) -> &NaiveDate {
+    fn start_date(&self) -> &NaiveDate {
         let mut first_date = &self.jobs.first().unwrap().start_date;
 
         for job in &self.jobs {
@@ -151,7 +153,7 @@ impl TimelineData {
         first_date
     }
 
-    fn last_date(&self) -> &NaiveDate {
+    fn end_date(&self) -> &NaiveDate {
         let mut last_date = &self.jobs.last().unwrap().end_date;
 
         for job in &self.jobs {
@@ -225,30 +227,116 @@ impl DynGenerable for TimelineProps {
     }
 
     fn html_with_data(&self, data: Self::Data) -> Html {
-        let first_date = data.first_date();
-        let last_date = data.last_date();
+        let start_date = data.start_date();
+        let end_date = data.end_date();
 
-        let days_diff = last_date.signed_duration_since(*first_date).num_days();
+        let heigth = end_date.signed_duration_since(*start_date).num_days() + 10;
 
         let css = format!(
             r#"
             display: flex;
             position: relative;
-            width: 100vw; height: 100vh;
-            height: {days_diff}px;
+            height: {heigth}px;
             overflow-y: hidden;
+
+            calendar {{
+                overflow: visible;
+            }}
         "#
         )
         .into_css();
+
+        // Generar una lista de fechas (un punto por mes)
+        let mut dates = vec![];
+        let mut current = start_date.clone();
+        while current <= *end_date {
+            dates.push(current);
+            let next_month = if current.month() == 12 {
+                NaiveDate::from_ymd_opt(current.year() + 1, 1, 1).unwrap()
+            } else {
+                NaiveDate::from_ymd_opt(current.year(), current.month() + 1, 1).unwrap()
+            };
+            current = next_month;
+        }
+
+        // Parámetros gráficos del SVG
+        let width = 150.0;
+        let margin_x = 10.0;
+        let mut current_y = 10.0;
+        let r = 5.0;
+
+        // Calcular posiciones Y (distancia según días del mes)
+        let mut positions = vec![];
+        for date in &dates {
+            positions.push((date, current_y));
+            let days_in_month = match date.month() {
+                1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
+                4 | 6 | 9 | 11 => 30,
+                2 => {
+                    if chrono::NaiveDate::from_ymd_opt(date.year(), 2, 29).is_some() {
+                        29
+                    } else {
+                        28
+                    }
+                }
+                _ => 30,
+            };
+            current_y += days_in_month as f64 * 1.0; // 1 px per day
+        }
 
         html!(
             <div>
                 <h1>{lang::translate("%timeline.view.title")}</h1>
                 <div class={ css }>
+                    <calendar>
+                    <svg
+                               viewBox={format!("0 0 {} {}", width, heigth)}
+                               style={format!("width:100%; height:{heigth}px; display:block;", )}
+                               xmlns="http://www.w3.org/2000/svg"
+                           >
+                               // Línea base
+                               <line
+                                   x1={margin_x.to_string()}
+                                   y1="0"
+                                   x2={margin_x.to_string()}
+                                   y2={heigth.to_string()}
+                                   stroke="#CBD5E1"
+                                   stroke-width="3"
+                                   stroke-linecap="round"
+                               />
+
+                               // Puntos de cada mes
+                               {
+                                   for positions.iter().enumerate().map(|(i, (d, y))| {
+                                       let label = d.format("%b %Y").to_string();
+                                       html! {
+                                           <g key={i}>
+                                               <circle
+                                                   cx={margin_x.to_string()}
+                                                   cy={y.to_string()}
+                                                   r={r.to_string()}
+                                                   fill="#0EA5A4"
+                                               >
+                                                   <title>{ label.clone() }</title>
+                                               </circle>
+                                               <text
+                                                   x={(margin_x + 15.0).to_string()}
+                                                   y={(y + 6.0).to_string()}
+                                                   font-size="18"
+                                                   fill="#475569"
+                                               >
+                                                   { label }
+                                               </text>
+                                           </g>
+                                       }
+                                   })
+                               }
+                           </svg>
+                    </calendar>
                     {
                         for data.jobs.iter().map(|job|
                             html! {
-                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_job(job), job.start_date.signed_duration_since(*first_date).num_days())}>
+                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_job(job) + 150, job.start_date.signed_duration_since(*start_date).num_days())}>
                                     { job.clone().into_html() }
                                 </div>
                             }
@@ -257,7 +345,7 @@ impl DynGenerable for TimelineProps {
                     {
                         for data.formations.iter().map(|formation|
                             html! {
-                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_formation(formation), formation.start_date.signed_duration_since(*first_date).num_days())}>
+                                <div style={format!("position: absolute; left: {}px; top: {}px;", data.x_position_of_formation(formation) + 150, formation.start_date.signed_duration_since(*start_date).num_days())}>
                                     { formation.clone().into_html() }
                                 </div>
                             }
