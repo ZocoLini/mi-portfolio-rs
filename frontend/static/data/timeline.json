@@ -5,68 +5,44 @@
       "company": "",
       "description": "Developed and maintained web applications using React and Node.js.",
       "start_date": "2018-09-01",
-      "end_date": "2020-03-01",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2020-03-01"
     },
     {
       "title": "Special Educational Teacher",
       "company": "",
       "description": "Developed and maintained web applications using React and Node.js.",
       "start_date": "2023-01-14",
-      "end_date": "2024-08-01",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2024-08-01"
     },
     {
       "title": "Scientific Software Engineer Intern",
       "company": "CESGA",
       "description": "Developed and maintained web applications using React and Node.js.",
       "start_date": "2025-04-15",
-      "end_date": "2025-07-15",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2025-07-15"
     },
     {
       "title": "Software Developer",
       "company": "Freelancer",
       "description": "Assisted in developing and maintaining web applications using React and Node.js.",
       "start_date": "2024-08-01",
-      "end_date": "2025-04-15",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2025-04-15"
     }
   ],
-  "formations": [
+  "educations": [
     {
       "title": "Bachelor Degree in Mathematics",
       "institution": "University of Santiago de Compostela",
       "description": "Graduated with honors in Computer Science.",
       "start_date": "2018-09-01",
-      "end_date": "2022-06-30",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2022-06-30"
     },
     {
       "title": "Associate Degree in Computer Science",
       "institution": "IES Chan do Monte",
       "description": "Graduated with distinction in Computer Science.",
       "start_date": "2023-09-01",
-      "end_date": "2025-07-15",
-      "icon": {
-        "icon_size": 50,
-        "id": "lang-cs.png"
-      }
+      "end_date": "2025-07-15"
     }
   ]
 }

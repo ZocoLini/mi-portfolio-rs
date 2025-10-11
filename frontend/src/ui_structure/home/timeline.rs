@@ -33,26 +33,24 @@ pub fn view() -> Html {
 }
 
 #[derive(Deserialize, MultiLang, Clone, PartialEq)]
-struct JobData {
+struct JobEventData {
     title: String,
     company: String,
     description: String,
     start_date: NaiveDate,
-    end_date: NaiveDate,
-    icon: Icon,
+    end_date: NaiveDate
 }
 
 #[derive(Deserialize, MultiLang, Clone, PartialEq)]
-struct FormationData {
+struct EducationEventData {
     title: String,
     institution: String,
     description: String,
     start_date: NaiveDate,
-    end_date: NaiveDate,
-    icon: Icon,
+    end_date: NaiveDate
 }
 
-impl IntoHtml for JobData {
+impl IntoHtml for JobEventData {
     fn into_html(self) -> Html {
         let height = self
             .end_date
@@ -64,18 +62,18 @@ impl IntoHtml for JobData {
         let css = event_pane_style(height);
 
         html!(
-        <formation class={ css }>
-            { self.icon.html() }
+        <job class={ css } style="background-color: #FAA02F;">
+            <Icon id="job-case.png" alt="Job Icon" icon_size={50} />
             <div>
                 <h3>{ &self.title }</h3>
                 <p>{ &self.description }</p>
             </div>
-        </formation>
+        </job>
         )
     }
 }
 
-impl IntoHtml for FormationData {
+impl IntoHtml for EducationEventData {
     fn into_html(self) -> Html {
         let height = self
             .end_date
@@ -87,13 +85,13 @@ impl IntoHtml for FormationData {
         let css = event_pane_style(height);
 
         html!(
-        <formation class={ css }>
-            { self.icon.html() }
+        <education class={ css } style="background-color: #2FB6FA;">
+            <Icon id="graduation-cap.png" alt="Education Icon" icon_size={50} />
             <div>
                 <h3>{ &self.title }</h3>
                 <p>{ &self.description }</p>
             </div>
-        </formation>
+        </education>
         )
     }
 }
@@ -108,12 +106,9 @@ fn event_pane_style(height: i64) -> StyleSource {
         display: flex;
         padding: 10px;
         overflow-y: scroll;
-        background-color: red;
 
         img
         {{
-          width: 50px;
-          height: 50px;
           margin-top: 5px;
         }}
     "#
@@ -124,8 +119,8 @@ fn event_pane_style(height: i64) -> StyleSource {
 
 #[derive(Deserialize, MultiLang, Clone)]
 struct TimelineData {
-    jobs: Vec<JobData>,
-    formations: Vec<FormationData>,
+    jobs: Vec<JobEventData>,
+    educations: Vec<EducationEventData>,
 }
 
 impl TimelineData {
@@ -138,7 +133,7 @@ impl TimelineData {
             }
         }
 
-        for formation in &self.formations {
+        for formation in &self.educations {
             if formation.start_date < *first_date {
                 first_date = &formation.start_date;
             }
@@ -156,7 +151,7 @@ impl TimelineData {
             }
         }
 
-        for formation in &self.formations {
+        for formation in &self.educations {
             if formation.end_date > *last_date {
                 last_date = &formation.end_date;
             }
@@ -165,10 +160,10 @@ impl TimelineData {
         last_date
     }
 
-    fn x_position_of_job(&self, job: &JobData) -> i64 {
+    fn x_position_of_job(&self, job: &JobEventData) -> i64 {
         let mut depth = 0;
 
-        for formation in &self.formations {
+        for formation in &self.educations {
             if formation.end_date <= job.start_date {
                 continue;
             }
@@ -199,10 +194,10 @@ impl TimelineData {
         depth * (PANE_WIDTH + PANE_GAP)
     }
 
-    fn x_position_of_formation(&self, formation: &FormationData) -> i64 {
+    fn x_position_of_formation(&self, formation: &EducationEventData) -> i64 {
         let mut depth = 0;
 
-        for f in &self.formations {
+        for f in &self.educations {
             if f == formation {
                 break;
             }
@@ -277,7 +272,7 @@ impl DynGenerable for TimelineProps {
                         )
                     }
                     {
-                        for data.formations.iter().map(|formation|
+                        for data.educations.iter().map(|formation|
                             html! {
                                 <div style={
                                     format!("position: absolute; left: {}px; top: {}px;",
@@ -376,7 +371,7 @@ impl IntoHtml for TimelineDatesComponent {
                            y1="0"
                            x2={margin_x.to_string()}
                            y2={heigth.to_string()}
-                           stroke="yellow"
+                           stroke="#47A6D5"
                            stroke-width="3"
                            stroke-linecap="round"
                        />
@@ -391,14 +386,14 @@ impl IntoHtml for TimelineDatesComponent {
                                            cx={margin_x.to_string()}
                                            cy={y.to_string()}
                                            r={r.to_string()}
-                                           fill="green"
+                                           fill="#3B3A32"
                                        >
                                        </circle>
                                        <text
                                            x={(margin_x + 15.0).to_string()}
                                            y={(y + 6).to_string()}
                                            font-size="18"
-                                           fill="black"
+                                           fill="#3B3A32"
                                        >
                                            { label }
                                        </text>

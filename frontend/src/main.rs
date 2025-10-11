@@ -13,6 +13,7 @@ mod ui_structure;
 // TODO: Stop passing Strings to Properties and use Yew Attr instead
 // TODO: Remove the clones used in several places to improve memory usage and performance
 // TODO: Dont load translations if they are already loaded
+// TODO: Unify all the colors used in the root css.
 
 #[derive(PartialEq, Clone, Routable)]
 enum Route {
