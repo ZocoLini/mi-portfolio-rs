@@ -46,24 +46,6 @@
       "detail": "%work-view.the-round-table.features.4"
     }
   ],
-  "downloads": [
-    {
-      "link": "https://lebastudios.org/api/v1/theroundtable/installer.sh",
-      "icon": {
-        "icon_id": "logo-linux.png",
-        "title": "Linux",
-        "detail": "Installer x64"
-      }
-    },
-    {
-      "link": "https://lebastudios.org/api/v1/theroundtable/update/theroundtable-linux-x64.zip",
-      "icon": {
-        "icon_id": "logo-linux.png",
-        "title": "Linux",
-        "detail": "Portable x64"
-      }
-    }
-  ],
   "description": [
     "%work-view.the-round-table.description.1",
     "%work-view.the-round-table.description.2",
@@ -81,8 +63,7 @@
       "captura1.png",
       "captura2.png",
       "captura3.png",
-      "captura4.png",
-      "captura5.png"
+      "captura4.png"
     ]
   },
   "links": [

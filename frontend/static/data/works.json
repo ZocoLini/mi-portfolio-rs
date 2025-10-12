@@ -41,21 +41,6 @@
       "%general.role": "%work.role.architect-developer"
      },
      "state": "Deployed"
-    },
-    {
-     "title": "%work.trt-api.title",
-     "description": "%work.trt-api.description",
-     "image_id": "the-round-table",
-     "work_id": "trt-api",
-     "is_api": true,
-     "info": {
-      "%general.developer": "%general.my-name",
-      "%general.technology": "%work.technology.rocket",
-      "%general.type": "%work.trt-api.type",
-      "%general.date": "2025",
-      "%general.role": "%work.role.architect-developer"
-     },
-     "state": "Deployed"
     }
    ]
   },
@@ -109,35 +94,6 @@
       "%general.technology": "%work.technology.trt",
       "%general.type": "%work.the-round-table.type",
       "%general.date": "2024 - Current",
-      "%general.role": "%work.role.architect-developer"
-     },
-     "state": "Deployed"
-    },
-    {
-     "title": "%work.seal-code.title",
-     "description": "%work.seal-code.description",
-     "image_id": "seal-code",
-     "work_id": "seal-code",
-     "info": {
-      "%general.developer": "%general.my-name",
-      "%general.technology": "%work.technology.java-fx",
-      "%general.type": "%work.seal-code.type",
-      "%general.date": "2024",
-      "%general.role": "%work.role.architect-developer"
-     },
-     "state": "Concept"
-    },
-    {
-     "title": "%work.leba-api.title",
-     "description": "%work.leba-api.description",
-     "image_id": "leba",
-     "work_id": "leba-api",
-     "is_api": true,
-     "info": {
-      "%general.developer": "%general.my-name",
-      "%general.technology": "%work.technology.spring-boot",
-      "%general.type": "%work.leba-api.type",
-      "%general.date": "2024",
       "%general.role": "%work.role.architect-developer"
      },
      "state": "Deployed"
