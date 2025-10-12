@@ -5,7 +5,6 @@ use crate::{resources, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::collections::HashMap;
-use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
@@ -83,68 +82,13 @@ impl DynGenerable for WorksProps {
     }
 }
 
-#[derive(PartialEq, Clone, Deserialize, Copy)]
-enum WorkState {
-    Building,
-    Deployed,
-    Concept,
-}
-
-impl WorkState {
-    fn icon(&self) -> Html {
-        let id = match self {
-            WorkState::Building => "building",
-            WorkState::Deployed => "deployed",
-            WorkState::Concept => "concept",
-        };
-
-        let css = r#"
-            position: absolute;
-            top: -25px;
-            right: 0;
-            margin: 10px;
-            min-width: 100px;
-            max-height: 33px;
-            z-index: 10;
-        "#
-        .to_string()
-        .into_css();
-
-        html! {
-            <img class={ css }
-                src={format!("{}.png", resources::get_icon(id))}
-                alt={self.to_string()}/>
-        }
-    }
-}
-
-impl Display for WorkState {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let str = match self {
-            WorkState::Building => "building".to_string(),
-            WorkState::Deployed => "deployed".to_string(),
-            WorkState::Concept => "concept".to_string(),
-        };
-        write!(f, "{}", str)
-    }
-}
-
-impl MultiLang for WorkState {
-    fn translate(self) -> Self {
-        self
-    }
-}
-
 #[derive(Deserialize, MultiLang, Clone)]
 pub struct WorkData {
     title: String,
     image_id: String,
     work_id: String,
-    #[serde(default)]
-    is_api: bool,
     description: String,
     info: HashMap<String, String>,
-    state: WorkState,
 }
 
 impl IntoHtml for WorkData {
@@ -189,22 +133,9 @@ impl IntoHtml for WorkData {
             "#
         );
 
-        let api_icon_css = css!(
-            r#"
-            position: absolute;
-            left: -5px;
-            top: -15px;
-            width: 36px;
-            height: 36px;
-            "#
-        );
-
         html!(
           <a class={ css } href={format!("work/{}", self.work_id)} target="_parent">
             <img class={ work_icon_css } src={resources::get_work_icon(&self.image_id)} alt={self.work_id}/>
-            if self.is_api {
-                <img class={ api_icon_css } src={resources::get_icon("api.png")} alt="api"/>
-            }
             <div class="work-info">
               <h2>{ &self.title }</h2>
               <ul>
@@ -216,9 +147,6 @@ impl IntoHtml for WorkData {
               </ul>
               <p> { &self.description } </p>
             </div>
-            {
-                self.state.icon()
-            }
           </a>
         )
     }

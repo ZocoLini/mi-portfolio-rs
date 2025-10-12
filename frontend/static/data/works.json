@@ -10,8 +10,7 @@
         "%general.type": "%work.fee.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.mk-template.title",
@@ -23,8 +22,7 @@
         "%general.type": "%work.mk-template.type",
         "%general.date": "2024",
         "%general.role": "%work.role.architect-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.db-sniffer.title",
@@ -36,8 +34,7 @@
         "%general.type": "%work.db-sniffer.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.cuqdyn-c.title",
@@ -49,8 +46,7 @@
         "%general.type": "%work.cuqdyn-c.type",
         "%general.date": "2025",
         "%general.role": "%work.role.lead-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.compositor.title",
@@ -62,8 +58,7 @@
         "%general.type": "%work.compositor.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.the-round-table.title",
@@ -76,8 +71,7 @@
         "%general.type": "%work.the-round-table.type",
         "%general.date": "2024 - Current",
         "%general.role": "%work.role.architect-developer"
-      },
-      "state": "Deployed"
+      }
     },
     {
       "title": "%work.leba.title",
@@ -90,8 +84,7 @@
         "%general.type": "%work.leba.type",
         "%general.date": "2021",
         "%general.role": "%work.leba.role"
-      },
-      "state": "Deployed"
+      }
     }
   ]
 }
