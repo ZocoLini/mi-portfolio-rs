@@ -28,7 +28,7 @@ pub fn view() -> Html {
 
 #[derive(Deserialize, MultiLang, Clone)]
 struct WorksData {
-    sections: Vec<WorkSectionData>,
+    works: Vec<WorkData>,
 }
 
 #[derive(Properties, PartialEq, Clone)]
@@ -53,32 +53,7 @@ impl DynGenerable for WorksProps {
             flex-direction: column;
             gap: 20px;
             align-items: center;
-        "#
-        .to_string()
-        .into_css();
-
-        html!(
-            <div class={ css }>
-                <h1>{lang::translate("%work.view.title")}</h1>
-                {
-                    for data.sections.iter().map(|work_section|
-                        work_section.clone().into_html()
-                    )
-                }
-            </div>
-        )
-    }
-}
-
-#[derive(Deserialize, MultiLang, Clone)]
-struct WorkSectionData {
-    title: String,
-    works: Vec<WorkData>,
-}
-
-impl IntoHtml for WorkSectionData {
-    fn into_html(self) -> Html {
-        let css = r#"
+            
             #contenedor-works {
                 display: flex;
                 flex-wrap: wrap;
@@ -94,17 +69,16 @@ impl IntoHtml for WorkSectionData {
         .into_css();
 
         html!(
-        <div class={ css }>
-          <h2>{ &self.title }</h2>
-
-          <div id="contenedor-works">
-              {
-                for self.works.iter().map(move |work|
-                  work.clone().into_html()
-                )
-              }
-          </div>
-        </div>
+            <div class={ css }>
+                <h1>{lang::translate("%work.view.title")}</h1>
+                <div id="contenedor-works">
+                    {
+                      for data.works.iter().map(move |work|
+                        work.clone().into_html()
+                      )
+                    }
+                </div>
+            </div>
         )
     }
 }
