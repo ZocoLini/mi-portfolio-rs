@@ -52,12 +52,12 @@ impl DynGenerable for WorksProps {
             flex-direction: column;
             gap: 20px;
             align-items: center;
-            
+
             #contenedor-works {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 20px;
+                gap: 10px;
             }
 
             h2 {
@@ -89,18 +89,19 @@ pub struct WorkData {
     work_id: String,
     description: String,
     info: HashMap<String, String>,
+    icons: Vec<String>,
 }
 
 impl IntoHtml for WorkData {
     fn into_html(self) -> Html {
         let css = r#"
-            min-width: 300px;
-            max-width: 400px;
-            width: 45%;
+            min-width: 350px;
+            max-width: 500px;
+            width: 90%;
             display: flex;
             position: relative;
+            flex-direction: column;
             border-radius: 10px;
-            padding: 0 10px;
             transition: background-color 0.3s, color 0.3s;
             text-decoration: none;
 
@@ -109,6 +110,7 @@ impl IntoHtml for WorkData {
               background-color: var(--color-button-hover);
               color: white;
             }
+
             ul
             {
               padding: 0;
@@ -118,34 +120,64 @@ impl IntoHtml for WorkData {
             li {
               margin-bottom: 5px;
             }
+
+            ul, p, div {
+              margin-left: 20px;
+            }
         "#
         .to_string()
         .add(&styles::PaneStyle::new(PaneType::Secondary).css())
         .add(&styles::primary_text_style_as_string())
         .into_css();
 
-        let work_icon_css = css!(
+        let header_css = css!(
             r#"
-            width: 50px;
-            height: 50px;
-            margin-top: 10px;
-            margin-right: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+
+            img {
+                width: 50px;
+                height: 50px;
+                margin-top: 10px;
+            }
+            "#
+        );
+
+        let other_icons_css = css!(
+            r#"
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            img {
+                width: 30px;
+                height: 30px;
+            }
             "#
         );
 
         html!(
           <a class={ css } href={format!("work/{}", self.work_id)} target="_parent">
-            <img class={ work_icon_css } src={resources::get_work_icon(&self.image_id)} alt={self.work_id}/>
-            <div class="work-info">
+            <div class={ header_css } >
+              <img src={resources::get_work_icon(&self.image_id)} alt={self.work_id}/>
               <h2>{ &self.title }</h2>
-              <ul>
-                {
-                  for self.info.iter().map(|(key, value)|
-                    html! { <li><strong>{ key }{": "}</strong>{ value }</li>
-                  })
-                }
-              </ul>
-              <p> { &self.description } </p>
+            </div>
+            <ul>
+              {
+                for self.info.iter().map(|(key, value)|
+                  html! { <li><strong>{ key }{": "}</strong>{ value }</li>
+                })
+              }
+            </ul>
+            <p> { &self.description } </p>
+            <div class={other_icons_css}>
+              {
+                  for self.icons.iter().map(|icon|
+                      html! { <img src={resources::get_icon(icon)} alt={icon.to_string()} title={icon.to_string()}/> }
+                  )
+              }
             </div>
           </a>
         )

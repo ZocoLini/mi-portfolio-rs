@@ -10,7 +10,14 @@
         "%general.type": "%work.fee.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      }
+      },
+      "icons": [
+        "lang-rust.png",
+        "logo-docker.png",
+        "crate.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     },
     {
       "title": "%work.mk-template.title",
@@ -22,7 +29,14 @@
         "%general.type": "%work.mk-template.type",
         "%general.date": "2024",
         "%general.role": "%work.role.architect-developer"
-      }
+      },
+      "icons": [
+        "lang-rust.png",
+        "console.png",
+        "logo-linux.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     },
     {
       "title": "%work.db-sniffer.title",
@@ -34,7 +48,15 @@
         "%general.type": "%work.db-sniffer.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      }
+      },
+      "icons": [
+        "lang-rust.png",
+        "console.png",
+        "logo-docker.png",
+        "cicd.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     },
     {
       "title": "%work.cuqdyn-c.title",
@@ -46,7 +68,23 @@
         "%general.type": "%work.cuqdyn-c.type",
         "%general.date": "2025",
         "%general.role": "%work.role.lead-developer"
-      }
+      },
+      "icons": [
+        "lang-rust.png",
+        "lang-c.png",
+        "lang-cpp.png",
+        "lang-fortran.png",
+        "lang-matlab.png",
+        "console.png",
+        "logo-docker.png",
+        "logo-linux.png",
+        "logo-mpi.png",
+        "logo-cuda.jpg",
+        "logo-openmp.jpg",
+        "cicd.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     },
     {
       "title": "%work.compositor.title",
@@ -58,7 +96,8 @@
         "%general.type": "%work.compositor.type",
         "%general.date": "2025",
         "%general.role": "%work.role.architect-developer"
-      }
+      },
+      "icons": ["lang-cpp.png", "logo-git.png", "logo-github.png"]
     },
     {
       "title": "%work.the-round-table.title",
@@ -71,7 +110,23 @@
         "%general.type": "%work.the-round-table.type",
         "%general.date": "2024 - Current",
         "%general.role": "%work.role.architect-developer"
-      }
+      },
+      "icons": [
+        "lang-java.png",
+        "lang-rust.png",
+        "logo-javafx.png",
+        "logo-iced.svg",
+        "logo-actix.png",
+        "logo-sqlite.png",
+        "logo-mariadb.png",
+        "logo-proxmox.png",
+        "logo-linux.png",
+        "logo-windows.png",
+        "logo-docker.png",
+        "rest-api.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     },
     {
       "title": "%work.leba.title",
@@ -84,7 +139,19 @@
         "%general.type": "%work.leba.type",
         "%general.date": "2021",
         "%general.role": "%work.leba.role"
-      }
+      },
+      "icons": [
+        "lang-cs.png",
+        "lang-rust.png",
+        "logo-unity.png",
+        "logo-spring.png",
+        "logo-actix.png",
+        "logo-mariadb.png",
+        "logo-android.png",
+        "rest-api.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
     }
   ]
 }
