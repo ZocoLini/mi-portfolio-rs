@@ -15,5 +15,9 @@ web-sys = { version = "0.3.77", features = ["Navigator", "Window"] }
 syn = { version = "2.0.104" }
 quote = { version = "1.0.40" }
 
+[build-dependencies]
+image = { version = "0.25" }
+walkdir = { version = "2.5" }
+
 [lib]
 proc-macro = true
