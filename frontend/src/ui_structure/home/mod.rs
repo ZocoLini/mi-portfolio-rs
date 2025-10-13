@@ -11,6 +11,7 @@ use yew::prelude::*;
 
 mod about;
 mod knowledge;
+mod pr;
 mod timeline;
 mod works;
 
@@ -95,6 +96,11 @@ pub fn view() -> Html {
         Callback::from(move |_| current_view.set(html! { <knowledge::View /> }))
     };
 
+    let pr_click = {
+        let current_view = current_view.clone();
+        Callback::from(move |_| current_view.set(html! { <pr::View /> }))
+    };
+
     html! {
         <main class={main_css}>
             <LeftPane />
@@ -106,6 +112,7 @@ pub fn view() -> Html {
                 <IconButton icon_id="timeline.png" label="" onclick={timeline_click}/>
                 <IconButton icon_id="knowledge.png" label="" onclick={knowledge_click}/>
                 <IconButton icon_id="works.png" label="" onclick={works_click}/>
+                <IconButton icon_id="pr.png" label="" onclick={pr_click}/>
             </right-pane>
         </main>
     }
@@ -135,6 +142,7 @@ fn left_pane() -> Html {
       padding: 10px;
       font-size: 16px;
       font-weight: normal;
+      text-align: center;
       margin: 5px;
       border-radius: 10px;
       background-color: var(--color-secondary-bkg-pane);
