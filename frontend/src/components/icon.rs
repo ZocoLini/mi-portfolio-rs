@@ -148,7 +148,9 @@ pub fn icon_button(props: &IconButtonProps) -> Html {
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
         text-align: center;
+        min-width: 50px;
         width: 50px;
+        min-height: 50px;
         height: 50px;
         text-decoration: none;
         overflow: hidden;
