@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "insert into content_view (session_id, content_id) values ($1, $2)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "fbcddde0f51fa66e67d559d62296f12912f5bc4199a09bb65c714627b4f38cfa"
+}

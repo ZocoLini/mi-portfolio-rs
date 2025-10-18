@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 uuid = { version = "1.18.1", features = ["v4"] }
 actix-web = { version = "4.11.0" }
+actix-cors = { version = "*" }
 tokio = { version = "1.47.1", features = ["rt-multi-thread", "macros"] }
 futures-util = { version = "*" }
 

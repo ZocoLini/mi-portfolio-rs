@@ -1,8 +1,9 @@
 use crate::ui_structure::{home, work};
 use yew::platform::spawn_local;
-use yew::{function_component, html, use_state, Html};
+use yew::{Html, function_component, html, use_state};
 use yew_router::prelude::*;
 
+mod backend;
 mod components;
 mod data_gen;
 mod lang;
@@ -35,12 +36,15 @@ enum Route {
 fn switch(route: Route) -> Html {
     match route {
         Route::Home => {
+            backend::register_content_view("home");
             html! { <home::View /> }
         }
         Route::Work { id } => {
+            backend::register_content_view(&format!("work-{}", id));
             html! { <work::View work_id={ id } /> }
         }
         Route::Doc { file } => {
+            backend::register_content_view("cv");
             html! {
                 <iframe
                         src={format!("static/docs/{}", file)}
@@ -67,22 +71,20 @@ fn app() -> Html {
             state.set(true);
         });
     }
-    
+
     html! {
-            if *translations_loaded {
-                <BrowserRouter>
-                    <Switch<Route> render={switch} />
-                </BrowserRouter>
-            } else {
-                <components::LoadingSpinner/>
-            }
+        if *translations_loaded {
+            <BrowserRouter>
+                <Switch<Route> render={switch} />
+            </BrowserRouter>
+        } else {
+            <components::LoadingSpinner/>
         }
+    }
 }
 
-fn main() 
-{
-    spawn_local(async 
-    {
+fn main() {
+    spawn_local(async {
         yew::Renderer::<App>::new().render();
     });
 }
