@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "\n                update session set last_activity = $1 where session_id = $2\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "443cf5cc14f4cea3e0ac3bc2ede8c3511306c0fbd90f86785ff9ffaba4b01157"
+}

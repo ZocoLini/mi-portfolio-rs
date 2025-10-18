@@ -1,0 +1,13 @@
+[package]
+name = "bridge"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+typed-builder = { version = "0.22.0" }
+getset = { version = "*" }
+
+sqlx = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }

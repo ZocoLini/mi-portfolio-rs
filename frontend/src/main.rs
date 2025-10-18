@@ -9,7 +9,6 @@ mod lang;
 mod resources;
 mod styles;
 mod ui_structure;
-mod github;
 
 // TODO: Stop passing Strings to Properties and use Yew Attr instead
 // TODO: Remove the clones used in several places to improve memory usage and performance
