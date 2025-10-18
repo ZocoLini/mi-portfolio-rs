@@ -3,14 +3,14 @@ use serde::{Deserialize, Serialize};
 use sqlx::prelude::FromRow;
 use typed_builder::TypedBuilder;
 
-#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq)]
+#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq, Debug)]
 #[getset(get = "pub")]
 pub struct Session {
     session_id: String,
     last_activity: chrono::DateTime<chrono::Utc>,
 }
 
-#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq)]
+#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq, Debug)]
 #[getset(get = "pub")]
 pub struct QrScan {
     #[builder(default)]
@@ -23,7 +23,7 @@ pub struct QrScan {
     ip: Option<String>,
 }
 
-#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq)]
+#[derive(FromRow, Serialize, Deserialize, TypedBuilder, Getters, Clone, PartialEq, Debug)]
 #[getset(get = "pub")]
 pub struct ContentView {
     #[builder(default)]

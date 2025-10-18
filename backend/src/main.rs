@@ -27,6 +27,7 @@ async fn main() -> Result<(), Error> {
 
     HttpServer::new(move || {
         let cors = Cors::default()
+            .supports_credentials()
             .allow_any_origin()
             .allow_any_method()
             .allow_any_header()

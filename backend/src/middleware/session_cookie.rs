@@ -46,6 +46,7 @@ where
     forward_ready!(service);
 
     fn call(&self, req: ServiceRequest) -> Self::Future {
+        dbg!(&req.cookie("session"));
         let (cookie_val, cookie) = if let Some(cookie) = req.cookie("session") {
             (cookie.value().to_string(), None)
         } else {

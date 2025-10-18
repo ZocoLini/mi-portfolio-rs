@@ -21,7 +21,7 @@ pub async fn content_view(
         extensions.get::<bridge::Session>().cloned()
     };
 
-    let qr_scan = ContentView::builder()
+    let data = ContentView::builder()
         .session_id(
             session
                 .map(|c| c.session_id().to_string())
@@ -30,14 +30,14 @@ pub async fn content_view(
         .content_id(body.content_id.clone())
         .build();
 
-    insert_content_view(qr_scan, &state.db_pool).await?;
+    insert_content_view(data, &state.db_pool).await?;
 
     Ok(HttpResponse::Ok().finish())
 }
 
-async fn insert_content_view(qr_scan: bridge::ContentView, db_pool: &sqlx::SqlitePool) -> Result<(), error::Error> {
-    let reference = qr_scan.session_id();
-    let created_at = qr_scan.content_id();
+async fn insert_content_view(data: bridge::ContentView, db_pool: &sqlx::SqlitePool) -> Result<(), error::Error> {
+    let reference = data.session_id();
+    let created_at = data.content_id();
     
     let query = sqlx::query!(
         "insert into content_view (session_id, content_id) values ($1, $2)",
