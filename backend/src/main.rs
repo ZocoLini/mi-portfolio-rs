@@ -26,7 +26,10 @@ async fn main() -> Result<(), Error> {
     println!("Listening on 127.0.0.1:8080");
 
     HttpServer::new(move || {
-        let cors = Cors::default()
+        let cors = Cors::default();
+
+        #[cfg(debug_assertions)]
+        let cors = cors
             .supports_credentials()
             .allow_any_origin()
             .allow_any_method()
