@@ -2,13 +2,13 @@
 // TODO: Make the contact Info autogenerables
 
 use crate::lang::MultiLang;
+use crate::{components, resources};
 use gloo_net::http::Request;
 use serde::Deserialize;
 #[cfg(debug_assertions)]
 use web_sys::console;
 use yew::platform::spawn_local;
-use yew::{html, Html, Properties, UseStateHandle};
-use crate::{components, resources};
+use yew::{Html, Properties, UseStateHandle, html};
 
 pub trait DynGenerable: Clone + Properties + PartialEq
 where
@@ -32,7 +32,7 @@ where
                     state.set(Some(data.data().await));
                 });
             };
-            
+
             self.html_without_data()
         }
     }
@@ -54,9 +54,9 @@ where
         console::log_1(&(&data_path).into());
 
         let fetched_data = Request::get(&data_path)
-        .send()
-        .await
-        .expect("Failed to fetch JSON");
+            .send()
+            .await
+            .expect("Failed to fetch JSON");
 
         serde_json::from_value::<Self::Data>(
             fetched_data.json().await.expect("Failed to parse JSON"),

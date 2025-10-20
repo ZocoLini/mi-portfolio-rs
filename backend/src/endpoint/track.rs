@@ -1,8 +1,11 @@
-use actix_web::{post, web::{self, Json}, HttpMessage, HttpRequest, HttpResponse};
+use actix_web::{
+    HttpMessage, HttpRequest, HttpResponse, post,
+    web::{self, Json},
+};
 use bridge::ContentView;
 use serde::Deserialize;
 
-use crate::{error, AppState};
+use crate::{AppState, error};
 
 #[derive(Deserialize)]
 struct ContentViewRequest {
@@ -15,7 +18,6 @@ pub async fn content_view(
     body: Json<ContentViewRequest>,
     state: web::Data<AppState>,
 ) -> Result<HttpResponse, actix_web::Error> {
-
     let session = {
         let extensions = req.extensions();
         extensions.get::<bridge::Session>().cloned()
@@ -35,10 +37,13 @@ pub async fn content_view(
     Ok(HttpResponse::Ok().finish())
 }
 
-async fn insert_content_view(data: bridge::ContentView, db_pool: &sqlx::SqlitePool) -> Result<(), error::Error> {
+async fn insert_content_view(
+    data: bridge::ContentView,
+    db_pool: &sqlx::SqlitePool,
+) -> Result<(), error::Error> {
     let reference = data.session_id();
     let created_at = data.content_id();
-    
+
     let query = sqlx::query!(
         "insert into content_view (session_id, content_id) values ($1, $2)",
         reference,

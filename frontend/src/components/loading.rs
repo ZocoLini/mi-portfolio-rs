@@ -3,7 +3,8 @@ use yew::prelude::*;
 
 #[function_component(LoadingSpinner)]
 pub fn loading_icon() -> Html {
-    let css = css!("
+    let css = css!(
+        "
         display: flex;
         justify-content: center;
         align-items: center;

@@ -1,15 +1,15 @@
 use std::str::FromStr;
-use stylist::{StyleSource};
+use stylist::StyleSource;
 use stylist::ast::Sheet;
 
 mod pane;
-#[allow(unused)] mod text;
+#[allow(unused)]
+mod text;
 
 pub use pane::*;
 pub use text::*;
 
-pub trait Css
-{
+pub trait Css {
     fn into_css(self) -> StyleSource;
 }
 

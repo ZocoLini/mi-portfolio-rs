@@ -1,5 +1,5 @@
 use gloo_net::http::Request;
-use serde::{Serialize};
+use serde::Serialize;
 use web_sys::RequestCredentials;
 use yew::platform::spawn_local;
 
@@ -15,11 +15,10 @@ pub fn register_content_view(content_id: &str) {
 
     #[cfg(debug_assertions)]
     let endpoint = "http://127.0.0.1:8080/api/v1/portfolio/track/content-view";
-        
+
     #[cfg(not(debug_assertions))]
     let endpoint = "https://bcastellano.com/api/v1/portfolio/track/content-view";
-    
-    
+
     spawn_local(async move {
         let _ = Request::post(endpoint)
             .header("Content-Type", "application/json")

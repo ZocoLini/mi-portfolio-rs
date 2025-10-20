@@ -1,6 +1,4 @@
-use actix_web::{
-    get, http::header, web, HttpMessage, HttpRequest, HttpResponse
-};
+use actix_web::{HttpMessage, HttpRequest, HttpResponse, get, http::header, web};
 use bridge::QrScan;
 use serde::Deserialize;
 
@@ -43,7 +41,7 @@ pub async fn qr(
         .connection_info()
         .realip_remote_addr()
         .map(|ip| ip.to_string());
-    
+
     let date_time = chrono::Utc::now();
 
     let qr_scan = QrScan::builder()
@@ -62,12 +60,15 @@ pub async fn qr(
     Ok(response.finish())
 }
 
-async fn insert_qr_scan(qr_scan: bridge::QrScan, db_pool: &sqlx::SqlitePool) -> Result<(), error::Error> {
+async fn insert_qr_scan(
+    qr_scan: bridge::QrScan,
+    db_pool: &sqlx::SqlitePool,
+) -> Result<(), error::Error> {
     let reference = qr_scan.reference();
     let created_at = qr_scan.created_at();
     let session_id = qr_scan.session_id();
     let ip = qr_scan.ip();
-    
+
     let query = sqlx::query!(
         "insert into qr_scan (reference, created_at, session_id, ip) values ($1, $2, $3, $4)",
         reference,

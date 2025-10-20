@@ -1,7 +1,7 @@
 extern crate proc_macro;
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{parse_macro_input, DeriveInput, Fields, Type};
+use syn::{DeriveInput, Fields, Type, parse_macro_input};
 
 #[proc_macro_derive(MultiLang)]
 pub fn derive_multilang(input: TokenStream) -> TokenStream {

@@ -1,4 +1,4 @@
-use yew::{function_component, html, use_effect_with, Html, Properties};
+use yew::{Html, Properties, function_component, html, use_effect_with};
 
 use crate::backend;
 

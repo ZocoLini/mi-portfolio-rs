@@ -71,7 +71,7 @@ where
             .build();
 
         req.extensions_mut().insert(session.clone());
-        
+
         let fut = self.service.call(req);
 
         Box::pin(async move {

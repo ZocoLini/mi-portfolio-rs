@@ -9,6 +9,4 @@ pub enum Error {
     SqlxError(#[from] sqlx::Error),
 }
 
-impl ResponseError for Error {
-    
-}
+impl ResponseError for Error {}
