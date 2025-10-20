@@ -2,7 +2,7 @@ use crate::components::{IconButton, IconizedItem};
 use crate::data_gen::DynGenerable;
 use crate::lang::MultiLang;
 use crate::styles::Css;
-use crate::{lang, resources, styles};
+use crate::{backend, lang, resources, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::clone::Clone;
@@ -87,6 +87,10 @@ struct MultimediaData {
 
 #[function_component(View)]
 pub fn view(params: &ViewProps) -> Html {
+    let id = params.work_id.clone();
+    use_effect_with((), move |_| {
+        backend::register_content_view(&format!("work-{}", id));
+    });
     let state = use_state(|| None);
     params.generate_dyn_html(state)
 }

@@ -17,6 +17,10 @@ mod works;
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), |_| {
+        backend::register_content_view("home");
+    });
+
     let main_css = css!(
         r#"
         width: 90%;
