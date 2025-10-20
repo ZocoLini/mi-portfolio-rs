@@ -1,4 +1,4 @@
-use yew::{Html, function_component, platform::spawn_local, use_state};
+use yew::{Html, function_component, platform::spawn_local, use_effect_with, use_state};
 
 use gloo_net::http::Request;
 use serde::Deserialize;
@@ -7,7 +7,11 @@ use web_sys::window;
 use yew::{Callback, html};
 
 use crate::{
-    components::{self, Icon, IconButton}, data_gen::IntoHtml, lang, styles::{self, Css, PaneType}, HttpReqState
+    HttpReqState, backend,
+    components::{self, Icon, IconButton},
+    data_gen::IntoHtml,
+    lang,
+    styles::{self, Css, PaneType},
 };
 
 #[derive(Clone, Debug, PartialEq, Deserialize)]
@@ -267,6 +271,9 @@ pub async fn get_collaborated_projects() -> HttpReqState<CollaboratedProjects> {
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), move |_| {
+        backend::register_content_view("pr");
+    });
     let prs = use_state(|| HttpReqState::Loading);
 
     if HttpReqState::Loading == *prs {

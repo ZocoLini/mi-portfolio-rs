@@ -1,9 +1,10 @@
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::ops::Add;
-use yew::{Html, Properties, function_component, html, use_state};
+use yew::{Html, Properties, function_component, html, use_effect_with, use_state};
 
 use crate::{
+    backend,
     components::Icon,
     data_gen::{DynGenerable, IntoHtml},
     lang::{self, MultiLang},
@@ -12,6 +13,9 @@ use crate::{
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), move |_| {
+        backend::register_content_view("knowledge");
+    });
     html! {
         <div>
             <h1>{ lang::translate("%knowledge.view.title") }</h1>

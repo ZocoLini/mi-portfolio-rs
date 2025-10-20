@@ -82,42 +82,27 @@ pub fn view() -> Html {
 
     let about_click = {
         let current_view = current_view.clone();
-        Callback::from(move |_| {
-            backend::register_content_view("about");
-            current_view.set(html! { <about::View /> })
-        })
+        Callback::from(move |_| current_view.set(html! { <about::View /> }))
     };
 
     let timeline_click = {
         let current_view = current_view.clone();
-        Callback::from(move |_| {
-            backend::register_content_view("timeline");
-            current_view.set(html! { <timeline::View /> })
-        })
+        Callback::from(move |_| current_view.set(html! { <timeline::View /> }))
     };
 
     let works_click = {
         let current_view = current_view.clone();
-        Callback::from(move |_| {
-            backend::register_content_view("works");
-            current_view.set(html! { <works::View /> })
-        })
+        Callback::from(move |_| current_view.set(html! { <works::View /> }))
     };
 
     let knowledge_click = {
         let current_view = current_view.clone();
-        Callback::from(move |_| {
-            backend::register_content_view("knowledge");
-            current_view.set(html! { <knowledge::View /> })
-        })
+        Callback::from(move |_| current_view.set(html! { <knowledge::View /> }))
     };
 
     let pr_click = {
         let current_view = current_view.clone();
-        Callback::from(move |_| {
-            backend::register_content_view("pr");
-            current_view.set(html! { <pr::View /> })
-        })
+        Callback::from(move |_| current_view.set(html! { <pr::View /> }))
     };
 
     html! {

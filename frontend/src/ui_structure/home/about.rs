@@ -2,7 +2,7 @@ use crate::components::Icon;
 use crate::data_gen::{DynGenerable, IntoHtml};
 use crate::lang::MultiLang;
 use crate::styles::Css;
-use crate::{lang, styles};
+use crate::{backend, lang, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::clone::Clone;
@@ -12,6 +12,9 @@ use yew::prelude::*;
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), move |_| {
+        backend::register_content_view("about");
+    });
     html! {
         <div>
             <h1>{ lang::translate("%general.about-me") }</h1>

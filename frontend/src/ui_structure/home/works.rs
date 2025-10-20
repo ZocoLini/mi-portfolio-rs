@@ -1,7 +1,7 @@
 use crate::data_gen::{DynGenerable, IntoHtml};
 use crate::lang::{self, MultiLang};
 use crate::styles::{Css, PaneType};
-use crate::{resources, styles};
+use crate::{backend, resources, styles};
 use frontend::MultiLang;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -12,6 +12,9 @@ use yew::prelude::*;
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), move |_| {
+        backend::register_content_view("works");
+    });
     let css = r#"
 
     "#

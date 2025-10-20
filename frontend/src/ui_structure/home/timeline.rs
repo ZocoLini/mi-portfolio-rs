@@ -3,7 +3,7 @@ use frontend::MultiLang;
 use serde::Deserialize;
 use std::ops::Add;
 use stylist::StyleSource;
-use yew::{Html, Properties, function_component, html, use_state};
+use yew::{Html, Properties, function_component, html, use_effect_with, use_state};
 
 const EVENT_PANE_X_OFFSET: i64 = 150;
 const PIXELS_PER_DAY: i64 = 1;
@@ -11,6 +11,7 @@ const PANE_WIDTH: i64 = 400;
 const PANE_GAP: i64 = 30;
 
 use crate::{
+    backend,
     components::Icon,
     data_gen::{DynGenerable, IntoHtml},
     lang::{self, MultiLang},
@@ -19,6 +20,9 @@ use crate::{
 
 #[function_component(View)]
 pub fn view() -> Html {
+    use_effect_with((), move |_| {
+        backend::register_content_view("timeline");
+    });
     let css = r#"
 
     "#
