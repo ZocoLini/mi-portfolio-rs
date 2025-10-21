@@ -41,9 +41,8 @@
       "detail": "%work-view.compositor.features.3"
     }
   ],
-  "description": [
-    "%work-view.compositor.description.1"
-  ],
+  "description": [],
+  "readme": "https://raw.githubusercontent.com/ZocoLini/compositor/master/README.md",
   "multimedia": {
     "type": "Pc",
     "images_ids": [

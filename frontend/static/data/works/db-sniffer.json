@@ -31,14 +31,8 @@
       "detail": "%work-view.db-sniffer.features.1"
     }
   ],
-  "description": [
-    "%work-view.db-sniffer.description.1",
-    "%work-view.db-sniffer.description.2"
-  ],
-  "state": {
-    "%work-view.db-sniffer.state.1.title": "%work-view.db-sniffer.state.1.detail"
-  },
-
+  "description": [],
+  "readme": "https://raw.githubusercontent.com/ZocoLini/db-sniffer/master/README.md",
   "links": [
     {
       "icon_id": "logo-github.png",

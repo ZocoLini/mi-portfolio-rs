@@ -36,18 +36,8 @@
       "detail": "%work-view.mk-template.features.2"
     }
   ],
-  "description": [
-    "%work-view.mk-template.description.1",
-    "%work-view.mk-template.description.2",
-    "%work-view.mk-template.description.3",
-    "%work-view.mk-template.description.4",
-    "%work-view.mk-template.description.5"
-  ],
-  "state": {
-    "%work-view.mk-template.state.1.title": "%work-view.mk-template.state.1.detail",
-    "%work-view.mk-template.state.2.title": "%work-view.mk-template.state.2.detail",
-    "%work-view.mk-template.state.3.title": "%work-view.mk-template.state.3.detail"
-  },
+  "description": [],
+  "readme": "https://raw.githubusercontent.com/ZocoLini/mk-template/master/README.md",
   "links": [
     {
       "icon_id": "logo-github.png",

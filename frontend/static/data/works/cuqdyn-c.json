@@ -41,14 +41,8 @@
       "detail": "%work-view.cuqdyn-c.features.3"
     }
   ],
-  "description": [
-    "%work-view.cuqdyn-c.description.1",
-    "%work-view.cuqdyn-c.description.2",
-    "%work-view.cuqdyn-c.description.3"
-  ],
-  "state": {
-    "%work-view.cuqdyn-c.state.1.title": "%work-view.cuqdyn-c.state.1.detail"
-  },
+  "description": [],
+  "readme": "https://raw.githubusercontent.com/ZocoLini/cuqdyn-c/main/README.md",
   "links": [
     {
       "icon_id": "logo-github.png",
