@@ -46,11 +46,8 @@
    "detail": "%work-view.fee.features.4"
   }
  ],
- "description": [
-  "%work-view.fee.description.1",
-  "%work-view.fee.description.2",
-  "%work-view.fee.description.3"
- ],
+ "description": [],
+ "readme": "https://raw.githubusercontent.com/ZocoLini/fee/master/README.md",
  "links": [
   {
    "icon_id": "logo-github.png",

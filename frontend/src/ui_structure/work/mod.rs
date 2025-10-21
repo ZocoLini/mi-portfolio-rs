@@ -1,9 +1,11 @@
-use crate::components::{IconButton, IconizedItem};
+use crate::components::{self, IconButton, IconizedItem};
 use crate::data_gen::DynGenerable;
 use crate::lang::MultiLang;
 use crate::styles::Css;
-use crate::{backend, lang, resources, styles};
+use crate::{HttpReqState, backend, lang, resources, styles};
+use comrak::{ComrakOptions, markdown_to_html};
 use frontend::MultiLang;
+use gloo_net::http::Request;
 use serde::Deserialize;
 use std::clone::Clone;
 use std::collections::HashMap;
@@ -12,7 +14,9 @@ use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
 use stylist::css;
+use yew::platform::spawn_local;
 use yew::prelude::*;
+use yew::virtual_dom::VNode;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct ViewProps {
@@ -30,6 +34,7 @@ pub struct ViewData {
     features: Vec<IconizedItemData>,
     downloads: Option<Vec<DownloadsItemData>>,
     description: Vec<String>,
+    readme: Option<String>,
     state: Option<HashMap<String, String>>,
     multimedia: Option<MultimediaData>,
     links: Vec<LinkItemData>,
@@ -143,6 +148,7 @@ h2, h1 {
                   <center-pane>
                     <Description view_data={ data.clone() }/>
                     <State view_data={ data.clone() }/>
+                    <Readme view_data={ data.clone() }/>
                   </center-pane>
                 </div>
 
@@ -358,16 +364,116 @@ p {
     let props = props.clone();
 
     html! {
-        <div class={ css }>
-            <h2>{ lang::translate("%work-view.section-title.project-description") }</h2>
-            <div>
-                {
-                    for props.view_data.description.into_iter().map(move |paragraph| {
-                        html! { <p>{ paragraph } </p> }
-                    })
+        if props.view_data.description.is_empty() {
+            { html! { <div /> } }
+        } else {
+            {
+            html! {
+                <div class={ css }>
+                    <h2>{ lang::translate("%work-view.section-title.project-description") }</h2>
+                    <div>
+                        {
+                            for props.view_data.description.into_iter().map(move |paragraph| {
+                                html! { <p>{ paragraph } </p> }
+                            })
+                        }
+                    </div>
+                </div>
+            }
+            }
+        }
+    }
+}
+
+#[derive(Clone, PartialEq, Properties)]
+struct ReadmeProps {
+    view_data: ViewData,
+}
+
+#[function_component(Readme)]
+fn description(props: &ReadmeProps) -> Html {
+    let css = r#"
+p {
+    padding: 5px 15px;
+}
+        "#
+    .to_string()
+    .add(&styles::PaneStyle::new(styles::PaneType::Primary).css())
+    .into_css();
+
+    let md_link = props.view_data.readme.clone();
+    let markdown = use_state(|| HttpReqState::Loading);
+
+    {
+        let md_link = md_link.clone();
+        if HttpReqState::Loading == *markdown && md_link.is_some() {
+            if let Some(link) = md_link {
+                let state = markdown.clone();
+                spawn_local(async move {
+                    #[cfg(debug_assertions)]
+                    web_sys::console::log_1(&"Loading markdown".into());
+
+                    let md = load_markdown(&link).await;
+                    state.set(md);
+                });
+            }
+        }
+    }
+
+    return html! {
+        if md_link.is_some() {
+            {
+                match *markdown {
+                    HttpReqState::Loading => {
+                        html! {
+                            <components::LoadingSpinner/>
+                        }
+                    }
+                    HttpReqState::Loaded(ref ps) => {
+                        html! {
+                            <div class={ css }>
+                                { ps.clone() }
+                            </div>
+                        }
+                    }
+                    HttpReqState::None => {
+                        html! {
+                            <div class={ css }>
+                                <p>{ "Unable to fetch the repository README.md" }</p>
+                            </div>
+                        }
+                    }
                 }
-            </div>
-        </div>
+            }
+        }
+    };
+
+    // TODO: Links and images should work. Style for the code blocks and tables
+    async fn load_markdown(link: &str) -> HttpReqState<VNode> {
+        let md = match Request::get(link).send().await {
+            Ok(response) => {
+                if response.status() == 200 {
+                    response.text().await.unwrap_or_default()
+                } else {
+                    return HttpReqState::None;
+                }
+            }
+            Err(_) => return HttpReqState::None,
+        };
+
+        let mut options = ComrakOptions::default();
+        options.extension.autolink = true;
+        options.extension.table = true;
+        options.extension.strikethrough = true;
+        options.extension.tasklist = true;
+        options.render.github_pre_lang = true;
+        options.render.hardbreaks = true;
+
+        let output = markdown_to_html(&md, &options);
+
+        let html = Html::from_html_unchecked(AttrValue::from(output));
+
+        HttpReqState::Loaded(html)
     }
 }
 
