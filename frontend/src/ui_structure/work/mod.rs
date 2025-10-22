@@ -13,7 +13,6 @@ use std::convert::From;
 use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
-use stylist::css;
 use yew::platform::spawn_local;
 use yew::prelude::*;
 use yew::virtual_dom::VNode;
@@ -28,8 +27,6 @@ pub struct ViewData {
     name: String,
     image_id: String,
     id: String,
-    #[serde(default)]
-    is_api: bool,
     technicaldata: Vec<IconizedItemData>,
     features: Vec<IconizedItemData>,
     downloads: Option<Vec<DownloadsItemData>>,
@@ -200,8 +197,6 @@ align-items: center;
     .add(&styles::PaneStyle::new(styles::PaneType::Primary).css())
     .into_css();
 
-    let api_icon_css = css!("position: absolute; left: -5px; top: -15px;");
-
     let cloned_name = props.view_data.name.clone();
     let name = &props.view_data.name;
 
@@ -209,9 +204,6 @@ align-items: center;
         <left-pane class={ css }>
             <div id="iconoProyecto-container">
               <img id="iconoProyecto" src={ resources::get_work_icon(&props.view_data.image_id) } alt={ cloned_name }/>
-              if props.view_data.is_api {
-                  <img class={ api_icon_css } src={resources::get_icon("api.png")} alt="api"/>
-              }
             </div>
             <h1>{ name }</h1>
             <Technicaldata view_data={ props.view_data.clone() }/>
@@ -449,6 +441,7 @@ p {
     };
 
     // TODO: Links and images should work. Style for the code blocks and tables
+    // TODO: Cuqdyn-C is toooo big
     async fn load_markdown(link: &str) -> HttpReqState<VNode> {
         let md = match Request::get(link).send().await {
             Ok(response) => {
