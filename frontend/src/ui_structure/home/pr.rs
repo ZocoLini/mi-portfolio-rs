@@ -159,6 +159,7 @@ impl IntoHtml for Pr {
             display: flex;
             gap: 10px;
             flex: 1;
+            min-height: 25%;
             max-height: 25%;
             min-width: 300px;
             align-items: center;
