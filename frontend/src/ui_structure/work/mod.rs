@@ -6,6 +6,7 @@ use crate::{HttpReqState, backend, lang, resources, styles};
 use comrak::{ComrakOptions, markdown_to_html};
 use frontend::MultiLang;
 use gloo_net::http::Request;
+use regex::{Captures, Regex};
 use serde::Deserialize;
 use std::clone::Clone;
 use std::collections::HashMap;
@@ -483,6 +484,34 @@ table {
         options.render.hardbreaks = true;
 
         let output = markdown_to_html(&md, &options);
+
+        let repo_link = link
+            .replace("raw.githubusercontent.com/", "github.com/")
+            .replace("/README.md", "")
+            .replace("master", "blob/master")
+            .replace("main", "blob/main");
+
+        // Converting relative links to absolute links
+        let regex = Regex::new(r#"href="([^"]+)"#).unwrap();
+        let output = regex
+            .replace_all(&output, |caps: &Captures| {
+                let relative_url = caps[1].to_string();
+                if !relative_url.starts_with("https://") && !relative_url.starts_with("#") {
+                    format!("href=\"{}/{}\"", repo_link, relative_url)
+                } else {
+                    format!("href=\"{}\"", relative_url)
+                }
+            })
+            .into_owned();
+
+        // Adding ID to the titles
+        let regex = Regex::new(r#"h([\d])>([^<]*)"#).unwrap();
+        let output = regex
+            .replace_all(&output, |caps: &Captures| {
+                let id = caps[2].to_ascii_lowercase().replace(" ", "-");
+                format!("h{} id=\"{}\">{}", &caps[1], id, &caps[2])
+            })
+            .into_owned();
 
         let html = Html::from_html_unchecked(AttrValue::from(output));
 

@@ -12,6 +12,7 @@ web-sys = { version = "0.3.77", features = ["Navigator", "Window"] }
 syn = { version = "2.0.104" }
 quote = { version = "1.0.40" }
 comrak = { version = "0.44.0" }
+regex = { version = "1.12.2" }
 
 serde = { workspace = true }
 serde_json = { workspace = true }
