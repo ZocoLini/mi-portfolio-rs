@@ -385,8 +385,28 @@ struct ReadmeProps {
 #[function_component(Readme)]
 fn description(props: &ReadmeProps) -> Html {
     let css = r#"
+        display: flex;
+        flex-direction: column;
 p {
-    padding: 5px 15px;
+    padding: 0px 5px;
+}
+
+h3 {
+    padding: 0px 15px;
+}
+
+pre {
+    padding: 15px;
+    margin: 15px;
+    background-color: var(--color-secondary-bkg-pane);
+    border-radius: 20px;
+}
+
+table {
+    padding: 15px;
+    margin: 15px;
+    background-color: var(--color-secondary-bkg-pane);
+    border-radius: 20px;
 }
         "#
     .to_string()
