@@ -19,7 +19,16 @@ pub fn register_content_view(content_id: &str) {
         return;
     };
 
-    let endpoint = format!("http://{}/api/v1/portfolio/track/content-view", host);
+    let protocol = if cfg!(debug_assertions) {
+        "http"
+    } else {
+        "https"
+    };
+
+    let endpoint = format!(
+        "{}://{}/api/v1/portfolio/track/content-view",
+        protocol, host
+    );
 
     spawn_local(async move {
         let _ = Request::post(&endpoint)
