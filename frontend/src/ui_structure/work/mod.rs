@@ -389,6 +389,7 @@ fn description(props: &ReadmeProps) -> Html {
     let css = r#"
         display: flex;
         flex-direction: column;
+         min-width: 0;
 p {
     padding: 0px 5px;
 }
@@ -397,12 +398,19 @@ h3 {
     padding: 0px 15px;
 }
 
+pre code {
+    font-family: monospace;
+    display: block;
+    white-space: pre;
+    text-wrap-mode: wrap;
+}
+
 pre {
-    padding: 15px;
+    overflow-x: scroll;
+    padding: 1em;
+    border-radius: 0.5em;
     margin: 15px;
     background-color: var(--color-secondary-bkg-pane);
-    border-radius: 20px;
-    overflow-x: scroll;
 }
 
 table {
@@ -410,6 +418,10 @@ table {
     margin: 15px;
     background-color: var(--color-secondary-bkg-pane);
     border-radius: 20px;
+}
+
+table * {
+    font-family: monospace;
 }
 
 img {
@@ -468,8 +480,6 @@ img {
         }
     };
 
-    // TODO: Links and images should work. Style for the code blocks and tables
-    // TODO: Cuqdyn-C is toooo big
     async fn load_markdown(link: &str) -> HttpReqState<VNode> {
         let md = match Request::get(link).send().await {
             Ok(response) => {
