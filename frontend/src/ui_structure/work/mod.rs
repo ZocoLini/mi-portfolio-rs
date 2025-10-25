@@ -14,6 +14,7 @@ use std::convert::From;
 use std::fmt::Display;
 use std::ops::Add;
 use std::string::ToString;
+use web_sys::window;
 use yew::platform::spawn_local;
 use yew::prelude::*;
 use yew::virtual_dom::VNode;
@@ -498,6 +499,15 @@ table {
                 let relative_url = caps[1].to_string();
                 if !relative_url.starts_with("https://") && !relative_url.starts_with("#") {
                     format!("href=\"{}/{}\"", repo_link, relative_url)
+                } else if relative_url.starts_with("#") {
+                    let mut current_url = window().unwrap().location().href().unwrap();
+                    if let Some(idx) = current_url.find('#') {
+                        current_url.truncate(idx);
+                    }
+                    if current_url.ends_with("/") {
+                        current_url.truncate(current_url.len() - 1);
+                    }
+                    format!("href=\"{}{}\"", current_url, relative_url)
                 } else {
                     format!("href=\"{}\"", relative_url)
                 }
