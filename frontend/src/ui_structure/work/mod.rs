@@ -402,6 +402,7 @@ pre {
     margin: 15px;
     background-color: var(--color-secondary-bkg-pane);
     border-radius: 20px;
+    overflow-x: scroll;
 }
 
 table {
@@ -409,6 +410,11 @@ table {
     margin: 15px;
     background-color: var(--color-secondary-bkg-pane);
     border-radius: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
         "#
     .to_string()
@@ -510,6 +516,23 @@ table {
                     format!("href=\"{}{}\"", current_url, relative_url)
                 } else {
                     format!("href=\"{}\"", relative_url)
+                }
+            })
+            .into_owned();
+
+        // Converting relative img links to absolute links
+        let regex = Regex::new(r#"src="([^"]+)"#).unwrap();
+        let output = regex
+            .replace_all(&output, |caps: &Captures| {
+                let relative_url = caps[1].to_string();
+                if !relative_url.starts_with("https://") {
+                    format!(
+                        "src=\"{}/{}\"",
+                        link.replace("/README.md", ""),
+                        relative_url
+                    )
+                } else {
+                    format!("src=\"{}\"", relative_url)
                 }
             })
             .into_owned();
