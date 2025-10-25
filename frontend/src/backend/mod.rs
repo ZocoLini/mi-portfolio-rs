@@ -51,11 +51,3 @@ pub fn get_host() -> Option<String> {
         None
     }
 }
-
-#[allow(unused)]
-pub fn get_frontnend_root_endpoint() -> String {
-    let host = get_host().unwrap_or_else(|| {
-        "bcastellano.com".to_string()
-    });
-    format!("http://{}/portfolio", host)
-}
