@@ -78,7 +78,7 @@ pub fn view() -> Html {
     .add(&styles::PaneStyle::new(Primary).css())
     .into_css();
 
-    let current_view = use_state(|| html! { <about::View /> }); // Estado inicial con `about::View`
+    let current_view = use_state(|| html! { <works::View /> });
 
     let about_click = {
         let current_view = current_view.clone();
