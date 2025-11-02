@@ -20,6 +20,34 @@
       ]
     },
     {
+      "title": "%work.cuqdyn-c.title",
+      "description": "%work.cuqdyn-c.description",
+      "image_id": "cuqdyn-c",
+      "work_id": "cuqdyn-c",
+      "info": {
+        "%general.developer": "%general.my-name",
+        "%general.type": "%work.cuqdyn-c.type",
+        "%general.date": "2025",
+        "%general.role": "%work.role.lead-developer"
+      },
+      "icons": [
+        "lang-rust.png",
+        "lang-c.png",
+        "lang-cpp.png",
+        "lang-fortran.png",
+        "lang-matlab.png",
+        "console.png",
+        "logo-docker.png",
+        "logo-linux.png",
+        "logo-mpi.png",
+        "logo-cuda.jpg",
+        "logo-openmp.jpg",
+        "cicd.png",
+        "logo-git.png",
+        "logo-github.png"
+      ]
+    },
+    {
       "title": "%work.mk-template.title",
       "description": "%work.mk-template.description",
       "image_id": "mk-template",
@@ -53,34 +81,6 @@
         "lang-rust.png",
         "console.png",
         "logo-docker.png",
-        "cicd.png",
-        "logo-git.png",
-        "logo-github.png"
-      ]
-    },
-    {
-      "title": "%work.cuqdyn-c.title",
-      "description": "%work.cuqdyn-c.description",
-      "image_id": "cuqdyn-c",
-      "work_id": "cuqdyn-c",
-      "info": {
-        "%general.developer": "%general.my-name",
-        "%general.type": "%work.cuqdyn-c.type",
-        "%general.date": "2025",
-        "%general.role": "%work.role.lead-developer"
-      },
-      "icons": [
-        "lang-rust.png",
-        "lang-c.png",
-        "lang-cpp.png",
-        "lang-fortran.png",
-        "lang-matlab.png",
-        "console.png",
-        "logo-docker.png",
-        "logo-linux.png",
-        "logo-mpi.png",
-        "logo-cuda.jpg",
-        "logo-openmp.jpg",
         "cicd.png",
         "logo-git.png",
         "logo-github.png"
