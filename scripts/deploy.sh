@@ -1,35 +1,31 @@
 #!/bin/bash
+set -euo pipefail
 
-SERVER="root@200.234.230.139"
+SERVER="ubuntu@15.204.8.56"
 
 bash scripts/build.sh release
 
 # Deploying the frontend
 (
-    ssh $SERVER "
+  ssh $SERVER "
         rm -rf /tmp/portfolio
     " || exit "SSH commands failed"
 
-    rsync -avz dist/ $SERVER:/tmp/portfolio
-    
-    ssh $SERVER "
-        rm -rf /var/www/bcastellano.com/portfolio && mv /tmp/portfolio /var/www/bcastellano.com/portfolio
-    " || exit "SSH commands failed"
+  rsync -avz dist/ $SERVER:/tmp/dist
 
-    ssh $SERVER "
-            chown -R www-data:www-data /var/www/bcastellano.com/portfolio
+  ssh $SERVER "
+        rm -rf /home/ubuntu/www/portfolio/dist && mv /tmp/dist /home/ubuntu/www/portfolio/dist
     " || exit "SSH commands failed"
 )
 
 # Deploying the backend
 (
-    ssh $SERVER "
-        systemctl stop portfolio-backend.service
-    " || exit "SSH commands failed"
+  scp target/release/backend $SERVER:/home/ubuntu/www/portfolio/backend
+)
 
-    scp target/release/backend $SERVER:/srv/portfolio-backend
-
-    ssh $SERVER "
-        systemctl start portfolio-backend.service
+# Restart the containers
+(
+  ssh $SERVER "
+        cd /home/ubuntu/www/portfolio/ && bash scripts/restart-portfolio.sh
     " || exit "SSH commands failed"
 )

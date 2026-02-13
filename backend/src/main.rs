@@ -23,7 +23,7 @@ async fn main() -> Result<(), Error> {
         db_pool: sqlite_pool,
     });
 
-    println!("Listening on 127.0.0.1:8080");
+    println!("Listening on 0.0.0.0:8080");
 
     HttpServer::new(move || {
         let cors = Cors::default();
@@ -47,7 +47,7 @@ async fn main() -> Result<(), Error> {
                     .service(web::scope("/track").service(endpoint::track::content_view)),
             )
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("0.0.0.0", 8080))?
     .workers(2)
     .run()
     .await?;
